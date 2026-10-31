@@ -1,0 +1,56 @@
+{
+	"share_title": "Bereit zum Teilen",
+	"share_description_one": "{{count}} Datei wird geteilt",
+	"share_description_other": "{{count}} Dateien werden geteilt",
+	"share_with": "Teilen mit",
+
+	"sharing_with": "Wird geteilt mit {{peer}}",
+	"sharing_description_one": "{{count}} Datei wird geteilt ({{size}}). Du kannst dieses Fenster schließen, die Übertragung läuft weiter.",
+	"sharing_description_other": "{{count}} Dateien werden geteilt ({{size}}). Du kannst dieses Fenster schließen, die Übertragung läuft weiter.",
+
+	"share_dialog_title": "Teile deine Dateien",
+	"share_dialog_description": "Wähle eine Datei von deinem Gerät oder ein Paket",
+
+	"action_receive_files": "Dateien empfangen",
+	"action_share_files": "Dateien teilen",
+
+	"receive_dialog_title": "Datei oder Kontakt empfangen",
+	"receive_dialog_description": "Gib ein Zephyr- oder iroh-Ticket ein, um zu empfangen",
+	"receiving_transfer_title": "Übertragung wird empfangen",
+	"receiving_transfer_description": "Deine Dateien werden heruntergeladen. Du kannst dieses Fenster schließen, die Übertragung läuft weiter",
+	"receiving_contact_title": "Kontakt wird empfangen",
+	"receiving_contact_description": "Verbindung zum Peer wird aufgebaut, um Kontaktdaten auszutauschen",
+	"received_contact_title": "Kontakt empfangen",
+	"received_contact_description": "{{contact}} wurde zu deinen Kontakten hinzugefügt",
+	"receiving_contact_error_title": "Kontakt konnte nicht hinzugefügt werden",
+	"receiving_contact_error_description": "Wir konnten diesen Peer nicht erreichen. Stelle sicher, dass er online und das Ticket noch gültig ist.",
+
+	"incoming_request_title": "Eingehende Teilen-Anfrage",
+
+	"incoming_request_description_one": "{{peer}} möchte dir {{count}} Datei senden ({{size}}).",
+	"incoming_request_description_other": "{{peer}} möchte dir {{count}} Dateien senden ({{size}}).",
+
+	"drop_files_title": "Lass los",
+	"drop_files_description": "Leg deine Dateien ab, um zu teilen",
+
+	"importing_title": "Deine Dateien werden vorbereitet",
+	"importing_description_one": "{{count}} Datei wird vorbereitet",
+	"importing_description_other": "{{count}} Dateien werden vorbereitet",
+
+	"file_preview_alt": "Vorschau der aktuellen Datei",
+
+	"unselected_files_title": "Keine Dateien ausgewählt",
+	"drag_here": "Zieh deine Dateien hierher.",
+	"drag_here_with_shortcut": "Zieh deine Dateien hierher oder wähle sie aus und drücke:",
+
+	"resumable_transfer_title": "Fortsetzbare Übertragungen",
+	"resumable_transfer_description": "Wir speichern Teildaten fehlgeschlagener Übertragungen, damit sie fortgesetzt werden können. Mit dieser Option löschst du alle gespeicherten Daten.",
+
+	"shortcut_share_description": "Teilt die in deinem System ausgewählten Dateien oder blendet das Teilen-Fenster ein und aus, wenn nichts ausgewählt ist",
+	"shortcut_receive_description": "Dateien oder Kontakte aus der Zwischenablage empfangen",
+	"shortcut_accept_description": "Die neueste eingehende Teilen-Anfrage annehmen, ohne die App zu öffnen",
+	"shortcut_reject_description": "Die neueste eingehende Teilen-Anfrage ablehnen, ohne die App zu öffnen",
+
+	"import_failed_title": "Deine Dateien konnten nicht vorbereitet werden",
+	"import_failed_description": "Drücke Esc, um es erneut zu versuchen"
+}

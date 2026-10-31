@@ -1,0 +1,31 @@
+{
+	"received": "받음",
+	"receiving": "받는 중",
+	"sent": "보냄",
+	"sending": "보내는 중",
+
+	"active_transfers": "진행 중인 전송",
+
+	"previous_transfers": "이전 전송",
+	"empty_previous_title": "전송 기록 없음",
+	"empty_previous_description": "보내고 받은 전송이 여기에 표시됩니다.",
+
+	"progress_receiving_other": "파일 {{count}}개 받는 중 · {{size}}",
+
+	"progress_sending_other": "파일 {{count}}개 보내는 중 · {{size}}",
+
+	"progress_requested": "피어를 기다리는 중",
+	"progress_timeout": "시간이 초과되었습니다",
+	"progress_rejected": "거절됨",
+
+	"to_peer": "받는 사람: {{peer}}",
+	"from_peer": "보낸 사람: {{peer}}",
+
+	"files_no_longer_available": "파일을 더 이상 사용할 수 없습니다",
+	"some_files_missing_other": "파일 {{count}}개를 더 이상 사용할 수 없습니다",
+
+	"files_dialog_title": "전송한 파일",
+	"files_dialog_description_other": "파일 {{count}}개 · {{date}}",
+
+	"storage_transfers_description": "보내고 받은 모든 파일의 기록입니다. 이 옵션으로 전송 기록을 전부 지울 수 있습니다."
+}

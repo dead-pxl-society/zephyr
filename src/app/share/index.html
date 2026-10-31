@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zephyr Share</title>
+    <link href="../../index.css" rel="stylesheet">
+  </head>
+
+  <body class="overflow-hidden">
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+  </body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute">
+    <title>blureffect</title>
+    <defs>
+      <filter id="avatar-blur-bg" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+        <feComponentTransfer in="blur" result="softBlur">
+          <feFuncA type="linear" slope="0.15" />
+        </feComponentTransfer>
+      </filter>
+    </defs>
+  </svg>
+</html>

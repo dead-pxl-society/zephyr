@@ -1,0 +1,13 @@
+{
+	"app_settings": "설정…",
+
+	"file_share": "파일 공유…",
+	"file_receive": "클립보드에서 받기",
+
+	"delete_transfers": "모든 전송 삭제",
+	"delete_strangers": "알 수 없는 피어 삭제",
+	"delete_parcels": "모든 꾸러미 삭제",
+
+	"tray_open": "Zephyr 열기",
+	"tray_quit": "Zephyr 종료"
+}

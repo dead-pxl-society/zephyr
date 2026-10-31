@@ -1,0 +1,15 @@
+{
+	"check_failed": "Couldn't check for updates",
+	"up_to_date": "Zephyr is up to date",
+	"setting_title": "Updates",
+	"setting_description": "You're on version {{version}}. Zephyr checks for updates automatically.",
+	"setting_description_loading": "Zephyr checks for updates automatically.",
+	"action_check_now": "Check for updates",
+	"action_checking": "Checking…",
+	"update_available": "Update available",
+	"action_update_now": "Update to {{version}}",
+	"action_downloading": "Downloading…",
+	"action_downloading_percent": "Downloading… {{percent}}%",
+	"setting_update_available": "Version {{version}} is available.",
+	"action_installing": "Installing…"
+}

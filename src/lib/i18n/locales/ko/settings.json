@@ -1,0 +1,19 @@
+{
+	"storage_data_section": "데이터",
+	"storage_downloads_section": "다운로드",
+	"shortcuts_global_section": "전역 단축키",
+	"notifications_section": "알림",
+	"sounds_section": "소리",
+
+	"need_help_title": "도움이 필요하신가요?",
+	"need_help_description": "궁금한 점이나 문제가 있다면 Discord에 들러 알려 주세요. 기꺼이 도와드리겠습니다.",
+	"action_join_discord": "Discord 서버 참여",
+	"clipboard_sync": "클립보드 동기화",
+	"clipboard_sync_description": "한 기기에서 복사하고 다른 기기에서 붙여넣으세요. 복사한 내용은 곧바로 다른 기기에서도 쓸 수 있습니다.",
+	"clipboard_section": "클립보드",
+	"clipboard_files": "파일 동기화",
+	"clipboard_files_description": "복사한 파일도 포함합니다. 백그라운드에서 내려받으므로 Finder나 탐색기에 바로 붙여넣을 수 있습니다.",
+	"clipboard_max_size": "최대 크기",
+	"clipboard_max_size_description": "이보다 큰 복사본은 동기화되지 않습니다.",
+	"clipboard_max_size_warning": "한도를 크게 잡으면 복사할 때마다 느려지고 보내는 기기의 메모리도 많이 씁니다. 큰 파일에는 공유 기능이 더 알맞습니다."
+}

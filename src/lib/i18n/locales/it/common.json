@@ -1,0 +1,53 @@
+{
+	"type_column": "Tipo",
+	"size_column": "Dimensione",
+	"date_column": "Data",
+	"files_column": "File",
+
+	"actions_section": "Azioni",
+	"action_send_files": "Invia file",
+	"action_view_all": "Mostra tutto",
+	"action_collapse": "Comprimi",
+	"action_select_files": "Seleziona file",
+
+	"delete": "Elimina",
+	"send": "Invia",
+	"accept": "Accetta",
+	"reject": "Rifiuta",
+	"done": "Fatto",
+	"close": "Chiudi",
+	"share": "Condividi",
+	"receive": "Ricevi",
+	"ticket": "Ticket",
+	"processing": "Elaborazione",
+	"device": "Dispositivo",
+	"exit": "Esci",
+	"name": "Nome",
+	"platform": "Piattaforma",
+	"search": "Cerca",
+	"next": "Avanti",
+
+	"files_count_one": "{{count}} file",
+	"files_count_many": "{{count}} file",
+	"files_count_other": "{{count}} file",
+
+	"pagination_page_of": "Pagina {{page}} di {{total}}",
+	"pagination_go_first": "Vai alla prima pagina",
+	"pagination_go_last": "Vai all'ultima pagina",
+	"pagination_next": "Vai alla pagina successiva",
+	"pagination_previous": "Vai alla pagina precedente",
+
+	"sr_open_menu": "Apri il menu",
+
+	"language_section": "Lingua",
+	"app_language": "Lingua dell'app",
+
+	"delete_all": "Elimina tutto",
+	"cancel": "Annulla",
+	"confirm_prompt": "Sei sicuro?",
+
+	"ticket_copied": "Ticket copiato",
+
+	"shortcut_recording_prompt": "Premi una scorciatoia…",
+	"not_set": "Non impostata"
+}

@@ -1,0 +1,20 @@
+{
+	"enable_notifications": "Mitteilungen erlauben",
+	"enable_notifications_description": "Lass dich über eingehende Anfragen und Übertragungen informieren, während Zephyr im Hintergrund läuft.",
+
+	"share_request_description_one": "Ein Peer möchte dir {{count}} Datei senden ({{size}}). Öffne Zephyr, um die Anfrage anzunehmen oder abzulehnen.",
+	"share_request_description_other": "Ein Peer möchte dir {{count}} Dateien senden ({{size}}). Öffne Zephyr, um die Anfrage anzunehmen oder abzulehnen.",
+
+	"receiving_files_title": "Dateien werden empfangen",
+	"receiving_files_body": "Wir sagen dir Bescheid, sobald die Übertragung fertig ist.",
+	"transfer_complete_title": "Übertragung abgeschlossen",
+	"transfer_complete_body": "Deine Dateien liegen im Downloads-Ordner bereit.",
+	"receiving_trusted_files_title": "Vertrauenswürdige Dateien werden empfangen",
+	"receiving_trusted_files_body": "{{peer}} sendet dir Dateien. Wir sagen dir Bescheid, sobald es fertig ist.",
+	"receiving_trusted_files_body_unknown": "Ein vertrauenswürdiger Peer sendet dir Dateien. Wir sagen dir Bescheid, sobald es fertig ist.",
+
+	"deleted_all_parcels": "Alle Pakete gelöscht",
+	"deleted_stored_transfers": "Gespeicherte Übertragungen gelöscht",
+	"deleted_peers": "Peers gelöscht",
+	"deleted_resumable_transfers": "Fortsetzbare Daten gelöscht"
+}

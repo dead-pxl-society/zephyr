@@ -1,0 +1,8 @@
+{
+	"discovery": "Обнаружение",
+	"discoverable": "Видимость",
+	"contacts_only": "Только контакты",
+
+	"action_disable_mdns": "Отключить локальное обнаружение",
+	"action_enable_mdns": "Включить локальное обнаружение"
+}

@@ -1,0 +1,45 @@
+{
+	"action_start": "시작하기",
+	"action_start_using": "Zephyr 사용하기!",
+
+	"step_welcome": "환영합니다",
+	"step_share": "공유",
+	"step_shortcuts": "단축키",
+	"step_personal_devices": "내 기기",
+	"step_contacts": "연락처",
+	"step_notifications_and_sounds": "알림과 소리",
+	"step_none": "없음",
+
+	"welcome_title": "Zephyr에 오신 것을 환영합니다",
+	"welcome_description": "Zephyr는 내 기기들과 주변 사람들 사이에서 파일을 곧바로 옮깁니다. 중간에 거치는 곳은 없습니다. 설정은 1분이면 끝나요.",
+
+	"share_shortcut_title": "어디서든 공유하세요",
+	"share_shortcut_description": "어디에 있는 파일이나 폴더든 선택하세요.",
+	"share_shortcut_description_press": "그다음 누르세요",
+	"share_shortcut_hint": "계속하려면 위 단축키를 누르세요",
+	"share_shortcut_success": "좋아요!",
+	"share_shortcut_select_file": "파일 선택",
+	"share_shortcut_deselect_file": "선택 해제",
+
+	"share_shortcut_linux_title": "어디서든 공유하세요",
+	"share_shortcut_linux_description": "하던 작업 위로 Zephyr 창이 올라옵니다.",
+	"share_shortcut_linux_description_press": "거기에 파일을 놓으세요. 창을 부르려면",
+	"share_shortcut_linux_drop": "여기에 파일을 놓으세요",
+	"share_shortcut_linux_drag_file": "Zephyr 창으로 파일을 끌어다 놓으세요",
+
+	"all_shortcuts_title": "흐름을 끊지 않게",
+	"all_shortcuts_description": "Zephyr가 하는 모든 일은 당신을 방해하지 않습니다. 단축키는 원하는 대로 바꿔 보세요.",
+
+	"personal_devices_title": "여러 기기가 하나처럼",
+	"personal_devices_description": "나에게 보낸 파일은 그냥 도착합니다. 오가는 건 파일만이 아니에요. 클립보드도 함께 움직입니다.",
+	"personal_devices_warning": "본인이 소유한 기기만 추가하세요",
+
+	"contacts_title": "닿지 않는 사람은 없습니다",
+	"contacts_description": "가까이 있는 기기는 알아서 서로를 찾습니다. 그 밖의 사람은 연락처만 추가하면 됩니다.",
+
+	"notifications_and_sounds_title": "알림과 소리",
+	"notifications_and_sounds_description": "Zephyr는 대부분의 시간을 백그라운드에서 보냅니다. 무언가 도착하면 이렇게 알려 드립니다.",
+
+	"outro_thank_you": "사용해 주셔서 감사합니다",
+	"outro_description": "준비가 끝났습니다. Zephyr는 언제든 기다리고 있어요."
+}

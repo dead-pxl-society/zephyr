@@ -1,0 +1,19 @@
+{
+	"storage_data_section": "Dati",
+	"storage_downloads_section": "Download",
+	"shortcuts_global_section": "Scorciatoie globali",
+	"notifications_section": "Notifiche",
+	"sounds_section": "Suoni",
+
+	"need_help_title": "Ti serve aiuto?",
+	"need_help_description": "Hai una domanda o un problema? Passa dal nostro Discord e raccontacelo, siamo felici di aiutarti.",
+	"action_join_discord": "Entra nel server Discord",
+	"clipboard_sync": "Sincronizzazione appunti",
+	"clipboard_sync_description": "Copia su un dispositivo, incolla su un altro. Tutto ciò che copi è subito disponibile sugli altri tuoi dispositivi.",
+	"clipboard_section": "Appunti",
+	"clipboard_files": "Sincronizza i file",
+	"clipboard_files_description": "Includi i file copiati. Vengono scaricati in background così puoi incollarli direttamente nel Finder o in Esplora file.",
+	"clipboard_max_size": "Dimensione massima",
+	"clipboard_max_size_description": "Le copie più grandi di così non vengono sincronizzate.",
+	"clipboard_max_size_warning": "Limiti elevati rallentano ogni copia e occupano memoria sul dispositivo che invia. Per i file grandi è meglio usare la condivisione."
+}

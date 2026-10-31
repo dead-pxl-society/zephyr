@@ -1,0 +1,17 @@
+{
+	"general_section": "General",
+	"recent_section": "Recent",
+
+	"transfers": "Transfers",
+	"parcels": "Parcels",
+	"devices": "Devices",
+	"discovered_peers": "Discovered Peers",
+	"settings": "Settings",
+	"general": "General",
+	"storage": "Storage",
+	"shortcuts": "Shortcuts",
+	"notifications": "Notifications",
+	"support": "Support",
+
+	"discoverable": "Discoverable"
+}

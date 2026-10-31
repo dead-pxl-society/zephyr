@@ -1,0 +1,54 @@
+{
+	"type_column": "Тип",
+	"size_column": "Размер",
+	"date_column": "Дата",
+	"files_column": "Файлы",
+
+	"actions_section": "Действия",
+	"action_send_files": "Отправить файлы",
+	"action_view_all": "Показать все",
+	"action_collapse": "Свернуть",
+	"action_select_files": "Выбрать файлы",
+
+	"delete": "Удалить",
+	"send": "Отправить",
+	"accept": "Принять",
+	"reject": "Отклонить",
+	"done": "Готово",
+	"close": "Закрыть",
+	"share": "Поделиться",
+	"receive": "Получить",
+	"ticket": "Тикет",
+	"processing": "Обработка",
+	"device": "Устройство",
+	"exit": "Выход",
+	"name": "Имя",
+	"platform": "Платформа",
+	"search": "Поиск",
+	"next": "Далее",
+
+	"files_count_one": "{{count}} файл",
+	"files_count_few": "{{count}} файла",
+	"files_count_many": "{{count}} файлов",
+	"files_count_other": "{{count}} файла",
+
+	"pagination_page_of": "Страница {{page}} из {{total}}",
+	"pagination_go_first": "К первой странице",
+	"pagination_go_last": "К последней странице",
+	"pagination_next": "К следующей странице",
+	"pagination_previous": "К предыдущей странице",
+
+	"sr_open_menu": "Открыть меню",
+
+	"language_section": "Язык",
+	"app_language": "Язык приложения",
+
+	"delete_all": "Удалить все",
+	"cancel": "Отмена",
+	"confirm_prompt": "Вы уверены?",
+
+	"ticket_copied": "Тикет скопирован",
+
+	"shortcut_recording_prompt": "Нажмите сочетание клавиш…",
+	"not_set": "Не задано"
+}

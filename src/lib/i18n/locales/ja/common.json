@@ -1,0 +1,51 @@
+{
+	"type_column": "種類",
+	"size_column": "サイズ",
+	"date_column": "日付",
+	"files_column": "ファイル",
+
+	"actions_section": "操作",
+	"action_send_files": "ファイルを送信",
+	"action_view_all": "すべて表示",
+	"action_collapse": "折りたたむ",
+	"action_select_files": "ファイルを選択",
+
+	"delete": "削除",
+	"send": "送信",
+	"accept": "受け入れる",
+	"reject": "拒否",
+	"done": "完了",
+	"close": "閉じる",
+	"share": "共有",
+	"receive": "受信",
+	"ticket": "チケット",
+	"processing": "処理中",
+	"device": "デバイス",
+	"exit": "終了",
+	"name": "名前",
+	"platform": "プラットフォーム",
+	"search": "検索",
+	"next": "次へ",
+
+	"files_count_other": "{{count}} 個のファイル",
+
+	"pagination_page_of": "{{total}} ページ中 {{page}} ページ目",
+	"pagination_go_first": "最初のページへ",
+	"pagination_go_last": "最後のページへ",
+	"pagination_next": "次のページへ",
+	"pagination_previous": "前のページへ",
+
+	"sr_open_menu": "メニューを開く",
+
+	"language_section": "言語",
+	"app_language": "アプリの言語",
+
+	"delete_all": "すべて削除",
+	"cancel": "キャンセル",
+	"confirm_prompt": "よろしいですか？",
+
+	"ticket_copied": "チケットをコピーしました",
+
+	"shortcut_recording_prompt": "ショートカットを押してください…",
+	"not_set": "未設定"
+}

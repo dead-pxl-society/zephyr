@@ -1,0 +1,13 @@
+{
+	"app_settings": "Configuración...",
+
+	"file_share": "Compartir Archivos...",
+	"file_receive": "Recibir Del Portapapeles",
+
+	"delete_transfers": "Eliminar Transferencias",
+	"delete_strangers": "Eliminar Dispositivos Desconocidos",
+	"delete_parcels": "Eliminar Paquetes",
+
+	"tray_open": "Abrir Zephyr",
+	"tray_quit": "Salir de Zephyr"
+}

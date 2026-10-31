@@ -1,0 +1,45 @@
+{
+	"action_start": "开始使用",
+	"action_start_using": "开始使用 Zephyr！",
+
+	"step_welcome": "欢迎",
+	"step_share": "分享",
+	"step_shortcuts": "快捷键",
+	"step_personal_devices": "我的设备",
+	"step_contacts": "联系人",
+	"step_notifications_and_sounds": "通知与声音",
+	"step_none": "无",
+
+	"welcome_title": "欢迎使用 Zephyr",
+	"welcome_description": "Zephyr 在你的各台设备之间、以及你和身边的人之间直接传送文件，中间没有任何转手。花一分钟设置好就能用。",
+
+	"share_shortcut_title": "随处分享",
+	"share_shortcut_description": "在任何地方选中任意文件或文件夹。",
+	"share_shortcut_description_press": "然后按下",
+	"share_shortcut_hint": "按上面的快捷键继续",
+	"share_shortcut_success": "很好！",
+	"share_shortcut_select_file": "选择文件",
+	"share_shortcut_deselect_file": "取消选择",
+
+	"share_shortcut_linux_title": "随处分享",
+	"share_shortcut_linux_description": "Zephyr 的窗口会浮现在你正在做的事情之上。",
+	"share_shortcut_linux_description_press": "把文件拖进去即可，呼出窗口请按",
+	"share_shortcut_linux_drop": "把文件拖到这里",
+	"share_shortcut_linux_drag_file": "把文件拖进 Zephyr 窗口",
+
+	"all_shortcuts_title": "不打断你的节奏",
+	"all_shortcuts_description": "Zephyr 做的每一件事，都不会打断你。每个快捷键都可以改成你习惯的样子。",
+
+	"personal_devices_title": "多台设备，如同一台",
+	"personal_devices_description": "发给自己的文件会直接送达。在它们之间流转的不只是文件，还有你的剪贴板。",
+	"personal_devices_warning": "请只添加真正属于你的设备",
+
+	"contacts_title": "没有人在范围之外",
+	"contacts_description": "附近的设备会自动找到彼此。其他人，只需加为联系人。",
+
+	"notifications_and_sounds_title": "通知与声音",
+	"notifications_and_sounds_description": "Zephyr 大部分时间都在后台。有东西送达时，它会这样告诉你。",
+
+	"outro_thank_you": "感谢你使用",
+	"outro_description": "一切就绪。Zephyr 随时等着你。"
+}

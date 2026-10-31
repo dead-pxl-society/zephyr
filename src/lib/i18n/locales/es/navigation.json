@@ -1,0 +1,17 @@
+{
+	"general_section": "General",
+	"recent_section": "Recientes",
+
+	"transfers": "Transferencias",
+	"parcels": "Paquetes",
+	"devices": "Dispositivos",
+	"discovered_peers": "Dispositivos Descubiertos",
+	"settings": "Configuración",
+	"general": "General",
+	"storage": "Almacenamiento",
+	"shortcuts": "Atajos",
+	"notifications": "Notificaciones",
+	"support": "Soporte",
+
+	"discoverable": "Descubrible"
+}

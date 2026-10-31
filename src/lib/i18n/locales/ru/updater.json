@@ -1,0 +1,15 @@
+{
+	"check_failed": "Не удалось проверить обновления",
+	"up_to_date": "У вас последняя версия Zephyr",
+	"setting_title": "Обновления",
+	"setting_description": "У вас версия {{version}}. Zephyr проверяет обновления автоматически.",
+	"setting_description_loading": "Zephyr проверяет обновления автоматически.",
+	"action_check_now": "Проверить обновления",
+	"action_checking": "Проверка…",
+	"update_available": "Доступно обновление",
+	"action_update_now": "Обновить до {{version}}",
+	"action_downloading": "Загрузка…",
+	"action_downloading_percent": "Загрузка… {{percent}} %",
+	"setting_update_available": "Доступна версия {{version}}.",
+	"action_installing": "Установка…"
+}

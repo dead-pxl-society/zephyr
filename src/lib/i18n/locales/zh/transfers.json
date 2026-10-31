@@ -1,0 +1,31 @@
+{
+	"received": "已接收",
+	"receiving": "接收中",
+	"sent": "已发送",
+	"sending": "发送中",
+
+	"active_transfers": "进行中的传输",
+
+	"previous_transfers": "历史传输",
+	"empty_previous_title": "暂无传输",
+	"empty_previous_description": "你发送和接收过的传输会显示在这里。",
+
+	"progress_receiving_other": "正在接收 {{count}} 个文件 · {{size}}",
+
+	"progress_sending_other": "正在发送 {{count}} 个文件 · {{size}}",
+
+	"progress_requested": "等待对端响应",
+	"progress_timeout": "已超时",
+	"progress_rejected": "已拒绝",
+
+	"to_peer": "发送给 {{peer}}",
+	"from_peer": "来自 {{peer}}",
+
+	"files_no_longer_available": "文件已不可用",
+	"some_files_missing_other": "有 {{count}} 个文件已不可用",
+
+	"files_dialog_title": "传输的文件",
+	"files_dialog_description_other": "{{count}} 个文件 · {{date}}",
+
+	"storage_transfers_description": "这是你发送和接收过的所有文件的记录。使用此选项可清空全部传输历史。"
+}

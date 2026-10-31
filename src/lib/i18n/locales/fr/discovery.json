@@ -1,0 +1,8 @@
+{
+	"discovery": "Découverte",
+	"discoverable": "Visible",
+	"contacts_only": "Contacts uniquement",
+
+	"action_disable_mdns": "Désactiver la découverte locale",
+	"action_enable_mdns": "Activer la découverte locale"
+}

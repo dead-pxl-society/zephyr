@@ -1,0 +1,45 @@
+{
+	"action_start": "Começar",
+	"action_start_using": "Começar a usar o Zephyr!",
+
+	"step_welcome": "Boas-vindas",
+	"step_share": "Compartilhar",
+	"step_shortcuts": "Atalhos",
+	"step_personal_devices": "Dispositivos pessoais",
+	"step_contacts": "Contatos",
+	"step_notifications_and_sounds": "Notificações e sons",
+	"step_none": "Nenhum",
+
+	"welcome_title": "Boas-vindas ao Zephyr",
+	"welcome_description": "O Zephyr move arquivos entre seus dispositivos e as pessoas ao seu redor, direto e sem intermediários. Vamos configurar, leva só um minuto.",
+
+	"share_shortcut_title": "Compartilhe de qualquer lugar",
+	"share_shortcut_description": "Selecione qualquer arquivo ou pasta, onde estiver.",
+	"share_shortcut_description_press": "Depois pressione",
+	"share_shortcut_hint": "Pressione o atalho acima para continuar",
+	"share_shortcut_success": "Muito bem!",
+	"share_shortcut_select_file": "Selecionar arquivo",
+	"share_shortcut_deselect_file": "Desmarcar arquivo",
+
+	"share_shortcut_linux_title": "Compartilhe de qualquer lugar",
+	"share_shortcut_linux_description": "A janela do Zephyr aparece por cima do que você estiver fazendo.",
+	"share_shortcut_linux_description_press": "Solte seus arquivos nela, chame ela com",
+	"share_shortcut_linux_drop": "Solte os arquivos aqui",
+	"share_shortcut_linux_drag_file": "Arraste o arquivo para a janela do Zephyr",
+
+	"all_shortcuts_title": "Continue no seu ritmo",
+	"all_shortcuts_description": "Tudo o que o Zephyr faz, ele faz sem te interromper. Deixe cada atalho do seu jeito.",
+
+	"personal_devices_title": "Seus dispositivos, como um só",
+	"personal_devices_description": "Os arquivos que você manda para si mesmo simplesmente chegam. E mais do que arquivos circula entre eles, como a sua área de transferência.",
+	"personal_devices_warning": "Adicione apenas dispositivos que são realmente seus",
+
+	"contacts_title": "Ninguém fica fora de alcance",
+	"contacts_description": "Dispositivos próximos se encontram automaticamente. Para todo o resto, basta um contato.",
+
+	"notifications_and_sounds_title": "Notificações e sons",
+	"notifications_and_sounds_description": "O Zephyr passa a maior parte do tempo em segundo plano. É assim que ele avisa que algo chegou.",
+
+	"outro_thank_you": "Obrigado por usar o",
+	"outro_description": "Tudo pronto. O Zephyr espera por você."
+}

@@ -1,0 +1,52 @@
+{
+	"type_column": "Type",
+	"size_column": "Size",
+	"date_column": "Date",
+	"files_column": "Files",
+
+	"actions_section": "Actions",
+	"action_send_files": "Send files",
+	"action_view_all": "View all",
+	"action_collapse": "Collapse",
+	"action_select_files": "Select files",
+
+	"delete": "Delete",
+	"send": "Send",
+	"accept": "Accept",
+	"reject": "Reject",
+	"done": "Done",
+	"close": "Close",
+	"share": "Share",
+	"receive": "Receive",
+	"ticket": "Ticket",
+	"processing": "Processing",
+	"device": "Device",
+	"exit": "Exit",
+	"name": "Name",
+	"platform": "Platform",
+	"search": "Search",
+	"next": "Next",
+
+	"files_count_one": "{{count}} file",
+	"files_count_other": "{{count}} files",
+
+	"pagination_page_of": "Page {{page}} of {{total}}",
+	"pagination_go_first": "Go to first page",
+	"pagination_go_last": "Go to last page",
+	"pagination_next": "Go to next page",
+	"pagination_previous": "Go to previous page",
+
+	"sr_open_menu": "Open menu",
+
+	"language_section": "Language",
+	"app_language": "App language",
+
+	"delete_all": "Delete all",
+	"cancel": "Cancel",
+	"confirm_prompt": "Are you sure?",
+
+	"ticket_copied": "Ticket copied",
+
+	"shortcut_recording_prompt": "Press a shortcut...",
+	"not_set": "Not set"
+}

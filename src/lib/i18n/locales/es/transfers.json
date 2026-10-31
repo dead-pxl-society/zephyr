@@ -1,0 +1,39 @@
+{
+	"received": "Recibida",
+	"receiving": "Recibiendo",
+	"sent": "Enviada",
+	"sending": "Enviando",
+
+	"active_transfers": "Transferencias Activas",
+
+	"previous_transfers": "Transferencias Anteriores",
+	"empty_previous_title": "No se encontraron transferencias",
+	"empty_previous_description": "Las transferencias que envíes y recibas aparecerán aquí.",
+
+	"progress_receiving_one": "Recibiendo {{count}} archivo · {{size}}",
+	"progress_receiving_many": "Recibiendo {{count}} archivos · {{size}}",
+	"progress_receiving_other": "Recibiendo {{count}} archivos · {{size}}",
+
+	"progress_sending_one": "Enviando {{count}} archivo · {{size}}",
+	"progress_sending_many": "Enviando {{count}} archivos · {{size}}",
+	"progress_sending_other": "Enviando {{count}} archivos · {{size}}",
+
+	"progress_requested": "Esperando respuesta",
+	"progress_timeout": "Tiempo agotado",
+	"progress_rejected": "Rechazado",
+
+	"to_peer": "Para {{peer}}",
+	"from_peer": "De {{peer}}",
+
+	"files_no_longer_available": "Los archivos ya no están disponibles",
+	"some_files_missing_one": "{{count}} archivo ya no está disponible",
+	"some_files_missing_many": "{{count}} archivos ya no están disponibles",
+	"some_files_missing_other": "{{count}} archivos ya no están disponibles",
+
+	"files_dialog_title": "Archivos de la transferencia",
+	"files_dialog_description_one": "{{count}} archivo · {{date}}",
+	"files_dialog_description_many": "{{count}} archivos · {{date}}",
+	"files_dialog_description_other": "{{count}} archivos · {{date}}",
+
+	"storage_transfers_description": "Un registro de todos los archivos que has enviado y recibido. Usa esta opción para borrar todo el historial de transferencias."
+}

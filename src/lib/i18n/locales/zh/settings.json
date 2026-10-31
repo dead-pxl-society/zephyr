@@ -1,0 +1,19 @@
+{
+	"storage_data_section": "数据",
+	"storage_downloads_section": "下载",
+	"shortcuts_global_section": "全局快捷键",
+	"notifications_section": "通知",
+	"sounds_section": "声音",
+
+	"need_help_title": "需要帮助？",
+	"need_help_description": "有疑问或遇到问题？来我们的 Discord 告诉我们，我们很乐意帮忙。",
+	"action_join_discord": "加入 Discord 服务器",
+	"clipboard_sync": "剪贴板同步",
+	"clipboard_sync_description": "在一台设备上复制，在另一台上粘贴。你复制的内容会立刻出现在其他设备上。",
+	"clipboard_section": "剪贴板",
+	"clipboard_files": "同步文件",
+	"clipboard_files_description": "把复制的文件也包含进来。它们会在后台下载，你可以直接粘贴到访达或资源管理器里。",
+	"clipboard_max_size": "大小上限",
+	"clipboard_max_size_description": "超过此大小的内容不会同步。",
+	"clipboard_max_size_warning": "上限设得太大，会拖慢每一次复制，也会占用发送设备的内存。大文件更适合用分享功能。"
+}

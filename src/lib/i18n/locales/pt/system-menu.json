@@ -1,0 +1,13 @@
+{
+	"app_settings": "Configurações…",
+
+	"file_share": "Compartilhar arquivos…",
+	"file_receive": "Receber da área de transferência",
+
+	"delete_transfers": "Excluir todas as transferências",
+	"delete_strangers": "Excluir peers desconhecidos",
+	"delete_parcels": "Excluir todos os pacotes",
+
+	"tray_open": "Abrir o Zephyr",
+	"tray_quit": "Sair do Zephyr"
+}

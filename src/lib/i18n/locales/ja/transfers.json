@@ -1,0 +1,31 @@
+{
+	"received": "受信済み",
+	"receiving": "受信中",
+	"sent": "送信済み",
+	"sending": "送信中",
+
+	"active_transfers": "実行中の転送",
+
+	"previous_transfers": "過去の転送",
+	"empty_previous_title": "転送はありません",
+	"empty_previous_description": "送受信した転送はここに表示されます。",
+
+	"progress_receiving_other": "{{count}} 個のファイルを受信中 · {{size}}",
+
+	"progress_sending_other": "{{count}} 個のファイルを送信中 · {{size}}",
+
+	"progress_requested": "ピアの応答を待っています",
+	"progress_timeout": "タイムアウトしました",
+	"progress_rejected": "拒否されました",
+
+	"to_peer": "宛先: {{peer}}",
+	"from_peer": "送信元: {{peer}}",
+
+	"files_no_longer_available": "ファイルは利用できなくなりました",
+	"some_files_missing_other": "{{count}} 個のファイルは利用できなくなりました",
+
+	"files_dialog_title": "転送したファイル",
+	"files_dialog_description_other": "{{count}} 個のファイル · {{date}}",
+
+	"storage_transfers_description": "送受信したすべてのファイルの記録です。このオプションで転送履歴をすべて消去できます。"
+}

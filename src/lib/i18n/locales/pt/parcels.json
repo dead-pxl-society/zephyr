@@ -1,0 +1,26 @@
+{
+	"parcels_title": "Pacotes",
+
+	"empty_parcels_title": "Nenhum pacote ainda",
+	"empty_parcels_description": "Pacotes são conjuntos de arquivos importados, prontos para compartilhar.",
+
+	"parcel_name": "Pacote {{id}}",
+
+	"sharing_summary_one": "Compartilhando {{count}} arquivo · {{size}}",
+	"sharing_summary_many": "Compartilhando {{count}} arquivos · {{size}}",
+	"sharing_summary_other": "Compartilhando {{count}} arquivos · {{size}}",
+	"file_count_one": "{{count}} arquivo",
+	"file_count_many": "{{count}} arquivos",
+	"file_count_other": "{{count}} arquivos",
+
+	"parcel_files_title": "Arquivos do pacote",
+	"parcel_files_description": "Arquivos incluídos no pacote {{id}}.",
+
+	"action_copy_ticket": "Copiar ticket",
+	"action_view_files": "Ver arquivos",
+
+	"sr_send_parcel": "Enviar pacote",
+
+	"storage_parcels_description": "Os pacotes são limpos automaticamente quando você fecha o app. Use esta opção para excluí-los manualmente.",
+	"recent_parcels": "Pacotes recentes"
+}

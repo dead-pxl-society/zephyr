@@ -1,0 +1,7 @@
+{
+	"$schema": "../gen/schemas/desktop-schema.json",
+	"identifier": "share",
+	"description": "Capability for the share window",
+	"windows": ["share"],
+	"permissions": ["core:default", "opener:default"]
+}

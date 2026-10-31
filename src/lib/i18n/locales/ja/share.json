@@ -1,0 +1,52 @@
+{
+	"share_title": "共有の準備ができました",
+	"share_description_other": "{{count}} 個のファイルを共有中",
+	"share_with": "共有先",
+
+	"sharing_with": "{{peer}} と共有中",
+	"sharing_description_other": "{{count}} 個のファイル（{{size}}）を共有中です。このウィンドウは閉じても構いません。転送はそのまま続きます。",
+
+	"share_dialog_title": "ファイルを共有",
+	"share_dialog_description": "デバイス内のファイルかパーセルを選んでください",
+
+	"action_receive_files": "ファイルを受信",
+	"action_share_files": "ファイルを共有",
+
+	"receive_dialog_title": "ファイルまたは連絡先を受信",
+	"receive_dialog_description": "受信するには Zephyr または iroh のチケットを入力してください",
+	"receiving_transfer_title": "転送を受信中",
+	"receiving_transfer_description": "ファイルをダウンロードしています。このウィンドウは閉じても構いません。転送はそのまま続きます",
+	"receiving_contact_title": "連絡先を受信中",
+	"receiving_contact_description": "連絡先情報を交換するためにピアへ接続しています",
+	"received_contact_title": "連絡先を受信しました",
+	"received_contact_description": "{{contact}} を連絡先に追加しました",
+	"receiving_contact_error_title": "連絡先を追加できませんでした",
+	"receiving_contact_error_description": "このピアに接続できませんでした。相手がオンラインで、チケットが有効であることを確認してください。",
+
+	"incoming_request_title": "共有リクエストが届いています",
+
+	"incoming_request_description_other": "{{peer}} が {{count}} 個のファイル（{{size}}）を送ろうとしています。",
+
+	"drop_files_title": "どうぞ",
+	"drop_files_description": "ファイルをドロップすると共有が始まります",
+
+	"importing_title": "ファイルを準備しています",
+	"importing_description_other": "{{count}} 個のファイルを準備中",
+
+	"file_preview_alt": "現在のファイルのプレビュー",
+
+	"unselected_files_title": "ファイルが選択されていません",
+	"drag_here": "ここにファイルをドラッグしてください。",
+	"drag_here_with_shortcut": "ここにファイルをドラッグするか、選択して次のキーを押してください:",
+
+	"resumable_transfer_title": "再開可能な転送",
+	"resumable_transfer_description": "失敗した転送を再開できるように、途中までのデータを保存しています。保存済みのデータをすべて消去するにはこちらを使ってください。",
+
+	"shortcut_share_description": "システムで選択中のファイルを共有します。何も選択していない場合は共有ウィンドウを表示・非表示します",
+	"shortcut_receive_description": "クリップボードからファイルまたは連絡先を受信します",
+	"shortcut_accept_description": "アプリを開かずに、最新の共有リクエストを承認します",
+	"shortcut_reject_description": "アプリを開かずに、最新の共有リクエストを拒否します",
+
+	"import_failed_title": "ファイルを準備できませんでした",
+	"import_failed_description": "Esc を押してもう一度お試しください"
+}

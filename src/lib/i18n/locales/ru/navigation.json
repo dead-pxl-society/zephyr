@@ -1,0 +1,17 @@
+{
+	"general_section": "Основное",
+	"recent_section": "Недавнее",
+
+	"transfers": "Передачи",
+	"parcels": "Посылки",
+	"devices": "Устройства",
+	"discovered_peers": "Найденные узлы",
+	"settings": "Настройки",
+	"general": "Основные",
+	"storage": "Хранилище",
+	"shortcuts": "Сочетания клавиш",
+	"notifications": "Уведомления",
+	"support": "Поддержка",
+
+	"discoverable": "Видимость"
+}

@@ -1,0 +1,13 @@
+{
+	"app_settings": "設定…",
+
+	"file_share": "ファイルを共有…",
+	"file_receive": "クリップボードから受信",
+
+	"delete_transfers": "すべての転送を削除",
+	"delete_strangers": "不明なピアを削除",
+	"delete_parcels": "すべてのパーセルを削除",
+
+	"tray_open": "Zephyr を開く",
+	"tray_quit": "Zephyr を終了"
+}

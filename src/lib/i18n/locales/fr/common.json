@@ -1,0 +1,53 @@
+{
+	"type_column": "Type",
+	"size_column": "Taille",
+	"date_column": "Date",
+	"files_column": "Fichiers",
+
+	"actions_section": "Actions",
+	"action_send_files": "Envoyer des fichiers",
+	"action_view_all": "Tout afficher",
+	"action_collapse": "Réduire",
+	"action_select_files": "Sélectionner des fichiers",
+
+	"delete": "Supprimer",
+	"send": "Envoyer",
+	"accept": "Accepter",
+	"reject": "Refuser",
+	"done": "Terminé",
+	"close": "Fermer",
+	"share": "Partager",
+	"receive": "Recevoir",
+	"ticket": "Ticket",
+	"processing": "Traitement en cours",
+	"device": "Appareil",
+	"exit": "Quitter",
+	"name": "Nom",
+	"platform": "Plateforme",
+	"search": "Rechercher",
+	"next": "Suivant",
+
+	"files_count_one": "{{count}} fichier",
+	"files_count_many": "{{count}} fichiers",
+	"files_count_other": "{{count}} fichiers",
+
+	"pagination_page_of": "Page {{page}} sur {{total}}",
+	"pagination_go_first": "Aller à la première page",
+	"pagination_go_last": "Aller à la dernière page",
+	"pagination_next": "Aller à la page suivante",
+	"pagination_previous": "Aller à la page précédente",
+
+	"sr_open_menu": "Ouvrir le menu",
+
+	"language_section": "Langue",
+	"app_language": "Langue de l'application",
+
+	"delete_all": "Tout supprimer",
+	"cancel": "Annuler",
+	"confirm_prompt": "Vous confirmez ?",
+
+	"ticket_copied": "Ticket copié",
+
+	"shortcut_recording_prompt": "Appuyez sur un raccourci…",
+	"not_set": "Non défini"
+}

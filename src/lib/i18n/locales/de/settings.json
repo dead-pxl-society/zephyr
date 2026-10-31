@@ -1,0 +1,19 @@
+{
+	"storage_data_section": "Daten",
+	"storage_downloads_section": "Downloads",
+	"shortcuts_global_section": "Globale Tastenkürzel",
+	"notifications_section": "Mitteilungen",
+	"sounds_section": "Töne",
+
+	"need_help_title": "Brauchst du Hilfe?",
+	"need_help_description": "Hast du eine Frage oder ein Problem? Komm in unseren Discord und sag Bescheid, wir helfen gern.",
+	"action_join_discord": "Discord-Server beitreten",
+	"clipboard_sync": "Zwischenablage-Sync",
+	"clipboard_sync_description": "Auf einem Gerät kopieren, auf einem anderen einfügen. Alles, was du kopierst, ist sofort auf deinen anderen Geräten verfügbar.",
+	"clipboard_section": "Zwischenablage",
+	"clipboard_files": "Dateien synchronisieren",
+	"clipboard_files_description": "Kopierte Dateien einbeziehen. Sie werden im Hintergrund geladen, damit du sie direkt im Finder oder Explorer einfügen kannst.",
+	"clipboard_max_size": "Maximale Größe",
+	"clipboard_max_size_description": "Kopien, die größer sind, werden nicht synchronisiert.",
+	"clipboard_max_size_warning": "Hohe Limits verlangsamen jeden Kopiervorgang und belegen Speicher auf dem sendenden Gerät. Für große Dateien eignet sich das Teilen besser."
+}

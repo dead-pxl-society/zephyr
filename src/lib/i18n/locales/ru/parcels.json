@@ -1,0 +1,28 @@
+{
+	"parcels_title": "Посылки",
+
+	"empty_parcels_title": "Посылок пока нет",
+	"empty_parcels_description": "Посылка — это набор импортированных файлов, готовых к отправке.",
+
+	"parcel_name": "Посылка {{id}}",
+
+	"sharing_summary_one": "Отправляется {{count}} файл · {{size}}",
+	"sharing_summary_few": "Отправляется {{count}} файла · {{size}}",
+	"sharing_summary_many": "Отправляется {{count}} файлов · {{size}}",
+	"sharing_summary_other": "Отправляется {{count}} файла · {{size}}",
+	"file_count_one": "{{count}} файл",
+	"file_count_few": "{{count}} файла",
+	"file_count_many": "{{count}} файлов",
+	"file_count_other": "{{count}} файла",
+
+	"parcel_files_title": "Файлы посылки",
+	"parcel_files_description": "Файлы, входящие в посылку {{id}}.",
+
+	"action_copy_ticket": "Скопировать тикет",
+	"action_view_files": "Показать файлы",
+
+	"sr_send_parcel": "Отправить посылку",
+
+	"storage_parcels_description": "Посылки удаляются автоматически при закрытии приложения. Этот вариант позволяет удалить их вручную.",
+	"recent_parcels": "Недавние посылки"
+}

@@ -1,0 +1,17 @@
+{
+	"general_section": "일반",
+	"recent_section": "최근",
+
+	"transfers": "전송",
+	"parcels": "꾸러미",
+	"devices": "기기",
+	"discovered_peers": "발견된 피어",
+	"settings": "설정",
+	"general": "일반",
+	"storage": "저장 공간",
+	"shortcuts": "단축키",
+	"notifications": "알림",
+	"support": "지원",
+
+	"discoverable": "탐색 허용"
+}

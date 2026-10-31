@@ -1,0 +1,64 @@
+{
+	"share_title": "Готово к отправке",
+	"share_description_one": "Отправляется {{count}} файл",
+	"share_description_few": "Отправляется {{count}} файла",
+	"share_description_many": "Отправляется {{count}} файлов",
+	"share_description_other": "Отправляется {{count}} файла",
+	"share_with": "Отправить",
+
+	"sharing_with": "Отправка для {{peer}}",
+	"sharing_description_one": "Отправляется {{count}} файл ({{size}}). Это окно можно закрыть, передача продолжится.",
+	"sharing_description_few": "Отправляется {{count}} файла ({{size}}). Это окно можно закрыть, передача продолжится.",
+	"sharing_description_many": "Отправляется {{count}} файлов ({{size}}). Это окно можно закрыть, передача продолжится.",
+	"sharing_description_other": "Отправляется {{count}} файла ({{size}}). Это окно можно закрыть, передача продолжится.",
+
+	"share_dialog_title": "Отправьте свои файлы",
+	"share_dialog_description": "Выберите файл на устройстве или посылку",
+
+	"action_receive_files": "Получить файлы",
+	"action_share_files": "Отправить файлы",
+
+	"receive_dialog_title": "Получить файл или контакт",
+	"receive_dialog_description": "Введите тикет Zephyr или iroh, чтобы получить",
+	"receiving_transfer_title": "Получение передачи",
+	"receiving_transfer_description": "Ваши файлы загружаются. Это окно можно закрыть, передача продолжится",
+	"receiving_contact_title": "Получение контакта",
+	"receiving_contact_description": "Подключаемся к узлу, чтобы обменяться контактными данными",
+	"received_contact_title": "Контакт получен",
+	"received_contact_description": "{{contact}} добавлен в ваши контакты",
+	"receiving_contact_error_title": "Не удалось добавить контакт",
+	"receiving_contact_error_description": "Нам не удалось связаться с этим узлом. Убедитесь, что он в сети и тикет еще действителен.",
+
+	"incoming_request_title": "Входящий запрос на отправку",
+
+	"incoming_request_description_one": "{{peer}} пытается отправить вам {{count}} файл ({{size}}).",
+	"incoming_request_description_few": "{{peer}} пытается отправить вам {{count}} файла ({{size}}).",
+	"incoming_request_description_many": "{{peer}} пытается отправить вам {{count}} файлов ({{size}}).",
+	"incoming_request_description_other": "{{peer}} пытается отправить вам {{count}} файла ({{size}}).",
+
+	"drop_files_title": "Отпускайте",
+	"drop_files_description": "Отпустите файлы, чтобы начать отправку",
+
+	"importing_title": "Готовим ваши файлы",
+	"importing_description_one": "Подготавливается {{count}} файл",
+	"importing_description_few": "Подготавливается {{count}} файла",
+	"importing_description_many": "Подготавливается {{count}} файлов",
+	"importing_description_other": "Подготавливается {{count}} файла",
+
+	"file_preview_alt": "Предпросмотр текущего файла",
+
+	"unselected_files_title": "Файлы не выбраны",
+	"drag_here": "Перетащите файлы сюда.",
+	"drag_here_with_shortcut": "Перетащите файлы сюда или выделите их и нажмите:",
+
+	"resumable_transfer_title": "Возобновляемые передачи",
+	"resumable_transfer_description": "Мы сохраняем частичные данные неудавшихся передач, чтобы их можно было возобновить. Этот вариант очищает все сохраненные данные.",
+
+	"shortcut_share_description": "Отправляет файлы, выделенные в системе, или показывает и скрывает окно отправки, если ничего не выделено",
+	"shortcut_receive_description": "Получить файлы или контакты из буфера обмена",
+	"shortcut_accept_description": "Принять последний входящий запрос на отправку, не открывая приложение",
+	"shortcut_reject_description": "Отклонить последний входящий запрос на отправку, не открывая приложение",
+
+	"import_failed_title": "Не удалось подготовить файлы",
+	"import_failed_description": "Нажмите Esc, чтобы попробовать снова"
+}

@@ -1,0 +1,51 @@
+{
+	"type_column": "종류",
+	"size_column": "크기",
+	"date_column": "날짜",
+	"files_column": "파일",
+
+	"actions_section": "작업",
+	"action_send_files": "파일 보내기",
+	"action_view_all": "전체 보기",
+	"action_collapse": "접기",
+	"action_select_files": "파일 선택",
+
+	"delete": "삭제",
+	"send": "보내기",
+	"accept": "수락",
+	"reject": "거절",
+	"done": "완료",
+	"close": "닫기",
+	"share": "공유",
+	"receive": "받기",
+	"ticket": "티켓",
+	"processing": "처리 중",
+	"device": "기기",
+	"exit": "종료",
+	"name": "이름",
+	"platform": "플랫폼",
+	"search": "검색",
+	"next": "다음",
+
+	"files_count_other": "파일 {{count}}개",
+
+	"pagination_page_of": "{{total}}페이지 중 {{page}}페이지",
+	"pagination_go_first": "첫 페이지로",
+	"pagination_go_last": "마지막 페이지로",
+	"pagination_next": "다음 페이지로",
+	"pagination_previous": "이전 페이지로",
+
+	"sr_open_menu": "메뉴 열기",
+
+	"language_section": "언어",
+	"app_language": "앱 언어",
+
+	"delete_all": "모두 삭제",
+	"cancel": "취소",
+	"confirm_prompt": "정말 진행할까요?",
+
+	"ticket_copied": "티켓을 복사했습니다",
+
+	"shortcut_recording_prompt": "단축키를 눌러 주세요…",
+	"not_set": "설정 안 됨"
+}

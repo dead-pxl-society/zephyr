@@ -1,0 +1,45 @@
+{
+	"action_start": "Get started",
+	"action_start_using": "Start using Zephyr!",
+
+	"step_welcome": "Welcome",
+	"step_share": "Share",
+	"step_shortcuts": "Shortcuts",
+	"step_personal_devices": "Personal devices",
+	"step_contacts": "Contacts",
+	"step_notifications_and_sounds": "Notifications & sounds",
+	"step_none": "None",
+
+	"welcome_title": "Welcome to Zephyr",
+	"welcome_description": "Zephyr moves files between your devices and the people around you, directly and without a middleman. Let's get it set up, it only takes a minute.",
+
+	"share_shortcut_title": "Share from anywhere",
+	"share_shortcut_description": "Select any file or folder, anywhere.",
+	"share_shortcut_description_press": "Then press",
+	"share_shortcut_hint": "Press the shortcut above to continue",
+	"share_shortcut_success": "Great!",
+	"share_shortcut_select_file": "Select file",
+	"share_shortcut_deselect_file": "Deselect file",
+
+	"share_shortcut_linux_title": "Share from anywhere",
+	"share_shortcut_linux_description": "Zephyr's window comes up over whatever you're doing.",
+	"share_shortcut_linux_description_press": "Drop your files in it, bring it up with",
+	"share_shortcut_linux_drop": "Drop files here",
+	"share_shortcut_linux_drag_file": "Drag file into the Zephyr window",
+
+	"all_shortcuts_title": "Stay in your flow",
+	"all_shortcuts_description": "Everything Zephyr does, it does without interrupting you. Make each shortcut yours.",
+
+	"personal_devices_title": "Your devices, as one",
+	"personal_devices_description": "Files you send yourself just land. And more than files moves between them, like your clipboard.",
+	"personal_devices_warning": "Only add devices you actually own",
+
+	"contacts_title": "No one's out of range",
+	"contacts_description": "Nearby devices find each other automatically. For everyone else, a contact is all it takes.",
+
+	"notifications_and_sounds_title": "Notifications & sounds",
+	"notifications_and_sounds_description": "Zephyr spends most of its time in the background. This is how it lets you know something arrived.",
+
+	"outro_thank_you": "Thank you for using",
+	"outro_description": "You're all set. Zephyr's ready whenever you are."
+}

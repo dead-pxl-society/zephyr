@@ -1,0 +1,17 @@
+{
+	"general_section": "Général",
+	"recent_section": "Récent",
+
+	"transfers": "Transferts",
+	"parcels": "Colis",
+	"devices": "Appareils",
+	"discovered_peers": "Pairs détectés",
+	"settings": "Réglages",
+	"general": "Général",
+	"storage": "Stockage",
+	"shortcuts": "Raccourcis",
+	"notifications": "Notifications",
+	"support": "Assistance",
+
+	"discoverable": "Visible"
+}

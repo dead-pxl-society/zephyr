@@ -1,0 +1,26 @@
+{
+	"parcels_title": "Pacchi",
+
+	"empty_parcels_title": "Ancora nessun pacco",
+	"empty_parcels_description": "I pacchi sono raccolte di file importati, pronti per essere condivisi.",
+
+	"parcel_name": "Pacco {{id}}",
+
+	"sharing_summary_one": "Condivisione di {{count}} file · {{size}}",
+	"sharing_summary_many": "Condivisione di {{count}} file · {{size}}",
+	"sharing_summary_other": "Condivisione di {{count}} file · {{size}}",
+	"file_count_one": "{{count}} file",
+	"file_count_many": "{{count}} file",
+	"file_count_other": "{{count}} file",
+
+	"parcel_files_title": "File del pacco",
+	"parcel_files_description": "File contenuti nel pacco {{id}}.",
+
+	"action_copy_ticket": "Copia il ticket",
+	"action_view_files": "Mostra i file",
+
+	"sr_send_parcel": "Invia il pacco",
+
+	"storage_parcels_description": "I pacchi vengono ripuliti automaticamente quando chiudi l'app. Usa questa opzione per eliminarli manualmente.",
+	"recent_parcels": "Pacchi recenti"
+}

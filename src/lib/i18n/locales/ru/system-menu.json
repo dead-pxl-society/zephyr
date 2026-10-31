@@ -1,0 +1,13 @@
+{
+	"app_settings": "Настройки…",
+
+	"file_share": "Отправить файлы…",
+	"file_receive": "Получить из буфера обмена",
+
+	"delete_transfers": "Удалить все передачи",
+	"delete_strangers": "Удалить неизвестные узлы",
+	"delete_parcels": "Удалить все посылки",
+
+	"tray_open": "Открыть Zephyr",
+	"tray_quit": "Выйти из Zephyr"
+}

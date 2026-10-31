@@ -1,0 +1,8 @@
+{
+	"discovery": "検出",
+	"discoverable": "検出可能",
+	"contacts_only": "連絡先のみ",
+
+	"action_disable_mdns": "ローカル検出を無効にする",
+	"action_enable_mdns": "ローカル検出を有効にする"
+}

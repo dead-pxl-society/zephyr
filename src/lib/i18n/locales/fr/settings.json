@@ -1,0 +1,19 @@
+{
+	"storage_data_section": "Données",
+	"storage_downloads_section": "Téléchargements",
+	"shortcuts_global_section": "Raccourcis globaux",
+	"notifications_section": "Notifications",
+	"sounds_section": "Sons",
+
+	"need_help_title": "Besoin d'aide ?",
+	"need_help_description": "Une question ou un souci ? Rejoignez notre Discord et dites-nous tout, nous serons ravis de vous aider.",
+	"action_join_discord": "Rejoindre le serveur Discord",
+	"clipboard_sync": "Synchronisation du presse-papiers",
+	"clipboard_sync_description": "Copiez sur un appareil, collez sur un autre. Tout ce que vous copiez est instantanément disponible sur vos autres appareils.",
+	"clipboard_section": "Presse-papiers",
+	"clipboard_files": "Synchroniser les fichiers",
+	"clipboard_files_description": "Inclure les fichiers copiés. Ils se téléchargent en arrière-plan pour que vous puissiez les coller directement dans le Finder ou l'Explorateur.",
+	"clipboard_max_size": "Taille maximale",
+	"clipboard_max_size_description": "Les copies plus volumineuses ne sont pas synchronisées.",
+	"clipboard_max_size_warning": "Une limite élevée ralentit chaque copie et consomme de la mémoire sur l'appareil émetteur. Le partage convient mieux aux gros fichiers."
+}

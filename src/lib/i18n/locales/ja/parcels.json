@@ -1,0 +1,22 @@
+{
+	"parcels_title": "パーセル",
+
+	"empty_parcels_title": "パーセルはまだありません",
+	"empty_parcels_description": "パーセルは、共有できる状態にまとめられた読み込み済みファイルの集まりです。",
+
+	"parcel_name": "パーセル {{id}}",
+
+	"sharing_summary_other": "{{count}} 個のファイルを共有中 · {{size}}",
+	"file_count_other": "{{count}} 個のファイル",
+
+	"parcel_files_title": "パーセル内のファイル",
+	"parcel_files_description": "パーセル {{id}} に含まれるファイルです。",
+
+	"action_copy_ticket": "チケットをコピー",
+	"action_view_files": "ファイルを表示",
+
+	"sr_send_parcel": "パーセルを送信",
+
+	"storage_parcels_description": "パーセルはアプリを閉じると自動的に整理されます。手動で削除するにはこちらを使ってください。",
+	"recent_parcels": "最近のパーセル"
+}

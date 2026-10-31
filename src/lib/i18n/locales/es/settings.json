@@ -1,0 +1,19 @@
+{
+	"storage_data_section": "Datos",
+	"storage_downloads_section": "Descargas",
+	"shortcuts_global_section": "Atajos globales",
+	"notifications_section": "Notificaciones",
+	"sounds_section": "Sonidos",
+
+	"need_help_title": "¿Necesitas ayuda?",
+	"need_help_description": "¿Tienes alguna duda o te encontraste con un problema? Pásate por nuestro Discord y cuéntanos, con gusto te ayudamos.",
+	"action_join_discord": "Unete al Discord",
+	"clipboard_sync": "Sincronizar portapapeles",
+	"clipboard_sync_description": "Copia en un dispositivo y pega en otro. Lo que copies estará disponible al instante en tus demás dispositivos.",
+	"clipboard_section": "Portapapeles",
+	"clipboard_files": "Sincronizar archivos",
+	"clipboard_files_description": "Incluye los archivos que copies. Se descargan en segundo plano para que puedas pegarlos directamente en Finder o el Explorador.",
+	"clipboard_max_size": "Tamaño máximo",
+	"clipboard_max_size_description": "Las copias más grandes que esto no se sincronizan.",
+	"clipboard_max_size_warning": "Los límites grandes ralentizan cada copia y consumen memoria en el dispositivo que envía. Para archivos grandes es mejor usar el envío normal."
+}

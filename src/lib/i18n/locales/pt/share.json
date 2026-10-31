@@ -1,0 +1,60 @@
+{
+	"share_title": "Pronto para compartilhar",
+	"share_description_one": "Compartilhando {{count}} arquivo",
+	"share_description_many": "Compartilhando {{count}} arquivos",
+	"share_description_other": "Compartilhando {{count}} arquivos",
+	"share_with": "Compartilhar com",
+
+	"sharing_with": "Compartilhando com {{peer}}",
+	"sharing_description_one": "Compartilhando {{count}} arquivo ({{size}}). Pode fechar esta janela, sua transferência continua.",
+	"sharing_description_many": "Compartilhando {{count}} arquivos ({{size}}). Pode fechar esta janela, sua transferência continua.",
+	"sharing_description_other": "Compartilhando {{count}} arquivos ({{size}}). Pode fechar esta janela, sua transferência continua.",
+
+	"share_dialog_title": "Compartilhe seus arquivos",
+	"share_dialog_description": "Escolha um arquivo do seu dispositivo ou um pacote",
+
+	"action_receive_files": "Receber arquivos",
+	"action_share_files": "Compartilhar arquivos",
+
+	"receive_dialog_title": "Receber arquivo ou contato",
+	"receive_dialog_description": "Digite um ticket do Zephyr ou do iroh para receber",
+	"receiving_transfer_title": "Recebendo transferência",
+	"receiving_transfer_description": "Seus arquivos estão sendo baixados. Pode fechar esta janela, sua transferência continua",
+	"receiving_contact_title": "Recebendo contato",
+	"receiving_contact_description": "Tentando conectar ao peer para trocar os dados de contato",
+	"received_contact_title": "Contato recebido",
+	"received_contact_description": "{{contact}} foi adicionado aos seus contatos",
+	"receiving_contact_error_title": "Não foi possível adicionar o contato",
+	"receiving_contact_error_description": "Não conseguimos alcançar este peer. Confirme que ele está online e que o ticket ainda é válido.",
+
+	"incoming_request_title": "Solicitação de compartilhamento recebida",
+
+	"incoming_request_description_one": "{{peer}} está tentando enviar {{count}} arquivo ({{size}}).",
+	"incoming_request_description_many": "{{peer}} está tentando enviar {{count}} arquivos ({{size}}).",
+	"incoming_request_description_other": "{{peer}} está tentando enviar {{count}} arquivos ({{size}}).",
+
+	"drop_files_title": "Pode soltar",
+	"drop_files_description": "Solte seus arquivos para começar a compartilhar",
+
+	"importing_title": "Preparando seus arquivos",
+	"importing_description_one": "Preparando {{count}} arquivo",
+	"importing_description_many": "Preparando {{count}} arquivos",
+	"importing_description_other": "Preparando {{count}} arquivos",
+
+	"file_preview_alt": "Prévia do arquivo atual",
+
+	"unselected_files_title": "Nenhum arquivo selecionado",
+	"drag_here": "Arraste seus arquivos até aqui.",
+	"drag_here_with_shortcut": "Arraste seus arquivos até aqui, ou selecione-os e pressione:",
+
+	"resumable_transfer_title": "Transferências retomáveis",
+	"resumable_transfer_description": "Guardamos os dados parciais de transferências que falharam para poder retomá-las. Use esta opção para limpar todos os dados salvos.",
+
+	"shortcut_share_description": "Compartilha os arquivos selecionados no sistema, ou mostra e esconde a janela de compartilhamento se nenhum estiver selecionado",
+	"shortcut_receive_description": "Receber arquivos ou contatos da área de transferência",
+	"shortcut_accept_description": "Aceitar a solicitação de compartilhamento mais recente sem abrir o app",
+	"shortcut_reject_description": "Recusar a solicitação de compartilhamento mais recente sem abrir o app",
+
+	"import_failed_title": "Não foi possível preparar seus arquivos",
+	"import_failed_description": "Pressione Esc para tentar novamente"
+}

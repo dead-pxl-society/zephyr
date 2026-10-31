@@ -1,0 +1,13 @@
+{
+	"app_settings": "Einstellungen …",
+
+	"file_share": "Dateien teilen …",
+	"file_receive": "Aus Zwischenablage empfangen",
+
+	"delete_transfers": "Alle Übertragungen löschen",
+	"delete_strangers": "Unbekannte Peers löschen",
+	"delete_parcels": "Alle Pakete löschen",
+
+	"tray_open": "Zephyr öffnen",
+	"tray_quit": "Zephyr beenden"
+}

@@ -1,0 +1,15 @@
+{
+	"check_failed": "Impossibile cercare aggiornamenti",
+	"up_to_date": "Zephyr è aggiornato",
+	"setting_title": "Aggiornamenti",
+	"setting_description": "Stai usando la versione {{version}}. Zephyr cerca aggiornamenti automaticamente.",
+	"setting_description_loading": "Zephyr cerca aggiornamenti automaticamente.",
+	"action_check_now": "Cerca aggiornamenti",
+	"action_checking": "Ricerca…",
+	"update_available": "Aggiornamento disponibile",
+	"action_update_now": "Aggiorna alla {{version}}",
+	"action_downloading": "Download…",
+	"action_downloading_percent": "Download… {{percent}}%",
+	"setting_update_available": "La versione {{version}} è disponibile.",
+	"action_installing": "Installazione…"
+}

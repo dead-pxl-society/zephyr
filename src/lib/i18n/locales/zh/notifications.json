@@ -1,0 +1,19 @@
+{
+	"enable_notifications": "允许通知",
+	"enable_notifications_description": "Zephyr 在后台运行时，也能及时提醒你收到的请求和传输。",
+
+	"share_request_description_other": "有对端想给你发送 {{count}} 个文件（{{size}}）。打开 Zephyr 以接受或拒绝该请求。",
+
+	"receiving_files_title": "正在接收文件",
+	"receiving_files_body": "传输完成后我们会通知你。",
+	"transfer_complete_title": "传输完成",
+	"transfer_complete_body": "文件已保存在你的下载文件夹中。",
+	"receiving_trusted_files_title": "正在接收受信任的文件",
+	"receiving_trusted_files_body": "{{peer}} 正在给你发送文件。完成后我们会通知你。",
+	"receiving_trusted_files_body_unknown": "一个受信任的对端正在给你发送文件。完成后我们会通知你。",
+
+	"deleted_all_parcels": "已删除全部包裹",
+	"deleted_stored_transfers": "已删除保存的传输记录",
+	"deleted_peers": "已删除对端",
+	"deleted_resumable_transfers": "已删除续传数据"
+}

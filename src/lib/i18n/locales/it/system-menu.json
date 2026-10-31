@@ -1,0 +1,13 @@
+{
+	"app_settings": "Impostazioni…",
+
+	"file_share": "Condividi file…",
+	"file_receive": "Ricevi dagli appunti",
+
+	"delete_transfers": "Elimina tutti i trasferimenti",
+	"delete_strangers": "Elimina i peer sconosciuti",
+	"delete_parcels": "Elimina tutti i pacchi",
+
+	"tray_open": "Apri Zephyr",
+	"tray_quit": "Esci da Zephyr"
+}

@@ -1,0 +1,60 @@
+{
+	"share_title": "Prêt à partager",
+	"share_description_one": "Partage de {{count}} fichier",
+	"share_description_many": "Partage de {{count}} fichiers",
+	"share_description_other": "Partage de {{count}} fichiers",
+	"share_with": "Partager avec",
+
+	"sharing_with": "Partage avec {{peer}}",
+	"sharing_description_one": "Partage de {{count}} fichier ({{size}}). Vous pouvez fermer cette fenêtre, le transfert continuera.",
+	"sharing_description_many": "Partage de {{count}} fichiers ({{size}}). Vous pouvez fermer cette fenêtre, le transfert continuera.",
+	"sharing_description_other": "Partage de {{count}} fichiers ({{size}}). Vous pouvez fermer cette fenêtre, le transfert continuera.",
+
+	"share_dialog_title": "Partagez vos fichiers",
+	"share_dialog_description": "Choisissez un fichier sur votre appareil ou un colis",
+
+	"action_receive_files": "Recevoir des fichiers",
+	"action_share_files": "Partager des fichiers",
+
+	"receive_dialog_title": "Recevoir un fichier ou un contact",
+	"receive_dialog_description": "Saisissez un ticket Zephyr ou iroh pour recevoir",
+	"receiving_transfer_title": "Réception du transfert",
+	"receiving_transfer_description": "Vos fichiers sont en cours de téléchargement. Vous pouvez fermer cette fenêtre, le transfert continuera",
+	"receiving_contact_title": "Réception du contact",
+	"receiving_contact_description": "Tentative de connexion au pair pour échanger les coordonnées",
+	"received_contact_title": "Contact reçu",
+	"received_contact_description": "{{contact}} a été ajouté à vos contacts",
+	"receiving_contact_error_title": "Impossible d'ajouter le contact",
+	"receiving_contact_error_description": "Nous n'avons pas pu joindre ce pair. Vérifiez qu'il est en ligne et que le ticket est toujours valide.",
+
+	"incoming_request_title": "Demande de partage entrante",
+
+	"incoming_request_description_one": "{{peer}} essaie de vous envoyer {{count}} fichier ({{size}}).",
+	"incoming_request_description_many": "{{peer}} essaie de vous envoyer {{count}} fichiers ({{size}}).",
+	"incoming_request_description_other": "{{peer}} essaie de vous envoyer {{count}} fichiers ({{size}}).",
+
+	"drop_files_title": "Lâchez tout",
+	"drop_files_description": "Déposez vos fichiers pour commencer le partage",
+
+	"importing_title": "Préparation de vos fichiers",
+	"importing_description_one": "Préparation de {{count}} fichier",
+	"importing_description_many": "Préparation de {{count}} fichiers",
+	"importing_description_other": "Préparation de {{count}} fichiers",
+
+	"file_preview_alt": "Aperçu du fichier actuel",
+
+	"unselected_files_title": "Aucun fichier sélectionné",
+	"drag_here": "Faites glisser vos fichiers ici.",
+	"drag_here_with_shortcut": "Faites glisser vos fichiers ici, ou sélectionnez-les et appuyez sur :",
+
+	"resumable_transfer_title": "Transferts reprenables",
+	"resumable_transfer_description": "Nous conservons les données partielles des transferts échoués afin de pouvoir les reprendre. Utilisez cette option pour effacer toutes les données enregistrées.",
+
+	"shortcut_share_description": "Partage les fichiers sélectionnés dans votre système, ou affiche/masque la fenêtre de partage si aucun n'est sélectionné",
+	"shortcut_receive_description": "Recevoir des fichiers ou des contacts depuis le presse-papiers",
+	"shortcut_accept_description": "Accepter la dernière demande de partage entrante sans ouvrir l'application",
+	"shortcut_reject_description": "Refuser la dernière demande de partage entrante sans ouvrir l'application",
+
+	"import_failed_title": "Impossible de préparer vos fichiers",
+	"import_failed_description": "Appuyez sur Échap pour réessayer"
+}

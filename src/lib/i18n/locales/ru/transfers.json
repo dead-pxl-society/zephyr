@@ -1,0 +1,43 @@
+{
+	"received": "Получено",
+	"receiving": "Получение",
+	"sent": "Отправлено",
+	"sending": "Отправка",
+
+	"active_transfers": "Активные передачи",
+
+	"previous_transfers": "Прошлые передачи",
+	"empty_previous_title": "Передач нет",
+	"empty_previous_description": "Здесь появятся передачи, которые вы отправили и получили.",
+
+	"progress_receiving_one": "Получение {{count}} файла · {{size}}",
+	"progress_receiving_few": "Получение {{count}} файлов · {{size}}",
+	"progress_receiving_many": "Получение {{count}} файлов · {{size}}",
+	"progress_receiving_other": "Получение {{count}} файлов · {{size}}",
+
+	"progress_sending_one": "Отправка {{count}} файла · {{size}}",
+	"progress_sending_few": "Отправка {{count}} файлов · {{size}}",
+	"progress_sending_many": "Отправка {{count}} файлов · {{size}}",
+	"progress_sending_other": "Отправка {{count}} файлов · {{size}}",
+
+	"progress_requested": "Ожидание узла",
+	"progress_timeout": "Время истекло",
+	"progress_rejected": "Отклонено",
+
+	"to_peer": "Кому: {{peer}}",
+	"from_peer": "От кого: {{peer}}",
+
+	"files_no_longer_available": "Файлы больше недоступны",
+	"some_files_missing_one": "{{count}} файл больше недоступен",
+	"some_files_missing_few": "{{count}} файла больше недоступны",
+	"some_files_missing_many": "{{count}} файлов больше недоступны",
+	"some_files_missing_other": "{{count}} файла больше недоступны",
+
+	"files_dialog_title": "Файлы передачи",
+	"files_dialog_description_one": "{{count}} файл · {{date}}",
+	"files_dialog_description_few": "{{count}} файла · {{date}}",
+	"files_dialog_description_many": "{{count}} файлов · {{date}}",
+	"files_dialog_description_other": "{{count}} файла · {{date}}",
+
+	"storage_transfers_description": "Журнал всех файлов, которые вы отправили и получили. Этот вариант очищает всю историю передач."
+}

@@ -1,0 +1,52 @@
+{
+	"share_title": "可以分享了",
+	"share_description_other": "正在分享 {{count}} 个文件",
+	"share_with": "分享给",
+
+	"sharing_with": "正在分享给 {{peer}}",
+	"sharing_description_other": "正在分享 {{count}} 个文件（{{size}}）。你可以关掉这个窗口，传输会继续进行。",
+
+	"share_dialog_title": "分享你的文件",
+	"share_dialog_description": "从你的设备中选择文件，或选择一个包裹",
+
+	"action_receive_files": "接收文件",
+	"action_share_files": "分享文件",
+
+	"receive_dialog_title": "接收文件或联系人",
+	"receive_dialog_description": "请输入 Zephyr 或 iroh 凭据以接收",
+	"receiving_transfer_title": "正在接收传输",
+	"receiving_transfer_description": "文件正在下载。你可以关掉这个窗口，传输会继续进行",
+	"receiving_contact_title": "正在接收联系人",
+	"receiving_contact_description": "正在连接对端以交换联系人信息",
+	"received_contact_title": "已收到联系人",
+	"received_contact_description": "已将 {{contact}} 添加到你的联系人",
+	"receiving_contact_error_title": "无法添加联系人",
+	"receiving_contact_error_description": "我们无法连接到该对端。请确认对方在线，且凭据仍然有效。",
+
+	"incoming_request_title": "收到分享请求",
+
+	"incoming_request_description_other": "{{peer}} 想给你发送 {{count}} 个文件（{{size}}）。",
+
+	"drop_files_title": "松手吧",
+	"drop_files_description": "放下文件即可开始分享",
+
+	"importing_title": "正在准备你的文件",
+	"importing_description_other": "正在准备 {{count}} 个文件",
+
+	"file_preview_alt": "当前文件预览",
+
+	"unselected_files_title": "未选择文件",
+	"drag_here": "把文件拖到这里。",
+	"drag_here_with_shortcut": "把文件拖到这里，或者选中它们后按：",
+
+	"resumable_transfer_title": "可续传的传输",
+	"resumable_transfer_description": "我们会保留失败传输的部分数据，以便之后续传。使用此选项可清除全部已保存的数据。",
+
+	"shortcut_share_description": "分享你在系统中选中的文件；若未选中任何文件，则显示或隐藏分享窗口",
+	"shortcut_receive_description": "从剪贴板接收文件或联系人",
+	"shortcut_accept_description": "不打开应用，直接接受最近一次收到的分享请求",
+	"shortcut_reject_description": "不打开应用，直接拒绝最近一次收到的分享请求",
+
+	"import_failed_title": "无法准备你的文件",
+	"import_failed_description": "按 Esc 重试"
+}

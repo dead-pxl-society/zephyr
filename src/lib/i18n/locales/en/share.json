@@ -1,0 +1,56 @@
+{
+	"share_title": "Ready to share",
+	"share_description_one": "Sharing {{count}} file",
+	"share_description_other": "Sharing {{count}} files",
+	"share_with": "Share with",
+
+	"sharing_with": "Sharing with {{peer}}",
+	"sharing_description_one": "Sharing {{count}} file ({{size}}). Feel free to close this dialog, your transfer will keep running.",
+	"sharing_description_other": "Sharing {{count}} files ({{size}}). Feel free to close this dialog, your transfer will keep running.",
+
+	"share_dialog_title": "Share your files",
+	"share_dialog_description": "Select a file from your device or a parcel",
+
+	"action_receive_files": "Receive files",
+	"action_share_files": "Share files",
+
+	"receive_dialog_title": "Receive file or contact",
+	"receive_dialog_description": "Please enter a Zephyr or iroh ticket in the input to receive",
+	"receiving_transfer_title": "Receiving transfer",
+	"receiving_transfer_description": "Your files are being downloaded. Feel free to close this dialog, your transfer will keep running",
+	"receiving_contact_title": "Receiving contact",
+	"receiving_contact_description": "Attempting to connect with peer to exchange contact details",
+	"received_contact_title": "Received contact",
+	"received_contact_description": "{{contact}} has been added to your contacts",
+	"receiving_contact_error_title": "Couldn't add contact",
+	"receiving_contact_error_description": "We couldn't reach this peer. Make sure they're online and the ticket is still valid.",
+
+	"incoming_request_title": "Incoming Share Request",
+
+	"incoming_request_description_one": "{{peer}} is trying to send {{count}} file ({{size}}).",
+	"incoming_request_description_other": "{{peer}} is trying to send {{count}} files ({{size}}).",
+
+	"drop_files_title": "Drop 'em",
+	"drop_files_description": "Drop your files to start sharing",
+
+	"importing_title": "Getting your files ready",
+	"importing_description_one": "Preparing {{count}} file",
+	"importing_description_other": "Preparing {{count}} files",
+
+	"file_preview_alt": "Current file preview",
+
+	"unselected_files_title": "No files selected",
+	"drag_here": "Drag your files here.",
+	"drag_here_with_shortcut": "Drag your files here, or select them and press:",
+
+	"resumable_transfer_title": "Resumable transfers",
+	"resumable_transfer_description": "We save partial data from failed transfers so they can resume. Use this option to clear all saved data.",
+
+	"shortcut_share_description": "Share selected files from your system, or toggle the share window if none are selected",
+	"shortcut_receive_description": "Receive files or contacts from clipboard",
+	"shortcut_accept_description": "Accept the most recent incoming share request without opening the app",
+	"shortcut_reject_description": "Decline the most recent incoming share request without opening the app",
+
+	"import_failed_title": "Couldn't get your files ready",
+	"import_failed_description": "Press Esc to try again"
+}

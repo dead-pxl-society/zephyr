@@ -1,0 +1,24 @@
+{
+	"parcels_title": "Pakete",
+
+	"empty_parcels_title": "Noch keine Pakete",
+	"empty_parcels_description": "Pakete sind Sammlungen importierter Dateien, bereit zum Teilen.",
+
+	"parcel_name": "Paket {{id}}",
+
+	"sharing_summary_one": "{{count}} Datei wird geteilt · {{size}}",
+	"sharing_summary_other": "{{count}} Dateien werden geteilt · {{size}}",
+	"file_count_one": "{{count}} Datei",
+	"file_count_other": "{{count}} Dateien",
+
+	"parcel_files_title": "Paketdateien",
+	"parcel_files_description": "In Paket {{id}} enthaltene Dateien.",
+
+	"action_copy_ticket": "Ticket kopieren",
+	"action_view_files": "Dateien anzeigen",
+
+	"sr_send_parcel": "Paket senden",
+
+	"storage_parcels_description": "Pakete werden automatisch aufgeräumt, wenn du die App schließt. Mit dieser Option löschst du sie manuell.",
+	"recent_parcels": "Zuletzt genutzte Pakete"
+}

@@ -1,0 +1,45 @@
+{
+	"action_start": "Los geht's",
+	"action_start_using": "Zephyr benutzen!",
+
+	"step_welcome": "Willkommen",
+	"step_share": "Teilen",
+	"step_shortcuts": "Tastenkürzel",
+	"step_personal_devices": "Eigene Geräte",
+	"step_contacts": "Kontakte",
+	"step_notifications_and_sounds": "Mitteilungen & Töne",
+	"step_none": "Keine",
+
+	"welcome_title": "Willkommen bei Zephyr",
+	"welcome_description": "Zephyr bewegt Dateien zwischen deinen Geräten und den Menschen um dich herum – direkt und ohne Zwischenstation. Richten wir es ein, das dauert nur eine Minute.",
+
+	"share_shortcut_title": "Von überall teilen",
+	"share_shortcut_description": "Wähle eine beliebige Datei oder einen Ordner aus, wo auch immer.",
+	"share_shortcut_description_press": "Dann drücke",
+	"share_shortcut_hint": "Drücke das Tastenkürzel oben, um fortzufahren",
+	"share_shortcut_success": "Super!",
+	"share_shortcut_select_file": "Datei auswählen",
+	"share_shortcut_deselect_file": "Auswahl aufheben",
+
+	"share_shortcut_linux_title": "Von überall teilen",
+	"share_shortcut_linux_description": "Das Zephyr-Fenster erscheint über allem, was du gerade tust.",
+	"share_shortcut_linux_description_press": "Zieh deine Dateien hinein, hol es hervor mit",
+	"share_shortcut_linux_drop": "Dateien hier ablegen",
+	"share_shortcut_linux_drag_file": "Zieh die Datei ins Zephyr-Fenster",
+
+	"all_shortcuts_title": "Bleib im Flow",
+	"all_shortcuts_description": "Alles, was Zephyr tut, tut es, ohne dich zu unterbrechen. Mach jedes Tastenkürzel zu deinem.",
+
+	"personal_devices_title": "Deine Geräte, wie eines",
+	"personal_devices_description": "Dateien, die du dir selbst schickst, landen einfach. Und es wandert mehr als nur Dateien zwischen ihnen, zum Beispiel deine Zwischenablage.",
+	"personal_devices_warning": "Füge nur Geräte hinzu, die dir wirklich gehören",
+
+	"contacts_title": "Niemand ist außer Reichweite",
+	"contacts_description": "Geräte in der Nähe finden sich automatisch. Für alle anderen genügt ein Kontakt.",
+
+	"notifications_and_sounds_title": "Mitteilungen & Töne",
+	"notifications_and_sounds_description": "Zephyr verbringt die meiste Zeit im Hintergrund. So sagt es dir, dass etwas angekommen ist.",
+
+	"outro_thank_you": "Danke, dass du es benutzt:",
+	"outro_description": "Alles bereit. Zephyr wartet auf dich."
+}

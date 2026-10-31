@@ -1,0 +1,8 @@
+{
+	"discovery": "Rilevamento",
+	"discoverable": "Visibile",
+	"contacts_only": "Solo contatti",
+
+	"action_disable_mdns": "Disattiva il rilevamento locale",
+	"action_enable_mdns": "Attiva il rilevamento locale"
+}

@@ -1,0 +1,8 @@
+{
+	"discovery": "发现",
+	"discoverable": "可被发现",
+	"contacts_only": "仅联系人",
+
+	"action_disable_mdns": "关闭局域网发现",
+	"action_enable_mdns": "开启局域网发现"
+}

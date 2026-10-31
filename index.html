@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zephyr</title>
+    <link href="/src/index.css" rel="stylesheet">
+  </head>
+
+  <body class="overflow-hidden">
+    <div id="root"></div>
+    <script type="module" src="/src/app/main/index.tsx"></script>
+  </body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute">
+    <title>blureffect</title>
+    <defs>
+      <filter id="avatar-blur-bg" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+        <feComponentTransfer in="blur" result="softBlur">
+          <feFuncA type="linear" slope="0.15" />
+        </feComponentTransfer>
+      </filter>
+    </defs>
+  </svg>
+  <svg width="0" height="0" aria-hidden="true" style="position:absolute">
+    <filter id="phosphor" x="-25%" y="-25%" width="150%" height="150%"
+            color-interpolation-filters="sRGB">
+      <feOffset in="SourceGraphic" dx="-1.2" dy="0" result="rShift"/>
+      <feOffset in="SourceGraphic" dx="1.2"  dy="0" result="bShift"/>
+
+      <feColorMatrix in="rShift" result="R" type="matrix"
+        values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"/>
+      <feColorMatrix in="SourceGraphic" result="G" type="matrix"
+        values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0"/>
+      <feColorMatrix in="bShift" result="B" type="matrix"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+
+      <feBlend in="R"  in2="G" mode="screen" result="RG"/>
+      <feBlend in="RG" in2="B" mode="screen" result="RGB"/>
+
+      <feGaussianBlur in="RGB" stdDeviation="1.5" result="bloom"/>
+      <feBlend in="RGB" in2="bloom" mode="screen"/>
+    </filter>
+
+    <!-- Ink variant for light surfaces: dark glyphs emit no light, so the
+         graphic is inverted first, aberrated additively, then inverted back —
+         which lands as subtractive (cyan/red) fringes and a soft ink bleed. -->
+    <filter id="phosphor-ink" x="-25%" y="-25%" width="150%" height="150%"
+            color-interpolation-filters="sRGB">
+      <feColorMatrix in="SourceGraphic" result="src" type="matrix"
+        values="-1 0 0 0 1  0 -1 0 0 1  0 0 -1 0 1  0 0 0 1 0"/>
+
+      <feOffset in="src" dx="-1.2" dy="0" result="rShift"/>
+      <feOffset in="src" dx="1.2"  dy="0" result="bShift"/>
+
+      <feColorMatrix in="rShift" result="R" type="matrix"
+        values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"/>
+      <feColorMatrix in="src" result="G" type="matrix"
+        values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0"/>
+      <feColorMatrix in="bShift" result="B" type="matrix"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+
+      <feBlend in="R"  in2="G" mode="screen" result="RG"/>
+      <feBlend in="RG" in2="B" mode="screen" result="RGB"/>
+
+      <feGaussianBlur in="RGB" stdDeviation="1.5" result="rawBloom"/>
+      <feComponentTransfer in="rawBloom" result="bloom">
+        <feFuncA type="linear" slope="0.45"/>
+      </feComponentTransfer>
+      <feBlend in="RGB" in2="bloom" mode="screen" result="lit"/>
+
+      <feColorMatrix in="lit" type="matrix"
+        values="-1 0 0 0 1  0 -1 0 0 1  0 0 -1 0 1  0 0 0 1 0"/>
+    </filter>
+
+    <!-- Same phosphor look, dialed down for large artwork -->
+    <filter id="phosphor-soft" x="-25%" y="-25%" width="150%" height="150%"
+            color-interpolation-filters="sRGB">
+      <feOffset in="SourceGraphic" dx="-0.4" dy="0" result="rShift"/>
+      <feOffset in="SourceGraphic" dx="0.4"  dy="0" result="bShift"/>
+
+      <feColorMatrix in="rShift" result="R" type="matrix"
+        values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"/>
+      <feColorMatrix in="SourceGraphic" result="G" type="matrix"
+        values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0"/>
+      <feColorMatrix in="bShift" result="B" type="matrix"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+
+      <feBlend in="R"  in2="G" mode="screen" result="RG"/>
+      <feBlend in="RG" in2="B" mode="screen" result="RGB"/>
+
+      <feGaussianBlur in="RGB" stdDeviation="0.6" result="rawBloom"/>
+      <feComponentTransfer in="rawBloom" result="bloom">
+        <feFuncA type="linear" slope="0.35"/>
+      </feComponentTransfer>
+      <feBlend in="RGB" in2="bloom" mode="screen"/>
+    </filter>
+
+    <filter id="black-key" x="0" y="0" width="100%" height="100%"
+            color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix"
+        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  1 1 1 0 0"/>
+    </filter>
+  </svg>
+</html>

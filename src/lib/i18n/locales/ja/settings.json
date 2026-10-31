@@ -1,0 +1,19 @@
+{
+	"storage_data_section": "データ",
+	"storage_downloads_section": "ダウンロード",
+	"shortcuts_global_section": "グローバルショートカット",
+	"notifications_section": "通知",
+	"sounds_section": "サウンド",
+
+	"need_help_title": "お困りですか？",
+	"need_help_description": "質問や不具合がありましたら、Discord でお知らせください。喜んでお手伝いします。",
+	"action_join_discord": "Discord サーバーに参加",
+	"clipboard_sync": "クリップボード同期",
+	"clipboard_sync_description": "一方のデバイスでコピーして、別のデバイスで貼り付け。コピーした内容は、ほかのデバイスですぐに使えます。",
+	"clipboard_section": "クリップボード",
+	"clipboard_files": "ファイルを同期",
+	"clipboard_files_description": "コピーしたファイルも対象にします。バックグラウンドでダウンロードされるので、Finder やエクスプローラーにそのまま貼り付けられます。",
+	"clipboard_max_size": "最大サイズ",
+	"clipboard_max_size_description": "これを超えるコピーは同期されません。",
+	"clipboard_max_size_warning": "上限を大きくすると、コピーのたびに時間がかかり、送信側のデバイスのメモリも消費します。大きなファイルには共有機能の方が向いています。"
+}

@@ -1,0 +1,15 @@
+{
+	"check_failed": "无法检查更新",
+	"up_to_date": "Zephyr 已是最新版本",
+	"setting_title": "更新",
+	"setting_description": "当前版本为 {{version}}。Zephyr 会自动检查更新。",
+	"setting_description_loading": "Zephyr 会自动检查更新。",
+	"action_check_now": "检查更新",
+	"action_checking": "检查中…",
+	"update_available": "有可用更新",
+	"action_update_now": "更新到 {{version}}",
+	"action_downloading": "正在下载…",
+	"action_downloading_percent": "正在下载… {{percent}}%",
+	"setting_update_available": "版本 {{version}} 可用。",
+	"action_installing": "正在安装…"
+}

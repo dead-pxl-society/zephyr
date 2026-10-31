@@ -1,0 +1,35 @@
+{
+	"received": "Received",
+	"receiving": "Receiving",
+	"sent": "Sent",
+	"sending": "Sending",
+
+	"active_transfers": "Active Transfers",
+
+	"previous_transfers": "Previous Transfers",
+	"empty_previous_title": "No transfers",
+	"empty_previous_description": "Transfers you’ve sent and received will show up here.",
+
+	"progress_receiving_one": "Receiving {{count}} file · {{size}}",
+	"progress_receiving_other": "Receiving {{count}} files · {{size}}",
+
+	"progress_sending_one": "Sending {{count}} file · {{size}}",
+	"progress_sending_other": "Sending {{count}} files · {{size}}",
+
+	"progress_requested": "Waiting for peer",
+	"progress_timeout": "Timed out",
+	"progress_rejected": "Rejected",
+
+	"to_peer": "To {{peer}}",
+	"from_peer": "From {{peer}}",
+
+	"files_no_longer_available": "Files are no longer available",
+	"some_files_missing_one": "{{count}} file is no longer available",
+	"some_files_missing_other": "{{count}} files are no longer available",
+
+	"files_dialog_title": "Transfer files",
+	"files_dialog_description_one": "{{count}} file · {{date}}",
+	"files_dialog_description_other": "{{count}} files · {{date}}",
+
+	"storage_transfers_description": "A log of all files you've sent and received. Clear the entire transfer history with this option."
+}

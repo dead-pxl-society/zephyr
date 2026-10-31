@@ -1,0 +1,17 @@
+{
+	"general_section": "一般",
+	"recent_section": "最近",
+
+	"transfers": "転送",
+	"parcels": "パーセル",
+	"devices": "デバイス",
+	"discovered_peers": "検出されたピア",
+	"settings": "設定",
+	"general": "一般",
+	"storage": "ストレージ",
+	"shortcuts": "ショートカット",
+	"notifications": "通知",
+	"support": "サポート",
+
+	"discoverable": "検出可能"
+}

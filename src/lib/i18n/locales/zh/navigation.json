@@ -1,0 +1,17 @@
+{
+	"general_section": "通用",
+	"recent_section": "最近",
+
+	"transfers": "传输",
+	"parcels": "包裹",
+	"devices": "设备",
+	"discovered_peers": "发现的对端",
+	"settings": "设置",
+	"general": "通用",
+	"storage": "存储",
+	"shortcuts": "快捷键",
+	"notifications": "通知",
+	"support": "支持",
+
+	"discoverable": "可被发现"
+}

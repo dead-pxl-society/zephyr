@@ -1,0 +1,8 @@
+{
+	"discovery": "탐색",
+	"discoverable": "탐색 허용",
+	"contacts_only": "연락처만",
+
+	"action_disable_mdns": "로컬 탐색 끄기",
+	"action_enable_mdns": "로컬 탐색 켜기"
+}

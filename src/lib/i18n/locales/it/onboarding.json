@@ -1,0 +1,45 @@
+{
+	"action_start": "Iniziamo",
+	"action_start_using": "Inizia a usare Zephyr!",
+
+	"step_welcome": "Benvenuto",
+	"step_share": "Condivisione",
+	"step_shortcuts": "Scorciatoie",
+	"step_personal_devices": "Dispositivi personali",
+	"step_contacts": "Contatti",
+	"step_notifications_and_sounds": "Notifiche e suoni",
+	"step_none": "Nessuna",
+
+	"welcome_title": "Benvenuto in Zephyr",
+	"welcome_description": "Zephyr sposta i file tra i tuoi dispositivi e le persone attorno a te, direttamente e senza intermediari. Configuriamolo, basta un minuto.",
+
+	"share_shortcut_title": "Condividi da ovunque",
+	"share_shortcut_description": "Seleziona qualsiasi file o cartella, ovunque si trovi.",
+	"share_shortcut_description_press": "Poi premi",
+	"share_shortcut_hint": "Premi la scorciatoia qui sopra per continuare",
+	"share_shortcut_success": "Ottimo!",
+	"share_shortcut_select_file": "Seleziona il file",
+	"share_shortcut_deselect_file": "Deseleziona il file",
+
+	"share_shortcut_linux_title": "Condividi da ovunque",
+	"share_shortcut_linux_description": "La finestra di Zephyr compare sopra a qualsiasi cosa tu stia facendo.",
+	"share_shortcut_linux_description_press": "Trascinaci dentro i tuoi file, richiamala con",
+	"share_shortcut_linux_drop": "Trascina qui i file",
+	"share_shortcut_linux_drag_file": "Trascina il file nella finestra di Zephyr",
+
+	"all_shortcuts_title": "Resta nel tuo flusso",
+	"all_shortcuts_description": "Tutto quello che fa Zephyr, lo fa senza interromperti. Rendi tua ogni scorciatoia.",
+
+	"personal_devices_title": "I tuoi dispositivi, come uno solo",
+	"personal_devices_description": "I file che invii a te stesso arrivano e basta. E tra loro passano più che semplici file, come i tuoi appunti.",
+	"personal_devices_warning": "Aggiungi solo dispositivi che ti appartengono davvero",
+
+	"contacts_title": "Nessuno è fuori portata",
+	"contacts_description": "I dispositivi vicini si trovano da soli. Per tutti gli altri, basta un contatto.",
+
+	"notifications_and_sounds_title": "Notifiche e suoni",
+	"notifications_and_sounds_description": "Zephyr passa quasi tutto il tempo in background. È così che ti fa sapere che è arrivato qualcosa.",
+
+	"outro_thank_you": "Grazie per aver scelto",
+	"outro_description": "È tutto pronto. Zephyr ti aspetta."
+}

@@ -1,0 +1,22 @@
+{
+	"parcels_title": "꾸러미",
+
+	"empty_parcels_title": "아직 꾸러미가 없습니다",
+	"empty_parcels_description": "꾸러미는 공유할 준비가 된, 가져온 파일들의 묶음입니다.",
+
+	"parcel_name": "꾸러미 {{id}}",
+
+	"sharing_summary_other": "파일 {{count}}개 공유 중 · {{size}}",
+	"file_count_other": "파일 {{count}}개",
+
+	"parcel_files_title": "꾸러미 파일",
+	"parcel_files_description": "꾸러미 {{id}}에 담긴 파일입니다.",
+
+	"action_copy_ticket": "티켓 복사",
+	"action_view_files": "파일 보기",
+
+	"sr_send_parcel": "꾸러미 보내기",
+
+	"storage_parcels_description": "꾸러미는 앱을 닫을 때 자동으로 정리됩니다. 직접 삭제하려면 이 옵션을 사용하세요.",
+	"recent_parcels": "최근 꾸러미"
+}

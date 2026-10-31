@@ -1,0 +1,13 @@
+{
+	"app_settings": "设置…",
+
+	"file_share": "分享文件…",
+	"file_receive": "从剪贴板接收",
+
+	"delete_transfers": "删除全部传输记录",
+	"delete_strangers": "删除未知对端",
+	"delete_parcels": "删除全部包裹",
+
+	"tray_open": "打开 Zephyr",
+	"tray_quit": "退出 Zephyr"
+}

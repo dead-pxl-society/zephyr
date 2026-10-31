@@ -1,0 +1,19 @@
+{
+	"storage_data_section": "Dados",
+	"storage_downloads_section": "Downloads",
+	"shortcuts_global_section": "Atalhos globais",
+	"notifications_section": "Notificações",
+	"sounds_section": "Sons",
+
+	"need_help_title": "Precisa de ajuda?",
+	"need_help_description": "Tem alguma dúvida ou encontrou um problema? Entre no nosso Discord e conte pra gente, será um prazer ajudar.",
+	"action_join_discord": "Entrar no servidor do Discord",
+	"clipboard_sync": "Sincronização da área de transferência",
+	"clipboard_sync_description": "Copie em um dispositivo, cole em outro. Tudo o que você copia fica disponível na hora nos seus outros dispositivos.",
+	"clipboard_section": "Área de transferência",
+	"clipboard_files": "Sincronizar arquivos",
+	"clipboard_files_description": "Inclui os arquivos copiados. Eles baixam em segundo plano para você colar direto no Finder ou no Explorador.",
+	"clipboard_max_size": "Tamanho máximo",
+	"clipboard_max_size_description": "Cópias maiores que isso não são sincronizadas.",
+	"clipboard_max_size_warning": "Limites altos deixam cada cópia mais lenta e consomem memória no dispositivo que envia. Para arquivos grandes, o compartilhamento funciona melhor."
+}

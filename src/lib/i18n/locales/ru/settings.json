@@ -1,0 +1,19 @@
+{
+	"storage_data_section": "Данные",
+	"storage_downloads_section": "Загрузки",
+	"shortcuts_global_section": "Глобальные сочетания клавиш",
+	"notifications_section": "Уведомления",
+	"sounds_section": "Звуки",
+
+	"need_help_title": "Нужна помощь?",
+	"need_help_description": "Есть вопрос или что-то не работает? Загляните в наш Discord и расскажите — мы будем рады помочь.",
+	"action_join_discord": "Присоединиться к серверу Discord",
+	"clipboard_sync": "Синхронизация буфера обмена",
+	"clipboard_sync_description": "Копируйте на одном устройстве, вставляйте на другом. Все, что вы копируете, сразу доступно на остальных ваших устройствах.",
+	"clipboard_section": "Буфер обмена",
+	"clipboard_files": "Синхронизировать файлы",
+	"clipboard_files_description": "Включить скопированные файлы. Они загружаются в фоне, чтобы вы могли вставить их прямо в Finder или Проводник.",
+	"clipboard_max_size": "Максимальный размер",
+	"clipboard_max_size_description": "Копии больше этого размера не синхронизируются.",
+	"clipboard_max_size_warning": "Высокий предел замедляет каждое копирование и расходует память на отправляющем устройстве. Для больших файлов лучше подходит отправка."
+}

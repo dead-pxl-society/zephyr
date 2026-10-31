@@ -1,0 +1,15 @@
+{
+	"check_failed": "アップデートを確認できませんでした",
+	"up_to_date": "Zephyr は最新です",
+	"setting_title": "アップデート",
+	"setting_description": "現在のバージョンは {{version}} です。Zephyr は自動でアップデートを確認します。",
+	"setting_description_loading": "Zephyr は自動でアップデートを確認します。",
+	"action_check_now": "アップデートを確認",
+	"action_checking": "確認中…",
+	"update_available": "アップデートあり",
+	"action_update_now": "{{version}} に更新",
+	"action_downloading": "ダウンロード中…",
+	"action_downloading_percent": "ダウンロード中… {{percent}}%",
+	"setting_update_available": "バージョン {{version}} が利用できます。",
+	"action_installing": "インストール中…"
+}

@@ -1,0 +1,51 @@
+{
+	"type_column": "类型",
+	"size_column": "大小",
+	"date_column": "日期",
+	"files_column": "文件",
+
+	"actions_section": "操作",
+	"action_send_files": "发送文件",
+	"action_view_all": "查看全部",
+	"action_collapse": "收起",
+	"action_select_files": "选择文件",
+
+	"delete": "删除",
+	"send": "发送",
+	"accept": "接受",
+	"reject": "拒绝",
+	"done": "完成",
+	"close": "关闭",
+	"share": "分享",
+	"receive": "接收",
+	"ticket": "凭据",
+	"processing": "处理中",
+	"device": "设备",
+	"exit": "退出",
+	"name": "名称",
+	"platform": "平台",
+	"search": "搜索",
+	"next": "下一步",
+
+	"files_count_other": "{{count}} 个文件",
+
+	"pagination_page_of": "第 {{page}} 页，共 {{total}} 页",
+	"pagination_go_first": "跳到第一页",
+	"pagination_go_last": "跳到最后一页",
+	"pagination_next": "下一页",
+	"pagination_previous": "上一页",
+
+	"sr_open_menu": "打开菜单",
+
+	"language_section": "语言",
+	"app_language": "应用语言",
+
+	"delete_all": "全部删除",
+	"cancel": "取消",
+	"confirm_prompt": "确定吗？",
+
+	"ticket_copied": "凭据已复制",
+
+	"shortcut_recording_prompt": "请按下快捷键…",
+	"not_set": "未设置"
+}

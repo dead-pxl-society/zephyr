@@ -1,0 +1,13 @@
+{
+	"app_settings": "Réglages…",
+
+	"file_share": "Partager des fichiers…",
+	"file_receive": "Recevoir depuis le presse-papiers",
+
+	"delete_transfers": "Supprimer tous les transferts",
+	"delete_strangers": "Supprimer les pairs inconnus",
+	"delete_parcels": "Supprimer tous les colis",
+
+	"tray_open": "Ouvrir Zephyr",
+	"tray_quit": "Quitter Zephyr"
+}

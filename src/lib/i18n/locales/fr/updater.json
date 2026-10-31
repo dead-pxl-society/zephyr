@@ -1,0 +1,15 @@
+{
+	"check_failed": "Impossible de vérifier les mises à jour",
+	"up_to_date": "Zephyr est à jour",
+	"setting_title": "Mises à jour",
+	"setting_description": "Vous utilisez la version {{version}}. Zephyr vérifie les mises à jour automatiquement.",
+	"setting_description_loading": "Zephyr vérifie les mises à jour automatiquement.",
+	"action_check_now": "Vérifier les mises à jour",
+	"action_checking": "Vérification…",
+	"update_available": "Mise à jour disponible",
+	"action_update_now": "Mettre à jour vers {{version}}",
+	"action_downloading": "Téléchargement…",
+	"action_downloading_percent": "Téléchargement… {{percent}} %",
+	"setting_update_available": "La version {{version}} est disponible.",
+	"action_installing": "Installation…"
+}

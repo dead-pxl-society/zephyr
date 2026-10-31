@@ -1,0 +1,13 @@
+{
+	"app_settings": "Settings...",
+
+	"file_share": "Share Files...",
+	"file_receive": "Receive From Clipboard",
+
+	"delete_transfers": "Delete All Transfers",
+	"delete_strangers": "Delete Unknown Peers",
+	"delete_parcels": "Delete All Parcels",
+
+	"tray_open": "Open Zephyr",
+	"tray_quit": "Quit Zephyr"
+}

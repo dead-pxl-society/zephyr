@@ -1,0 +1,45 @@
+{
+	"action_start": "Начать",
+	"action_start_using": "Начать пользоваться Zephyr!",
+
+	"step_welcome": "Добро пожаловать",
+	"step_share": "Отправка",
+	"step_shortcuts": "Сочетания клавиш",
+	"step_personal_devices": "Личные устройства",
+	"step_contacts": "Контакты",
+	"step_notifications_and_sounds": "Уведомления и звуки",
+	"step_none": "Нет",
+
+	"welcome_title": "Добро пожаловать в Zephyr",
+	"welcome_description": "Zephyr переносит файлы между вашими устройствами и людьми рядом с вами — напрямую, без посредников. Давайте все настроим, это займет минуту.",
+
+	"share_shortcut_title": "Отправляйте откуда угодно",
+	"share_shortcut_description": "Выберите любой файл или папку, где бы они ни были.",
+	"share_shortcut_description_press": "Затем нажмите",
+	"share_shortcut_hint": "Нажмите сочетание клавиш выше, чтобы продолжить",
+	"share_shortcut_success": "Отлично!",
+	"share_shortcut_select_file": "Выбрать файл",
+	"share_shortcut_deselect_file": "Снять выделение",
+
+	"share_shortcut_linux_title": "Отправляйте откуда угодно",
+	"share_shortcut_linux_description": "Окно Zephyr появляется поверх того, чем вы заняты.",
+	"share_shortcut_linux_description_press": "Перетащите в него файлы, а вызвать его можно так:",
+	"share_shortcut_linux_drop": "Перетащите файлы сюда",
+	"share_shortcut_linux_drag_file": "Перетащите файл в окно Zephyr",
+
+	"all_shortcuts_title": "Не отвлекаясь от дела",
+	"all_shortcuts_description": "Все, что делает Zephyr, он делает, не отвлекая вас. Настройте каждое сочетание под себя.",
+
+	"personal_devices_title": "Ваши устройства как одно целое",
+	"personal_devices_description": "Файлы, отправленные самому себе, просто оказываются на месте. И между устройствами переходят не только файлы, но и буфер обмена.",
+	"personal_devices_warning": "Добавляйте только те устройства, которые действительно принадлежат вам",
+
+	"contacts_title": "Никто не вне зоны доступа",
+	"contacts_description": "Устройства поблизости находят друг друга сами. Для всех остальных достаточно контакта.",
+
+	"notifications_and_sounds_title": "Уведомления и звуки",
+	"notifications_and_sounds_description": "Zephyr почти все время проводит в фоне. Вот так он сообщает, что что-то пришло.",
+
+	"outro_thank_you": "Спасибо, что пользуетесь",
+	"outro_description": "Все готово. Zephyr ждет вас."
+}

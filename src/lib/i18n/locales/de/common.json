@@ -1,0 +1,52 @@
+{
+	"type_column": "Typ",
+	"size_column": "Größe",
+	"date_column": "Datum",
+	"files_column": "Dateien",
+
+	"actions_section": "Aktionen",
+	"action_send_files": "Dateien senden",
+	"action_view_all": "Alle anzeigen",
+	"action_collapse": "Einklappen",
+	"action_select_files": "Dateien auswählen",
+
+	"delete": "Löschen",
+	"send": "Senden",
+	"accept": "Annehmen",
+	"reject": "Ablehnen",
+	"done": "Fertig",
+	"close": "Schließen",
+	"share": "Teilen",
+	"receive": "Empfangen",
+	"ticket": "Ticket",
+	"processing": "Wird verarbeitet",
+	"device": "Gerät",
+	"exit": "Beenden",
+	"name": "Name",
+	"platform": "Plattform",
+	"search": "Suchen",
+	"next": "Weiter",
+
+	"files_count_one": "{{count}} Datei",
+	"files_count_other": "{{count}} Dateien",
+
+	"pagination_page_of": "Seite {{page}} von {{total}}",
+	"pagination_go_first": "Zur ersten Seite",
+	"pagination_go_last": "Zur letzten Seite",
+	"pagination_next": "Zur nächsten Seite",
+	"pagination_previous": "Zur vorherigen Seite",
+
+	"sr_open_menu": "Menü öffnen",
+
+	"language_section": "Sprache",
+	"app_language": "App-Sprache",
+
+	"delete_all": "Alle löschen",
+	"cancel": "Abbrechen",
+	"confirm_prompt": "Bist du sicher?",
+
+	"ticket_copied": "Ticket kopiert",
+
+	"shortcut_recording_prompt": "Tastenkürzel drücken …",
+	"not_set": "Nicht festgelegt"
+}

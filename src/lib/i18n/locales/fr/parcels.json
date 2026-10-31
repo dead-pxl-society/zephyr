@@ -1,0 +1,26 @@
+{
+	"parcels_title": "Colis",
+
+	"empty_parcels_title": "Aucun colis pour l'instant",
+	"empty_parcels_description": "Les colis sont des ensembles de fichiers importés, prêts à être partagés.",
+
+	"parcel_name": "Colis {{id}}",
+
+	"sharing_summary_one": "Partage de {{count}} fichier · {{size}}",
+	"sharing_summary_many": "Partage de {{count}} fichiers · {{size}}",
+	"sharing_summary_other": "Partage de {{count}} fichiers · {{size}}",
+	"file_count_one": "{{count}} fichier",
+	"file_count_many": "{{count}} fichiers",
+	"file_count_other": "{{count}} fichiers",
+
+	"parcel_files_title": "Fichiers du colis",
+	"parcel_files_description": "Fichiers contenus dans le colis {{id}}.",
+
+	"action_copy_ticket": "Copier le ticket",
+	"action_view_files": "Voir les fichiers",
+
+	"sr_send_parcel": "Envoyer le colis",
+
+	"storage_parcels_description": "Les colis sont nettoyés automatiquement à la fermeture de l'application. Utilisez cette option pour les supprimer manuellement.",
+	"recent_parcels": "Colis récents"
+}

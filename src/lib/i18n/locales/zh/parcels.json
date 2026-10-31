@@ -1,0 +1,22 @@
+{
+	"parcels_title": "包裹",
+
+	"empty_parcels_title": "还没有包裹",
+	"empty_parcels_description": "包裹是已导入文件的集合，随时可以分享。",
+
+	"parcel_name": "包裹 {{id}}",
+
+	"sharing_summary_other": "正在分享 {{count}} 个文件 · {{size}}",
+	"file_count_other": "{{count}} 个文件",
+
+	"parcel_files_title": "包裹内的文件",
+	"parcel_files_description": "包裹 {{id}} 中包含的文件。",
+
+	"action_copy_ticket": "复制凭据",
+	"action_view_files": "查看文件",
+
+	"sr_send_parcel": "发送包裹",
+
+	"storage_parcels_description": "关闭应用时包裹会自动清理。使用此选项可手动删除。",
+	"recent_parcels": "最近的包裹"
+}

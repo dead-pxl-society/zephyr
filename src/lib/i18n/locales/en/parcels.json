@@ -1,0 +1,24 @@
+{
+	"parcels_title": "Parcels",
+
+	"empty_parcels_title": "No parcels yet",
+	"empty_parcels_description": "Parcels are collections of imported files, ready to be shared.",
+
+	"parcel_name": "Parcel {{id}}",
+
+	"sharing_summary_one": "Sharing {{count}} file · {{size}}",
+	"sharing_summary_other": "Sharing {{count}} files · {{size}}",
+	"file_count_one": "{{count}} file",
+	"file_count_other": "{{count}} files",
+
+	"parcel_files_title": "Parcel files",
+	"parcel_files_description": "Files included in parcel {{id}}.",
+
+	"action_copy_ticket": "Copy ticket",
+	"action_view_files": "View files",
+
+	"sr_send_parcel": "Send parcel",
+
+	"storage_parcels_description": "Parcels are cleaned up automatically when you close the app. Use this option to delete them manually.",
+	"recent_parcels": "Recent parcels"
+}

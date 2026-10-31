@@ -1,0 +1,19 @@
+{
+	"storage_data_section": "Data",
+	"storage_downloads_section": "Downloads",
+	"shortcuts_global_section": "Global shortcuts",
+	"notifications_section": "Notifications",
+	"sounds_section": "Sounds",
+
+	"need_help_title": "Need help?",
+	"need_help_description": "Have a question or ran into an issue? Jump into our Discord and let us know, we’re happy to help.",
+	"action_join_discord": "Join Discord Server",
+	"clipboard_sync": "Clipboard Sync",
+	"clipboard_sync_description": "Copy on one device, paste on another. Anything you copy is instantly available on your other devices.",
+	"clipboard_section": "Clipboard",
+	"clipboard_files": "Sync Files",
+	"clipboard_files_description": "Include copied files. They download in the background so you can paste them straight into Finder or Explorer.",
+	"clipboard_max_size": "Maximum Size",
+	"clipboard_max_size_description": "Copies larger than this are not synced.",
+	"clipboard_max_size_warning": "Large limits slow down every copy and use memory on the sending device. The share flow is a better fit for big files."
+}

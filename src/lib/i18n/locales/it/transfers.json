@@ -1,0 +1,39 @@
+{
+	"received": "Ricevuto",
+	"receiving": "In ricezione",
+	"sent": "Inviato",
+	"sending": "In invio",
+
+	"active_transfers": "Trasferimenti attivi",
+
+	"previous_transfers": "Trasferimenti precedenti",
+	"empty_previous_title": "Nessun trasferimento",
+	"empty_previous_description": "I trasferimenti che hai inviato e ricevuto compariranno qui.",
+
+	"progress_receiving_one": "Ricezione di {{count}} file · {{size}}",
+	"progress_receiving_many": "Ricezione di {{count}} file · {{size}}",
+	"progress_receiving_other": "Ricezione di {{count}} file · {{size}}",
+
+	"progress_sending_one": "Invio di {{count}} file · {{size}}",
+	"progress_sending_many": "Invio di {{count}} file · {{size}}",
+	"progress_sending_other": "Invio di {{count}} file · {{size}}",
+
+	"progress_requested": "In attesa del peer",
+	"progress_timeout": "Tempo scaduto",
+	"progress_rejected": "Rifiutato",
+
+	"to_peer": "A {{peer}}",
+	"from_peer": "Da {{peer}}",
+
+	"files_no_longer_available": "I file non sono più disponibili",
+	"some_files_missing_one": "{{count}} file non è più disponibile",
+	"some_files_missing_many": "{{count}} file non sono più disponibili",
+	"some_files_missing_other": "{{count}} file non sono più disponibili",
+
+	"files_dialog_title": "File del trasferimento",
+	"files_dialog_description_one": "{{count}} file · {{date}}",
+	"files_dialog_description_many": "{{count}} file · {{date}}",
+	"files_dialog_description_other": "{{count}} file · {{date}}",
+
+	"storage_transfers_description": "Un registro di tutti i file che hai inviato e ricevuto. Cancella l'intera cronologia dei trasferimenti con questa opzione."
+}

@@ -1,0 +1,35 @@
+{
+	"received": "Empfangen",
+	"receiving": "Wird empfangen",
+	"sent": "Gesendet",
+	"sending": "Wird gesendet",
+
+	"active_transfers": "Aktive Übertragungen",
+
+	"previous_transfers": "Frühere Übertragungen",
+	"empty_previous_title": "Keine Übertragungen",
+	"empty_previous_description": "Übertragungen, die du gesendet und empfangen hast, erscheinen hier.",
+
+	"progress_receiving_one": "{{count}} Datei wird empfangen · {{size}}",
+	"progress_receiving_other": "{{count}} Dateien werden empfangen · {{size}}",
+
+	"progress_sending_one": "{{count}} Datei wird gesendet · {{size}}",
+	"progress_sending_other": "{{count}} Dateien werden gesendet · {{size}}",
+
+	"progress_requested": "Warten auf Peer",
+	"progress_timeout": "Zeitüberschreitung",
+	"progress_rejected": "Abgelehnt",
+
+	"to_peer": "An {{peer}}",
+	"from_peer": "Von {{peer}}",
+
+	"files_no_longer_available": "Dateien sind nicht mehr verfügbar",
+	"some_files_missing_one": "{{count}} Datei ist nicht mehr verfügbar",
+	"some_files_missing_other": "{{count}} Dateien sind nicht mehr verfügbar",
+
+	"files_dialog_title": "Übertragene Dateien",
+	"files_dialog_description_one": "{{count}} Datei · {{date}}",
+	"files_dialog_description_other": "{{count}} Dateien · {{date}}",
+
+	"storage_transfers_description": "Ein Protokoll aller gesendeten und empfangenen Dateien. Mit dieser Option löschst du den gesamten Übertragungsverlauf."
+}

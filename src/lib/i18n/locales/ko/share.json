@@ -1,0 +1,52 @@
+{
+	"share_title": "공유할 준비가 됐습니다",
+	"share_description_other": "파일 {{count}}개 공유 중",
+	"share_with": "공유 대상",
+
+	"sharing_with": "{{peer}}님과 공유 중",
+	"sharing_description_other": "파일 {{count}}개({{size}})를 공유하고 있습니다. 이 창을 닫아도 전송은 계속됩니다.",
+
+	"share_dialog_title": "파일 공유하기",
+	"share_dialog_description": "기기에 있는 파일이나 꾸러미를 선택하세요",
+
+	"action_receive_files": "파일 받기",
+	"action_share_files": "파일 공유",
+
+	"receive_dialog_title": "파일 또는 연락처 받기",
+	"receive_dialog_description": "받으려면 Zephyr 또는 iroh 티켓을 입력하세요",
+	"receiving_transfer_title": "전송 받는 중",
+	"receiving_transfer_description": "파일을 내려받고 있습니다. 이 창을 닫아도 전송은 계속됩니다",
+	"receiving_contact_title": "연락처 받는 중",
+	"receiving_contact_description": "연락처 정보를 주고받기 위해 피어에 연결하고 있습니다",
+	"received_contact_title": "연락처를 받았습니다",
+	"received_contact_description": "{{contact}}님을 연락처에 추가했습니다",
+	"receiving_contact_error_title": "연락처를 추가하지 못했습니다",
+	"receiving_contact_error_description": "이 피어에 연결하지 못했습니다. 상대가 온라인인지, 티켓이 아직 유효한지 확인해 주세요.",
+
+	"incoming_request_title": "공유 요청이 도착했습니다",
+
+	"incoming_request_description_other": "{{peer}}님이 파일 {{count}}개({{size}})를 보내려고 합니다.",
+
+	"drop_files_title": "놓으세요",
+	"drop_files_description": "파일을 놓으면 공유가 시작됩니다",
+
+	"importing_title": "파일을 준비하고 있습니다",
+	"importing_description_other": "파일 {{count}}개 준비 중",
+
+	"file_preview_alt": "현재 파일 미리보기",
+
+	"unselected_files_title": "선택된 파일이 없습니다",
+	"drag_here": "여기로 파일을 끌어다 놓으세요.",
+	"drag_here_with_shortcut": "여기로 파일을 끌어다 놓거나, 파일을 선택하고 다음을 누르세요:",
+
+	"resumable_transfer_title": "이어받을 수 있는 전송",
+	"resumable_transfer_description": "실패한 전송을 이어받을 수 있도록 일부 데이터를 저장해 둡니다. 저장된 데이터를 모두 지우려면 이 옵션을 사용하세요.",
+
+	"shortcut_share_description": "시스템에서 선택한 파일을 공유합니다. 선택한 파일이 없으면 공유 창을 열고 닫습니다",
+	"shortcut_receive_description": "클립보드에서 파일이나 연락처를 받습니다",
+	"shortcut_accept_description": "앱을 열지 않고 가장 최근 공유 요청을 수락합니다",
+	"shortcut_reject_description": "앱을 열지 않고 가장 최근 공유 요청을 거절합니다",
+
+	"import_failed_title": "파일을 준비하지 못했습니다",
+	"import_failed_description": "Esc를 눌러 다시 시도하세요"
+}
