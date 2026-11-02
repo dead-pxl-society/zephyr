@@ -103,7 +103,7 @@ On Debian or Ubuntu, this covers the Tauri prerequisites and Clang:
 ```sh
 sudo apt install libwebkit2gtk-4.1-dev libgtk-3-dev libayatana-appindicator3-dev \
   librsvg2-dev libxdo-dev libssl-dev build-essential curl wget file patchelf \
-  clang libclang-dev
+  xdg-utils clang libclang-dev
 ```
 
 ### Run and build
