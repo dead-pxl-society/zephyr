@@ -2,7 +2,7 @@ import type { ColumnDef } from "@tanstack/react-table";
 import type { TFunction } from "i18next";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
-import type { DeviceView, Platform } from "@/type";
+import type { DeviceView } from "@/type";
 import { DicebearAvatar } from "../dicebear-avatar";
 import { HeroIcon } from "../hero-icon";
 import { PlatformIcon } from "../platform-icon";
@@ -14,7 +14,7 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { platformMap } from "./contact-columns";
+import { getPlatformMeta } from "./contact-columns";
 
 type DeviceTableActions = {
 	onSend(device: DeviceView): void;
@@ -59,8 +59,7 @@ export const createDeviceColumns = (
 		accessorFn: (device) => device.peer.platform,
 		header: () => <div className="text-right">{t("common:platform")}</div>,
 		cell: ({ row }) => {
-			const platform: Platform = row.getValue("platform");
-			const meta = platformMap[platform];
+			const meta = getPlatformMeta(row.original.peer.platform);
 			return (
 				<div className="flex flex-row items-center justify-end gap-x-2">
 					<PlatformIcon name={meta.icon} className="h-4 w-4" />

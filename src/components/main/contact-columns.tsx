@@ -55,6 +55,9 @@ export const platformMap: Record<Platform, PlatformMeta> = {
 	},
 };
 
+export const getPlatformMeta = (platform?: Platform | null): PlatformMeta =>
+	(platform && platformMap[platform]) || platformMap.other;
+
 export const createColumns = (
 	t: TFunction,
 	actions: ContactTableActions,
@@ -76,8 +79,7 @@ export const createColumns = (
 		accessorKey: "platform",
 		header: () => <div className="text-right">{t("common:platform")}</div>,
 		cell: ({ row }) => {
-			const platform: Platform = row.getValue("platform");
-			const meta = platformMap[platform];
+			const meta = getPlatformMeta(row.original.platform);
 			return (
 				<div className="flex flex-row items-center justify-end gap-x-2">
 					<PlatformIcon name={meta.icon} className="h-4 w-4" />
