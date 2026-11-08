@@ -51,7 +51,7 @@ walkdir = "2"
 window-vibrancy = "0.7.1"
 tauri-plugin-clipboard-manager = "2"
 tauri-plugin-os = "2"
-tauri-plugin-notification = "2"
+zephyr-notify = { git = "https://github.com/dead-pxl-society/zephyr-notify.git" }
 xxhash-rust = { version = "0.8.15", features = ["xxh3", "const_xxh3"] }
 tauri-plugin-fs = "2"
 tauri-plugin-dialog = "2"

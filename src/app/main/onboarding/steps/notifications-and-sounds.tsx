@@ -1,9 +1,5 @@
 import { invoke } from "@tauri-apps/api/core";
 import { emit } from "@tauri-apps/api/event";
-import {
-	isPermissionGranted,
-	requestPermission,
-} from "@tauri-apps/plugin-notification";
 import { motion, type Variants } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -18,6 +14,7 @@ import {
 	SettingTitle,
 } from "@/components/settings/setting";
 import { Switch } from "@/components/ui/switch";
+import { isPermissionGranted, requestPermission } from "@/lib/notify";
 import { useUser } from "@/lib/store/user";
 import { useOnboarding } from "../use-onboarding";
 
@@ -50,7 +47,7 @@ export const NotificationsAndSoundsStep = () => {
 			return;
 		}
 
-		setGranted((await requestPermission()) === "granted");
+		setGranted(await requestPermission());
 	};
 
 	const handleToggle =

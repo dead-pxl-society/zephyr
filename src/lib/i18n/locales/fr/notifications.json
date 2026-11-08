@@ -2,15 +2,14 @@
 	"enable_notifications": "Autoriser les notifications",
 	"enable_notifications_description": "Soyez prévenu des demandes et des transferts entrants pendant que Zephyr tourne en arrière-plan.",
 
-	"share_request_description_one": "Un pair essaie de vous envoyer {{count}} fichier ({{size}}). Ouvrez Zephyr pour accepter ou refuser la demande.",
-	"share_request_description_many": "Un pair essaie de vous envoyer {{count}} fichiers ({{size}}). Ouvrez Zephyr pour accepter ou refuser la demande.",
-	"share_request_description_other": "Un pair essaie de vous envoyer {{count}} fichiers ({{size}}). Ouvrez Zephyr pour accepter ou refuser la demande.",
+	"share_request_description_one": "Un pair essaie de vous envoyer {{count}} fichier ({{size}}).",
+	"share_request_description_many": "Un pair essaie de vous envoyer {{count}} fichiers ({{size}}).",
+	"share_request_description_other": "Un pair essaie de vous envoyer {{count}} fichiers ({{size}}).",
 
 	"receiving_files_title": "Réception de fichiers",
 	"receiving_files_body": "Nous vous préviendrons dès que le transfert sera terminé.",
 	"transfer_complete_title": "Transfert terminé",
 	"transfer_complete_body": "Vos fichiers vous attendent dans votre dossier de téléchargements.",
-	"receiving_trusted_files_title": "Réception de fichiers de confiance",
 	"receiving_trusted_files_body": "{{peer}} vous envoie des fichiers. Nous vous préviendrons dès que ce sera terminé.",
 	"receiving_trusted_files_body_unknown": "Un pair de confiance vous envoie des fichiers. Nous vous préviendrons dès que ce sera terminé.",
 

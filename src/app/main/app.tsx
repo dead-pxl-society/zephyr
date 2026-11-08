@@ -29,6 +29,7 @@ import {
 } from "@/components/main/share-dialog";
 import { Sidebar, SidebarItem, SidebarTitle } from "@/components/main/sidebar";
 import { CrtSplash } from "@/components/onboarding/crt-splash";
+import { DeviceRequestDrawer } from "@/components/onboarding/device-request-drawer";
 import { TesterSwitch } from "@/components/tester-switch";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { toastError } from "@/lib/errors";
@@ -356,6 +357,7 @@ export const Layout = ({ dragging }: { dragging: boolean }) => {
 				ref={receiveDialogRef}
 				{...(receiveDialogData.data ?? {})}
 			/>
+			<DeviceRequestDrawer onlyAcceptedFromNotification />
 			<AddContactDrawer ref={addContactDrawerRef} />
 		</main>
 	);

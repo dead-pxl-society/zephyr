@@ -2,16 +2,15 @@
 	"enable_notifications": "Разрешить уведомления",
 	"enable_notifications_description": "Получайте уведомления о входящих запросах и передачах, пока Zephyr работает в фоне.",
 
-	"share_request_description_one": "Узел пытается отправить вам {{count}} файл ({{size}}). Откройте Zephyr, чтобы принять или отклонить запрос.",
-	"share_request_description_few": "Узел пытается отправить вам {{count}} файла ({{size}}). Откройте Zephyr, чтобы принять или отклонить запрос.",
-	"share_request_description_many": "Узел пытается отправить вам {{count}} файлов ({{size}}). Откройте Zephyr, чтобы принять или отклонить запрос.",
-	"share_request_description_other": "Узел пытается отправить вам {{count}} файла ({{size}}). Откройте Zephyr, чтобы принять или отклонить запрос.",
+	"share_request_description_one": "Узел пытается отправить вам {{count}} файл ({{size}}).",
+	"share_request_description_few": "Узел пытается отправить вам {{count}} файла ({{size}}).",
+	"share_request_description_many": "Узел пытается отправить вам {{count}} файлов ({{size}}).",
+	"share_request_description_other": "Узел пытается отправить вам {{count}} файла ({{size}}).",
 
 	"receiving_files_title": "Получение файлов",
 	"receiving_files_body": "Мы сообщим, когда передача завершится.",
 	"transfer_complete_title": "Передача завершена",
 	"transfer_complete_body": "Файлы готовы в папке загрузок.",
-	"receiving_trusted_files_title": "Получение доверенных файлов",
 	"receiving_trusted_files_body": "{{peer}} отправляет вам файлы. Мы сообщим, когда все будет готово.",
 	"receiving_trusted_files_body_unknown": "Доверенный узел отправляет вам файлы. Мы сообщим, когда все будет готово.",
 

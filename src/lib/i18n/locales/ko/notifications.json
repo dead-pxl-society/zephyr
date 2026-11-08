@@ -2,13 +2,12 @@
 	"enable_notifications": "알림 허용",
 	"enable_notifications_description": "Zephyr가 백그라운드에서 실행되는 동안에도 받은 요청과 전송을 알려 드립니다.",
 
-	"share_request_description_other": "어떤 피어가 파일 {{count}}개({{size}})를 보내려고 합니다. Zephyr를 열어 요청을 수락하거나 거절하세요.",
+	"share_request_description_other": "어떤 피어가 파일 {{count}}개({{size}})를 보내려고 합니다.",
 
 	"receiving_files_title": "파일 받는 중",
 	"receiving_files_body": "전송이 끝나면 알려 드릴게요.",
 	"transfer_complete_title": "전송 완료",
 	"transfer_complete_body": "파일이 다운로드 폴더에 준비되어 있습니다.",
-	"receiving_trusted_files_title": "신뢰하는 파일 받는 중",
 	"receiving_trusted_files_body": "{{peer}}님이 파일을 보내고 있습니다. 끝나면 알려 드릴게요.",
 	"receiving_trusted_files_body_unknown": "신뢰하는 피어가 파일을 보내고 있습니다. 끝나면 알려 드릴게요.",
 

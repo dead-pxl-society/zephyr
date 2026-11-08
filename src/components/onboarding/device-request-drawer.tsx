@@ -13,8 +13,17 @@ import {
 } from "@/lib/store/requests";
 import type { DeviceRequest } from "@/type";
 
-export const DeviceRequestDrawer = () => {
-	const nextRequest = useNextDeviceRequest();
+type DeviceRequestDrawerProps = {
+	fullscreen?: boolean;
+	/** Only handle requests accepted from a notification, leaving the rest to the sidebar. */
+	onlyAcceptedFromNotification?: boolean;
+};
+
+export const DeviceRequestDrawer = ({
+	fullscreen,
+	onlyAcceptedFromNotification,
+}: DeviceRequestDrawerProps) => {
+	const nextRequest = useNextDeviceRequest(onlyAcceptedFromNotification);
 	const removeRequest = useShareRequestStore((s) => s.removeRequest);
 
 	const [request, setRequest] = useState<DeviceRequest | null>(null);
@@ -41,12 +50,19 @@ export const DeviceRequestDrawer = () => {
 	const { t } = useTranslation();
 
 	useEffect(() => {
-		if (request || !nextRequest) return;
+		if (!nextRequest) return;
 
-		answeredRef.current = false;
-		setRequest(nextRequest);
-		drawerRef.current?.present();
-	}, [request, nextRequest]);
+		if (!request) {
+			answeredRef.current = false;
+			setRequest(nextRequest);
+			drawerRef.current?.present();
+		}
+
+		// The decision was already made on the notification. This can also arrive while
+		// the drawer is open on the same request, during onboarding.
+		const isCurrent = !request || request.sessionId === nextRequest.sessionId;
+		if (nextRequest.acceptedFromNotification && isCurrent) join();
+	}, [request, nextRequest, join]);
 
 	useEffect(() => {
 		if (!request || pending || answeredRef.current) return;
@@ -72,7 +88,7 @@ export const DeviceRequestDrawer = () => {
 		<DynamicDrawer
 			ref={drawerRef}
 			viewKey={status}
-			fullscreen // This runs in onboarding only for now if that changes implement this properly
+			fullscreen={fullscreen}
 			onClosed={onClosed}
 			hideClose
 		>

@@ -2,13 +2,12 @@
 	"enable_notifications": "通知を許可",
 	"enable_notifications_description": "Zephyr がバックグラウンドで動作している間も、受信したリクエストや転送をお知らせします。",
 
-	"share_request_description_other": "ピアが {{count}} 個のファイル（{{size}}）を送ろうとしています。Zephyr を開いてリクエストを承認または拒否してください。",
+	"share_request_description_other": "ピアが {{count}} 個のファイル（{{size}}）を送ろうとしています。",
 
 	"receiving_files_title": "ファイルを受信中",
 	"receiving_files_body": "転送が完了したらお知らせします。",
 	"transfer_complete_title": "転送が完了しました",
 	"transfer_complete_body": "ファイルはダウンロードフォルダに保存されています。",
-	"receiving_trusted_files_title": "信頼済みのファイルを受信中",
 	"receiving_trusted_files_body": "{{peer}} がファイルを送信しています。完了したらお知らせします。",
 	"receiving_trusted_files_body_unknown": "信頼済みのピアがファイルを送信しています。完了したらお知らせします。",
 
