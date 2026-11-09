@@ -11,10 +11,19 @@ use crate::{
     db::api::peer::add_contact_by_ticket,
     error::Result,
     events::{ImportErrorEvent, NotificationEvent, ShareRequest, ShareResponse, ShareResponseType},
-    net::{api::download_inner, node::ImportProgress, proto::share::ShareMessage},
+    net::{
+        api::download_inner,
+        node::{ImportProgress, ImportProgressType},
+        proto::share::ShareMessage,
+    },
     state::AppState,
     transfer::{handle_export_events, handle_get_progress},
-    util::{file::calculate_selection_hash, parcel::Parcel, peer_cache::refresh_nearby},
+    util::{
+        file::calculate_selection_hash,
+        parcel::Parcel,
+        peer_cache::refresh_nearby,
+        throttle::{PROGRESS_INTERVAL, ProgressThrottle},
+    },
     window::{hide_window, show_window},
 };
 
@@ -44,7 +53,15 @@ pub(crate) fn handle_selected_files(
 
         let app_clone = app.clone();
         tauri::async_runtime::spawn(async move {
+            let mut throttle = ProgressThrottle::new(PROGRESS_INTERVAL);
             while let Some(msg) = progress_rx.recv().await {
+                let is_tick = matches!(
+                    msg.event_type,
+                    ImportProgressType::CopyProgress | ImportProgressType::OutboardProgress
+                );
+                if is_tick && !throttle.ready(msg.key.clone()) {
+                    continue;
+                }
                 let _ = app_clone.emit("import_progress", &msg);
             }
         });

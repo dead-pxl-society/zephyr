@@ -12,9 +12,12 @@ use crate::{
     error::Result,
     events::{BlobConnectionEvent, NotificationEvent, SendEventType, SendProgressEvent},
     net::{
-        export::{ExportEvent, GetEventType, GetProgressEvent, PerConnectionProgress},
+        export::{
+            ExportEvent, ExportEventType, GetEventType, GetProgressEvent, PerConnectionProgress,
+        },
         proto::share::PeerInfo,
     },
+    util::throttle::{PROGRESS_INTERVAL, ProgressThrottle},
 };
 
 async fn per_request_progress(
@@ -34,6 +37,8 @@ async fn per_request_progress(
         return;
     };
 
+    let mut throttle = ProgressThrottle::new(PROGRESS_INTERVAL);
+
     while let Ok(Some(msg)) = rx.recv().await {
         match msg {
             RequestUpdate::Started(msg) => {
@@ -50,6 +55,9 @@ async fn per_request_progress(
                 }
             }
             RequestUpdate::Progress(msg) => {
+                if !throttle.ready(()) {
+                    continue;
+                }
                 let event = SendProgressEvent {
                     event_type: SendEventType::Progress,
                     connection_id,
@@ -184,7 +192,13 @@ pub(crate) async fn handle_get_progress(
     mut receiver: mpsc::UnboundedReceiver<GetProgressEvent>,
     notify: bool,
 ) -> Result<()> {
+    let mut throttle = ProgressThrottle::new(PROGRESS_INTERVAL);
+
     while let Some(mut msg) = receiver.recv().await {
+        if msg.event_type == GetEventType::Progress && !throttle.ready(()) {
+            continue;
+        }
+
         let announces = matches!(
             msg.event_type,
             GetEventType::Connecting | GetEventType::Started
@@ -223,7 +237,18 @@ pub(crate) async fn handle_export_events(
     app: tauri::AppHandle,
     mut receiver: mpsc::UnboundedReceiver<ExportEvent>,
 ) -> Result<()> {
+    let mut throttle = ProgressThrottle::new(PROGRESS_INTERVAL);
+
     while let Some(msg) = receiver.recv().await {
+        match msg.event_type {
+            ExportEventType::Progress => {
+                if !throttle.ready(msg.name.clone()) {
+                    continue;
+                }
+            }
+            ExportEventType::Done | ExportEventType::Error => throttle.forget(&msg.name),
+            _ => {}
+        }
         let _ = app.emit("export_event", &msg);
     }
 
