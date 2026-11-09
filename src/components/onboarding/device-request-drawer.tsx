@@ -15,7 +15,6 @@ import type { DeviceRequest } from "@/type";
 
 type DeviceRequestDrawerProps = {
 	fullscreen?: boolean;
-	/** Only handle requests accepted from a notification, leaving the rest to the sidebar. */
 	onlyAcceptedFromNotification?: boolean;
 };
 
@@ -103,6 +102,7 @@ export const DeviceRequestDrawer = ({
 				<DeviceRequestForm
 					code={request?.code}
 					endpointId={request?.peer.endpointId}
+					otpClassName="mx-auto max-w-[280px]"
 					onSubmit={accept}
 					onReject={reject}
 				/>
