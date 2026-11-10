@@ -1,6 +1,10 @@
 {
 	"enable_notifications": "Permitir notificaciones",
 	"enable_notifications_description": "Recibe avisos de solicitudes y transferencias entrantes mientras Zephyr corre en segundo plano.",
+	"permission_not_determined": "Zephyr necesita tu permiso para mostrar notificaciones.",
+	"permission_denied": "Las notificaciones de Zephyr están desactivadas en los ajustes del sistema.",
+	"allow_notifications_action": "Permitir",
+	"open_system_settings_action": "Abrir ajustes",
 
 	"share_request_description_one": "Alguien está intentando enviarte {{count}} archivo ({{size}}).",
 	"share_request_description_many": "Alguien está intentando enviarte {{count}} archivos ({{size}}).",

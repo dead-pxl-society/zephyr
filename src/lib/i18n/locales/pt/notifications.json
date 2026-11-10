@@ -1,6 +1,10 @@
 {
 	"enable_notifications": "Permitir notificações",
 	"enable_notifications_description": "Receba avisos sobre solicitações e transferências enquanto o Zephyr roda em segundo plano.",
+	"permission_not_determined": "O Zephyr precisa da sua permissão para mostrar notificações.",
+	"permission_denied": "As notificações do Zephyr estão desativadas nas configurações do sistema.",
+	"allow_notifications_action": "Permitir",
+	"open_system_settings_action": "Abrir configurações",
 
 	"share_request_description_one": "Um peer está tentando enviar {{count}} arquivo ({{size}}).",
 	"share_request_description_many": "Um peer está tentando enviar {{count}} arquivos ({{size}}).",

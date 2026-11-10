@@ -1,6 +1,10 @@
 {
 	"enable_notifications": "通知を許可",
 	"enable_notifications_description": "Zephyr がバックグラウンドで動作している間も、受信したリクエストや転送をお知らせします。",
+	"permission_not_determined": "通知を表示するには Zephyr への許可が必要です。",
+	"permission_denied": "Zephyr の通知はシステム設定でオフになっています。",
+	"allow_notifications_action": "許可",
+	"open_system_settings_action": "設定を開く",
 
 	"share_request_description_other": "ピアが {{count}} 個のファイル（{{size}}）を送ろうとしています。",
 

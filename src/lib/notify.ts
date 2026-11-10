@@ -14,16 +14,28 @@ export type NotificationOptions = {
 	progress?: number;
 };
 
-export function isPermissionGranted() {
-	return invoke<boolean>("notification_permission");
+export type NotificationPermission =
+	| "granted"
+	| "denied"
+	| "notDetermined"
+	/** No notification service, such as under `tauri dev` on macOS. */
+	| "unavailable";
+
+export function getPermission() {
+	return invoke<NotificationPermission>("notification_permission");
 }
 
+/** Shows the OS prompt if the user hasn't been asked yet. */
 export function requestPermission() {
-	return invoke<boolean>("request_notification_permission");
+	return invoke<NotificationPermission>("request_notification_permission");
 }
 
 async function checkPermission() {
-	return (await isPermissionGranted()) || (await requestPermission());
+	const permission = await getPermission();
+	if (permission === "notDetermined") {
+		return (await requestPermission()) === "granted";
+	}
+	return permission === "granted";
 }
 
 export async function openNotificationSettings() {

@@ -85,6 +85,26 @@ pub(crate) fn forward_events(app: AppHandle, events: Receiver<Event>) {
     });
 }
 
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+pub enum NotificationPermission {
+    Granted,
+    Denied,
+    NotDetermined,
+    /// There's no notification service, such as under `tauri dev` on macOS.
+    Unavailable,
+}
+
+impl From<Permission> for NotificationPermission {
+    fn from(permission: Permission) -> Self {
+        match permission {
+            Permission::Granted => Self::Granted,
+            Permission::NotDetermined => Self::NotDetermined,
+            _ => Self::Denied,
+        }
+    }
+}
+
 #[derive(Clone, Serialize)]
 #[serde(rename_all = "camelCase")]
 struct NotificationAction {
@@ -187,26 +207,30 @@ pub async fn close_notification(id: String, state: State<'_, Notifications>) -> 
 }
 
 #[tauri::command]
-pub async fn notification_permission(state: State<'_, Notifications>) -> Result<bool> {
+pub async fn notification_permission(
+    state: State<'_, Notifications>,
+) -> Result<NotificationPermission> {
     let Some(notifier) = state.notifier.clone() else {
-        return Ok(false);
+        return Ok(NotificationPermission::Unavailable);
     };
     let permission = blocking(move || notifier.permission())
         .await
         .map_err(to_error)?;
-    Ok(permission == Permission::Granted)
+    Ok(permission.into())
 }
 
 /// Waits for the user to answer the OS prompt where there is one.
 #[tauri::command]
-pub async fn request_notification_permission(state: State<'_, Notifications>) -> Result<bool> {
+pub async fn request_notification_permission(
+    state: State<'_, Notifications>,
+) -> Result<NotificationPermission> {
     let Some(notifier) = state.notifier.clone() else {
-        return Ok(false);
+        return Ok(NotificationPermission::Unavailable);
     };
     let permission = blocking(move || notifier.request_permission())
         .await
         .map_err(to_error)?;
-    Ok(permission == Permission::Granted)
+    Ok(permission.into())
 }
 
 pub(crate) fn transfer_notification_id(transfer_id: u64) -> String {

@@ -1,6 +1,10 @@
 {
 	"enable_notifications": "Autoriser les notifications",
 	"enable_notifications_description": "Soyez prévenu des demandes et des transferts entrants pendant que Zephyr tourne en arrière-plan.",
+	"permission_not_determined": "Zephyr a besoin de votre autorisation pour afficher des notifications.",
+	"permission_denied": "Les notifications de Zephyr sont désactivées dans les réglages du système.",
+	"allow_notifications_action": "Autoriser",
+	"open_system_settings_action": "Ouvrir les réglages",
 
 	"share_request_description_one": "Un pair essaie de vous envoyer {{count}} fichier ({{size}}).",
 	"share_request_description_many": "Un pair essaie de vous envoyer {{count}} fichiers ({{size}}).",

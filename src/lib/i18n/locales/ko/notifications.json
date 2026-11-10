@@ -1,6 +1,10 @@
 {
 	"enable_notifications": "알림 허용",
 	"enable_notifications_description": "Zephyr가 백그라운드에서 실행되는 동안에도 받은 요청과 전송을 알려 드립니다.",
+	"permission_not_determined": "알림을 표시하려면 Zephyr에 권한이 필요합니다.",
+	"permission_denied": "시스템 설정에서 Zephyr 알림이 꺼져 있습니다.",
+	"allow_notifications_action": "허용",
+	"open_system_settings_action": "설정 열기",
 
 	"share_request_description_other": "어떤 피어가 파일 {{count}}개({{size}})를 보내려고 합니다.",
 

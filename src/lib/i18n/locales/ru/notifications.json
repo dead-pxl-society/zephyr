@@ -1,6 +1,10 @@
 {
 	"enable_notifications": "Разрешить уведомления",
 	"enable_notifications_description": "Получайте уведомления о входящих запросах и передачах, пока Zephyr работает в фоне.",
+	"permission_not_determined": "Zephyr нужно ваше разрешение, чтобы показывать уведомления.",
+	"permission_denied": "Уведомления Zephyr отключены в настройках системы.",
+	"allow_notifications_action": "Разрешить",
+	"open_system_settings_action": "Открыть настройки",
 
 	"share_request_description_one": "Узел пытается отправить вам {{count}} файл ({{size}}).",
 	"share_request_description_few": "Узел пытается отправить вам {{count}} файла ({{size}}).",

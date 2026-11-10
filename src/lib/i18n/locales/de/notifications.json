@@ -1,6 +1,10 @@
 {
 	"enable_notifications": "Mitteilungen erlauben",
 	"enable_notifications_description": "Lass dich über eingehende Anfragen und Übertragungen informieren, während Zephyr im Hintergrund läuft.",
+	"permission_not_determined": "Zephyr braucht deine Erlaubnis, um Benachrichtigungen anzuzeigen.",
+	"permission_denied": "Benachrichtigungen für Zephyr sind in deinen Systemeinstellungen deaktiviert.",
+	"allow_notifications_action": "Erlauben",
+	"open_system_settings_action": "Einstellungen öffnen",
 
 	"share_request_description_one": "Ein Peer möchte dir {{count}} Datei senden ({{size}}).",
 	"share_request_description_other": "Ein Peer möchte dir {{count}} Dateien senden ({{size}}).",
