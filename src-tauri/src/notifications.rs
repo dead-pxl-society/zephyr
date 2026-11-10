@@ -10,6 +10,7 @@ use serde::{Deserialize, Serialize};
 use tauri::{AppHandle, Emitter, Manager, State};
 use zephyr_notify::{
     Action, Event, Notification, NotificationHandle, Notifier, Permission, Progress,
+    ProgressSupport,
 };
 
 use crate::{
@@ -27,6 +28,9 @@ pub(crate) struct Notifications {
     /// has no app bundle. Notifications are then skipped.
     notifier: Option<Notifier>,
     handles: DashMap<String, NotificationHandle>,
+    /// Progress is only shown where the OS draws a real bar. Elsewhere it would be a line of
+    /// text that, on macOS, never stays on screen, so a transfer just gets a start and an end.
+    native_progress: bool,
 }
 
 /// Starts the notifier. Runs before `tauri::Builder` so that macOS and Windows can
@@ -53,9 +57,13 @@ pub(crate) fn init(app_id: &str, app_name: &str) -> (Notifications, Receiver<Eve
         .build()
         .inspect_err(|e| eprintln!("[notifications] unavailable: {e}"))
         .ok();
+    let native_progress = notifier
+        .as_ref()
+        .is_some_and(|n| n.capabilities().progress == ProgressSupport::Native);
     let notifications = Notifications {
         notifier,
         handles: DashMap::new(),
+        native_progress,
     };
     (notifications, events_rx)
 }
@@ -152,6 +160,10 @@ pub async fn show_notification(
     let Some(notifier) = state.notifier.clone() else {
         return Ok(false);
     };
+    let mut request = request;
+    if !state.native_progress {
+        request.progress = None;
+    }
     let id = request.id.clone();
     match blocking(move || notifier.show(request.into())).await {
         Ok(handle) => {
@@ -203,13 +215,12 @@ pub(crate) fn transfer_notification_id(transfer_id: u64) -> String {
 
 /// Updates a transfer's progress notification, if the frontend chose to show one.
 pub(crate) async fn set_transfer_progress(app: &AppHandle, transfer_id: u64, fraction: f64) {
+    let state = app.state::<Notifications>();
+    if !state.native_progress {
+        return;
+    }
     let id = transfer_notification_id(transfer_id);
-    let Some(handle) = app
-        .state::<Notifications>()
-        .handles
-        .get(&id)
-        .map(|entry| entry.value().clone())
-    else {
+    let Some(handle) = state.handles.get(&id).map(|entry| entry.value().clone()) else {
         return;
     };
     let result = blocking(move || handle.set_progress(Progress::fraction(fraction))).await;
