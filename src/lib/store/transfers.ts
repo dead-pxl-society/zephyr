@@ -15,6 +15,7 @@ import type {
 	ShareResponse,
 } from "@/type";
 import i18n from "../i18n";
+import { closeNotification, sendNotification } from "../notify";
 import type { Parcel } from "./parcels";
 import { queryClient } from "./react-query";
 
@@ -28,6 +29,35 @@ const isMainWindow = currentWindow.label === "main";
  */
 const playSound = (name: SoundName) => {
 	if (isMainWindow) play(name);
+};
+
+/** The backend updates this notification's progress using the same id. */
+const transferNotificationId = (transferId: number) => `transfer-${transferId}`;
+
+const notifyTransferStarted = (transferId: number, from?: PeerInfo) => {
+	if (!isMainWindow) return;
+	sendNotification({
+		id: transferNotificationId(transferId),
+		title: i18n.t("notifications:receiving_files_title"),
+		body: from?.name
+			? i18n.t("notifications:receiving_trusted_files_body", {
+					peer: from.name,
+				})
+			: i18n.t("notifications:receiving_files_body"),
+		progress: 0,
+	});
+};
+
+/** Replaces the progress notification, or just clears it if the user is looking at the app. */
+const notifyTransferFinished = async (transferId: number) => {
+	if (!isMainWindow) return;
+	const id = transferNotificationId(transferId);
+	const shown = await sendNotification({
+		id,
+		title: i18n.t("notifications:transfer_complete_title"),
+		body: i18n.t("notifications:transfer_complete_body"),
+	});
+	if (!shown) closeNotification(id);
 };
 
 /** Fallback for a request the backend never resolves (peer accepted but never fetched). */
@@ -667,6 +697,7 @@ listen<GetProgress>("get_progress", (event) => {
 			from: from ?? current?.from,
 			ticket: ticket ?? current?.ticket,
 		});
+		notifyTransferStarted(transferId, from ?? current?.from);
 	} else if (type === "progress") {
 		scheduleProgress({
 			kind: "inbound",
@@ -688,6 +719,7 @@ listen<GetProgress>("get_progress", (event) => {
 		if (isMainWindow) {
 			console.error("[transfers] receive failed", error);
 			toast.error(i18n.t("errors:receive_failed"));
+			closeNotification(transferNotificationId(transferId));
 		}
 
 		playSound("error");
@@ -745,6 +777,7 @@ listen<ExportEvent>("export_event", (event) => {
 		storeTransfer(newTransfer, current.from?.endpointId);
 
 		playSound("success");
+		notifyTransferFinished(transferId);
 		setTimeout(() => {
 			queryClient.invalidateQueries({ queryKey: ["transfers"] });
 			deleteInbound(transferId);
@@ -755,6 +788,7 @@ listen<ExportEvent>("export_event", (event) => {
 		if (isMainWindow) {
 			console.error("[transfers] export failed", error);
 			toast.error(i18n.t("errors:export_failed"));
+			closeNotification(transferNotificationId(transferId));
 		}
 
 		playSound("error");

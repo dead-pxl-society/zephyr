@@ -2,6 +2,8 @@ import { invoke } from "@tauri-apps/api/core";
 import { emit, listen } from "@tauri-apps/api/event";
 import { getCurrentWebviewWindow } from "@tauri-apps/api/webviewWindow";
 import { play } from "cuelume";
+import { useMemo } from "react";
+import { toast } from "sonner";
 import { create } from "zustand";
 import type {
 	DevicePairingEvent,
@@ -12,7 +14,11 @@ import type {
 } from "@/type";
 import { toastError } from "../errors";
 import i18n from "../i18n";
-import { sendNotification } from "../notify";
+import {
+	closeNotification,
+	onNotificationAction,
+	sendNotification,
+} from "../notify";
 import { humanReadableSize } from "../utils";
 import { queryClient } from "./react-query";
 
@@ -26,6 +32,10 @@ interface RequestStore {
 
 const currentWindow = getCurrentWebviewWindow();
 
+/** Requests shown in the sidebar, as opposed to one that has moved to the code drawer. */
+const isListedRequest = (request: IncomingRequest) =>
+	request.type !== "device" || !request.acceptedFromNotification;
+
 export const useShareRequestStore = create<RequestStore>((set) => ({
 	requests: [],
 
@@ -35,8 +45,9 @@ export const useShareRequestStore = create<RequestStore>((set) => ({
 
 	popRequest: () => {
 		set((state) => {
-			if (state.requests.length === 0) return state;
-			return { requests: [...state.requests.slice(1)] };
+			const first = state.requests.find(isListedRequest);
+			if (!first) return state;
+			return { requests: state.requests.filter((r) => r !== first) };
 		});
 	},
 
@@ -58,33 +69,194 @@ export const useShareRequestStore = create<RequestStore>((set) => ({
 	},
 }));
 
-export const useShareRequests = () => useShareRequestStore((s) => s.requests);
+export const useShareRequests = () => {
+	const requests = useShareRequestStore((s) => s.requests);
+	return useMemo(() => requests.filter(isListedRequest), [requests]);
+};
 
-export const useNextDeviceRequest = () =>
-	useShareRequestStore(
-		(s) => s.requests.find((r) => r.type === "device") ?? null,
-	);
+export const useNextDeviceRequest = (onlyAcceptedFromNotification = false) =>
+	useShareRequestStore((s) => {
+		const devices = s.requests.filter(
+			(r): r is Extract<IncomingRequest, { type: "device" }> =>
+				r.type === "device",
+		);
+		// One the user just accepted goes ahead of any that are still waiting for a decision.
+		const accepted = devices.find((r) => r.acceptedFromNotification);
+		return (
+			accepted ?? (onlyAcceptedFromNotification ? null : devices[0]) ?? null
+		);
+	});
+
+type StoredShareRequest = Extract<IncomingRequest, { type: "share" }>;
+type StoredDeviceRequest = Extract<IncomingRequest, { type: "device" }>;
+
+/**
+ * Pending requests by notification id, so that a press answers exactly the request it was
+ * shown for, unlike the shortcuts, which act on whichever request is next. The ids include
+ * a session because the OS can still be holding notifications from an earlier run, whose
+ * requests are gone even if the same request id has since been reused.
+ */
+const requestNotifications = new Map<string, IncomingRequest>();
+const notificationSession = crypto.randomUUID();
+let notificationCount = 0;
+
+const notifyRequest = async (
+	request: IncomingRequest,
+	content: { title: string; body: string },
+) => {
+	notificationCount += 1;
+	const id = `request-${notificationSession}-${notificationCount}`;
+	requestNotifications.set(id, request);
+
+	const shown = await sendNotification({
+		id,
+		...content,
+		persistent: true,
+		actions: [
+			{ id: "accept", label: i18n.t("common:accept") },
+			{ id: "reject", label: i18n.t("common:reject"), destructive: true },
+		],
+	});
+	if (!shown) requestNotifications.delete(id);
+};
+
+const notifyShareRequest = (request: StoredShareRequest) => {
+	const details = {
+		count: request.info.totalFiles,
+		size: humanReadableSize(request.info.size),
+	};
+	return notifyRequest(request, {
+		title: i18n.t("share:incoming_request_title"),
+		body: request.peer.name
+			? i18n.t("share:incoming_request_description", {
+					...details,
+					peer: request.peer.name,
+				})
+			: i18n.t("notifications:share_request_description", details),
+	});
+};
+
+const notifyDeviceRequest = (request: StoredDeviceRequest) => {
+	const peer =
+		request.peer.name ||
+		i18n.t("peers:peer_default_name", {
+			id: request.peer.endpointId.slice(-4),
+		});
+	return notifyRequest(request, {
+		title: i18n.t("peers:device_request_title"),
+		body: i18n.t("peers:device_request_description", { peer }),
+	});
+};
+
+const answerShareRequest = async (
+	request: StoredShareRequest,
+	accepted: boolean,
+) => {
+	await invoke("answer_share_request", {
+		requestId: request.requestId,
+		accepted,
+	});
+	if (!accepted) return;
+
+	await invoke("download", {
+		ticket: request.info.ticket,
+		peer: request.peer,
+	});
+};
+
+const removeStoredRequest = (request: IncomingRequest) => {
+	useShareRequestStore.setState((state) => ({
+		requests: state.requests.filter((r) => r !== request),
+	}));
+};
+
+const answerShareFromNotification = async (
+	request: StoredShareRequest,
+	accepted: boolean,
+) => {
+	removeStoredRequest(request);
+	try {
+		await answerShareRequest(request, accepted);
+		play(accepted ? "ready" : "whisper");
+	} catch (e) {
+		if (!accepted) {
+			console.error("[requests] reject failed", e);
+			return;
+		}
+		await invoke("show_main_window");
+		toastError(e, "errors:error_accepting_request");
+	}
+};
+
+const answerDeviceFromNotification = async (
+	request: StoredDeviceRequest,
+	accepted: boolean,
+) => {
+	if (accepted) {
+		// Accepting still takes the code from the other device, so hand this over to the
+		// drawer. The request stays pending until the code is entered.
+		useShareRequestStore.setState((state) => ({
+			requests: state.requests.map((r) =>
+				r === request ? { ...request, acceptedFromNotification: true } : r,
+			),
+		}));
+		await invoke("show_main_window");
+		return;
+	}
+
+	removeStoredRequest(request);
+	try {
+		await invoke("answer_device_invite", {
+			sessionId: request.sessionId,
+			accepted: false,
+		});
+		play("whisper");
+	} catch (e) {
+		console.error("[requests] reject failed", e);
+	}
+};
+
+if (currentWindow.label === "main") {
+	// However a request ends (answered in the app, cancelled, timed out), its notification
+	// must go with it so that its buttons can't be pressed later.
+	useShareRequestStore.subscribe(({ requests }) => {
+		for (const [id, request] of requestNotifications) {
+			if (!requests.includes(request)) {
+				requestNotifications.delete(id);
+				closeNotification(id);
+			}
+		}
+	});
+
+	onNotificationAction(async ({ id, actionId }) => {
+		if (!id.startsWith("request-")) return;
+
+		const request = requestNotifications.get(id);
+		if (!request) {
+			await invoke("show_main_window");
+			toast.error(i18n.t("errors:share_request_expired"));
+			return;
+		}
+		requestNotifications.delete(id);
+
+		const accepted = actionId === "accept";
+		if (request.type === "share") {
+			await answerShareFromNotification(request, accepted);
+		} else {
+			await answerDeviceFromNotification(request, accepted);
+		}
+	});
+}
 
 listen<ShareRequest>("share_request", (event) => {
-	const request = event.payload;
+	const request: StoredShareRequest = { type: "share", ...event.payload };
 	const { appendRequest } = useShareRequestStore.getState();
 
-	appendRequest({ type: "share", ...request });
+	appendRequest(request);
 
 	if (currentWindow.label === "main") {
-		const size = humanReadableSize(request.info.size);
-		const files = request.info.totalFiles;
-
 		emit("sound:play", "chime");
-
-		sendNotification({
-			title: i18n.t("incoming_request_title", { ns: "share" }),
-			body: i18n.t("share_request_description", {
-				count: files,
-				size,
-				ns: "notifications",
-			}),
-		});
+		notifyShareRequest(request);
 	}
 });
 
@@ -122,7 +294,7 @@ listen("shortcut:accept", async () => {
 	if (currentWindow.label !== "main") return;
 	const { requests, popRequest } = useShareRequestStore.getState();
 
-	const request = requests[0];
+	const request = requests.find(isListedRequest);
 	if (!request) return;
 
 	if (request.type !== "share") return;
@@ -130,14 +302,7 @@ listen("shortcut:accept", async () => {
 	popRequest();
 
 	try {
-		await invoke("answer_share_request", {
-			requestId: request.requestId,
-			accepted: true,
-		});
-		await invoke("download", {
-			ticket: request.info.ticket,
-			peer: request.peer,
-		});
+		await answerShareRequest(request, true);
 		play("ready");
 	} catch (e) {
 		toastError(e, "errors:error_accepting_request");
@@ -148,7 +313,7 @@ listen("shortcut:reject", async () => {
 	if (currentWindow.label !== "main") return;
 	const { requests, popRequest } = useShareRequestStore.getState();
 
-	const request = requests[0];
+	const request = requests.find(isListedRequest);
 	if (!request) return;
 
 	popRequest();
@@ -172,23 +337,10 @@ listen("shortcut:reject", async () => {
 });
 
 listen<DeviceRequest>("device:invite_request", (event) => {
-	const request = event.payload;
+	const request: StoredDeviceRequest = { type: "device", ...event.payload };
 	const { appendRequest } = useShareRequestStore.getState();
 
-	appendRequest({ type: "device", ...request });
+	appendRequest(request);
 
-	if (currentWindow.label === "main") {
-		const peerName = request?.peer.name
-			? request.peer.name
-			: i18n.t("peers:peer_default_name", {
-					id: request?.peer.endpointId.slice(-4),
-				});
-
-		sendNotification({
-			title: i18n.t("peers:device_request_title"),
-			body: i18n.t("peers:device_request_description", {
-				peer: peerName,
-			}),
-		});
-	}
+	if (currentWindow.label === "main") notifyDeviceRequest(request);
 });

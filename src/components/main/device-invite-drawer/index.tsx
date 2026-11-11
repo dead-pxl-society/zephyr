@@ -78,9 +78,17 @@ export const DeviceInviteDrawer = forwardRef(
 			}
 		};
 
+		const reset = () => {
+			sessionIdRef.current = null;
+			setCode("");
+			setRejectReason(null);
+			setStatus("showCode");
+		};
+
 		// Pairing events can beat `pair_device` resolving, which is when the
 		// session id becomes known; anything that arrives early is replayed here.
 		const present = (newSessionId: number) => {
+			reset();
 			sessionIdRef.current = newSessionId;
 			drawerRef.current?.present();
 
@@ -89,17 +97,9 @@ export const DeviceInviteDrawer = forwardRef(
 			if (pending?.sessionId === newSessionId) applyEvent(pending);
 		};
 
-		const handleOpenChange = (newOpen: boolean) => {
-			if (!newOpen) {
-				sessionIdRef.current = null;
-				setCode("");
-				setRejectReason(null);
-				setStatus("showCode");
-			}
-
-			if (!newOpen && onClose) {
-				onClose();
-			}
+		const handleClosed = () => {
+			reset();
+			onClose?.();
 		};
 
 		const cancelPairing = async () => {
@@ -162,7 +162,7 @@ export const DeviceInviteDrawer = forwardRef(
 				ref={drawerRef}
 				viewKey={status}
 				fullscreen={fullscreen}
-				onOpenChange={handleOpenChange}
+				onClosed={handleClosed}
 				hideClose
 				preventClose={status !== "showCode"}
 			>

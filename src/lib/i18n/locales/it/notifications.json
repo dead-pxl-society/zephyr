@@ -1,16 +1,19 @@
 {
 	"enable_notifications": "Consenti le notifiche",
 	"enable_notifications_description": "Ricevi un avviso per richieste e trasferimenti in arrivo mentre Zephyr è in esecuzione in background.",
+	"permission_not_determined": "Zephyr ha bisogno del tuo permesso per mostrare le notifiche.",
+	"permission_denied": "Le notifiche di Zephyr sono disattivate nelle impostazioni di sistema.",
+	"allow_notifications_action": "Consenti",
+	"open_system_settings_action": "Apri impostazioni",
 
-	"share_request_description_one": "Un peer sta provando a inviarti {{count}} file ({{size}}). Apri Zephyr per accettare o rifiutare la richiesta.",
-	"share_request_description_many": "Un peer sta provando a inviarti {{count}} file ({{size}}). Apri Zephyr per accettare o rifiutare la richiesta.",
-	"share_request_description_other": "Un peer sta provando a inviarti {{count}} file ({{size}}). Apri Zephyr per accettare o rifiutare la richiesta.",
+	"share_request_description_one": "Un peer sta provando a inviarti {{count}} file ({{size}}).",
+	"share_request_description_many": "Un peer sta provando a inviarti {{count}} file ({{size}}).",
+	"share_request_description_other": "Un peer sta provando a inviarti {{count}} file ({{size}}).",
 
 	"receiving_files_title": "Ricezione file",
 	"receiving_files_body": "Ti avviseremo quando il trasferimento sarà completato.",
 	"transfer_complete_title": "Trasferimento completato",
 	"transfer_complete_body": "I tuoi file sono pronti nella cartella dei download.",
-	"receiving_trusted_files_title": "Ricezione di file attendibili",
 	"receiving_trusted_files_body": "{{peer}} ti sta inviando dei file. Ti avviseremo quando sarà finito.",
 	"receiving_trusted_files_body_unknown": "Un peer attendibile ti sta inviando dei file. Ti avviseremo quando sarà finito.",
 
