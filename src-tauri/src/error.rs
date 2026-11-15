@@ -5,6 +5,9 @@ pub enum Error {
     #[error("Node not available")]
     NodeUnavailable,
 
+    #[error("Notification failed: {0}")]
+    Notification(String),
+
     #[error("Unknown peer")]
     UnknownPeer,
 

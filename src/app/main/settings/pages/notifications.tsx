@@ -2,6 +2,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { emit } from "@tauri-apps/api/event";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
+import { NotificationPermissionNotice } from "@/components/settings/notification-permission-notice";
 import {
 	Section,
 	SectionDivider,
@@ -15,10 +16,12 @@ import {
 	SettingTitle,
 } from "@/components/settings/setting";
 import { Switch } from "@/components/ui/switch";
+import { useNotificationPermission } from "@/lib/hooks/use-notification-permission";
 import { useUser } from "@/lib/store/user";
 
 export const NotificationsPage = () => {
 	const user = useUser();
+	const { permission, granted, request } = useNotificationPermission();
 	const { t } = useTranslation([
 		"settings",
 		"notifications",
@@ -52,11 +55,16 @@ export const NotificationsPage = () => {
 						</SettingDescription>
 						<SettingsAction>
 							<Switch
-								checked={user?.notifications ?? true}
+								disabled={!granted}
+								checked={granted && (user?.notifications ?? true)}
 								onCheckedChange={handleToggle("notifications")}
 							/>
 						</SettingsAction>
 					</Setting>
+					<NotificationPermissionNotice
+						permission={permission}
+						onRequest={request}
+					/>
 				</SettingsGroup>
 				<SectionDivider />
 				<SectionTitle>{t("settings:sounds_section")}</SectionTitle>

@@ -28,6 +28,7 @@ type PairingFormValues = z.infer<ReturnType<typeof pairingSchema>>;
 type DeviceRequestFormProps = {
 	code?: string;
 	endpointId?: string;
+	otpClassName?: string;
 	onSubmit?: () => Promise<void>;
 	onReject?: () => void;
 };
@@ -35,6 +36,7 @@ type DeviceRequestFormProps = {
 export const DeviceRequestForm = ({
 	code,
 	endpointId,
+	otpClassName,
 	onSubmit,
 	onReject,
 }: DeviceRequestFormProps) => {
@@ -86,7 +88,9 @@ export const DeviceRequestForm = ({
 								pattern={REGEXP_ONLY_DIGITS}
 								onComplete={submit}
 							>
-								<InputOTPGroup className="w-full max-w-[200px]">
+								<InputOTPGroup
+									className={cn("w-full max-w-[200px]", otpClassName)}
+								>
 									<InputOTPSlot
 										index={0}
 										className="aspect-square h-auto min-w-0 flex-1"

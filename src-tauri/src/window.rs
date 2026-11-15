@@ -171,6 +171,7 @@ pub(crate) fn show_main_window(app: tauri::AppHandle) -> Result<()> {
         .get_webview_window("main")
         .ok_or(Error::NoWindowWithLabel("main".to_string()))?;
 
+    let _ = window.unminimize();
     show_window(&window);
 
     Ok(())
