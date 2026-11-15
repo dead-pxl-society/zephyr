@@ -17,8 +17,8 @@ use crate::{
         },
         proto::share::PeerInfo,
     },
-    util::throttle::{PROGRESS_INTERVAL, ProgressThrottle},
     notifications::set_transfer_progress,
+    util::throttle::{PROGRESS_INTERVAL, ProgressThrottle},
 };
 
 async fn per_request_progress(
