@@ -7,7 +7,7 @@ import {
 	type Transition,
 	type Variants,
 } from "motion/react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { useOnClickOutside } from "usehooks-ts";
@@ -107,26 +107,22 @@ export const PeersPage = () => {
 		});
 	};
 
+	const dismiss = () => useCallback(() => setSelectedPeer(null), []);
+
 	const handleSendFiles = (ephemeral: EphemeralPeer) => () => {
 		const peer = makePeerFromEphemeral(ephemeral);
 		setShareDialogData({ visible: true, data: { peer } });
-		setSelectedPeer(null);
-	};
-
-	const handleClickOutside = () => {
-		if (peerRef.current === null) return;
-		setSelectedPeer(null);
-		peerRef.current = null;
+		dismiss();
 	};
 
 	const onSend = (peer: Peer) => {
 		setShareDialogData({ visible: true, data: { peer } });
 	};
 
-	const onAddToPersonal = async (peer: Peer) => {
+	const onAddToPersonal = async (endpointId: string) => {
 		try {
 			const sessionId = await invoke<number>("pair_device", {
-				endpointId: peer.endpointId,
+				endpointId,
 			});
 			deviceDrawerRef.current?.present(sessionId);
 		} catch (e) {
@@ -202,21 +198,18 @@ export const PeersPage = () => {
 	});
 
 	// @ts-expect-error
-	useOnClickOutside(peerRef, handleClickOutside);
+	useOnClickOutside(peerRef, dismiss);
 
 	useEffect(() => {
 		const onKeyDown = (e: KeyboardEvent) => {
-			if (e.key === "Escape") {
-				setSelectedPeer(null);
-				peerRef.current = null;
-			}
+			if (e.key === "Escape") dismiss();
 		};
 
 		window.addEventListener("keydown", onKeyDown);
 		hydratePeerStore();
 		hydrateFamilyStore();
 		return () => window.removeEventListener("keydown", onKeyDown);
-	}, []);
+	}, [dismiss]);
 
 	return (
 		<div
@@ -288,6 +281,8 @@ export const PeersPage = () => {
 											onSelect={handleSelect}
 											onSendFiles={handleSendFiles(peer)}
 											onBlockPeer={onBlockPeer}
+											onAddToPersonal={onAddToPersonal}
+											dismiss={dismiss}
 										/>
 									))}
 									{nearbyExpanded &&
@@ -315,6 +310,9 @@ export const PeersPage = () => {
 													selected={selectedPeer === peer.endpointId}
 													onSelect={handleSelect}
 													onSendFiles={handleSendFiles(peer)}
+													onBlockPeer={onBlockPeer}
+													onAddToPersonal={onAddToPersonal}
+													dismiss={dismiss}
 												/>
 											</motion.div>
 										))}
