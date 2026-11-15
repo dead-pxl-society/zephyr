@@ -73,9 +73,10 @@ export const SidebarItem = ({
 	<Button
 		variant="ghost"
 		className={cn(
-			"w-full justify-start px-2 font-normal transition-none hover:bg-background-popup/80 dark:hover:bg-neutral-700/40 macos:dark:hover:bg-background-popup/70",
-			active &&
-				"bg-background-popup/80 macos:bg-background-popup/80 hover:bg-background-popup/80 macos:hover:bg-background-popup/80 dark:bg-neutral-700/60 macos:dark:bg-background-popup/90 hover:dark:bg-neutral-700/60 macos:hover:dark:bg-background-popup/90",
+			"pill-surface w-full justify-start px-2 font-normal transition-none hover:bg-transparent",
+			!active &&
+				"hover:before:bg-white/50 dark:hover:before:bg-white/6 [&_svg]:text-muted",
+			active && "glass-pill",
 			className,
 		)}
 		{...buttonProps}
