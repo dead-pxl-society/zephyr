@@ -107,7 +107,7 @@ export const PeersPage = () => {
 		});
 	};
 
-	const dismiss = () => useCallback(() => setSelectedPeer(null), []);
+	const dismiss = useCallback(() => setSelectedPeer(null), []);
 
 	const handleSendFiles = (ephemeral: EphemeralPeer) => () => {
 		const peer = makePeerFromEphemeral(ephemeral);
