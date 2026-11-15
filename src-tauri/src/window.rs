@@ -17,16 +17,13 @@ fn parse_windows_version(version: &impl ToString) -> (u32, u32, u32) {
 }
 
 pub fn apply_window_vibrancy(window: &WebviewWindow) {
-    let platform = tauri_plugin_os::platform();
-    let version = tauri_plugin_os::version();
-
     #[cfg(target_os = "macos")]
-    if platform == "macos" {
+    {
         use window_vibrancy::{
             NSGlassEffectViewStyle, NSVisualEffectMaterial, apply_liquid_glass, apply_vibrancy,
         };
 
-        let major_version = version
+        let major_version = tauri_plugin_os::version()
             .to_string()
             .split('.')
             .next()
@@ -48,15 +45,13 @@ pub fn apply_window_vibrancy(window: &WebviewWindow) {
         ) {
             eprintln!("[window] failed to apply vibrancy: {e}");
         }
-
-        return;
     }
 
     #[cfg(target_os = "windows")]
-    if platform == "windows" {
+    {
         use window_vibrancy::{apply_acrylic, apply_blur, apply_mica};
 
-        let (major, _minor, build) = parse_windows_version(&version);
+        let (major, _minor, build) = parse_windows_version(&tauri_plugin_os::version());
 
         let result = if major > 10 || (major == 10 && build >= 22000) {
             apply_mica(window, None)
@@ -69,11 +64,16 @@ pub fn apply_window_vibrancy(window: &WebviewWindow) {
         if let Err(e) = result {
             eprintln!("[window] failed to apply window effect: {e}");
         }
-
-        return;
     }
 
-    println!("No vibrancy available for platform: {}", platform);
+    #[cfg(not(any(target_os = "macos", target_os = "windows")))]
+    {
+        let _ = window;
+        println!(
+            "No vibrancy available for platform: {}",
+            tauri_plugin_os::platform()
+        );
+    }
 }
 
 pub(crate) fn initialize_share_window(app: &tauri::AppHandle) -> Result<()> {

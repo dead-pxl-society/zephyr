@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { DicebearAvatar } from "@/components/dicebear-avatar";
-import { platformMap } from "@/components/main/contact-columns";
+import { getPlatformMeta } from "@/components/main/contact-columns";
 import { PlatformIcon } from "@/components/platform-icon";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -9,7 +9,7 @@ import type { Platform } from "@/type";
 export interface DeviceRowProps {
 	endpointId: string;
 	name?: string;
-	platform?: Platform;
+	platform?: Platform | null;
 	online?: boolean;
 	actionLabel?: string;
 	actionDisabled?: boolean;
@@ -20,7 +20,7 @@ export interface DeviceRowProps {
 export const DeviceRow = ({
 	endpointId,
 	name,
-	platform = "other",
+	platform,
 	online,
 	actionLabel,
 	actionDisabled,
@@ -29,7 +29,7 @@ export const DeviceRow = ({
 }: DeviceRowProps) => {
 	const { t } = useTranslation();
 
-	const meta = platformMap[platform];
+	const meta = getPlatformMeta(platform);
 	const hasPresence = online !== undefined;
 	const peerName =
 		name || t("peers:peer_default_name", { id: endpointId.slice(-4) });
