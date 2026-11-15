@@ -9,7 +9,7 @@ use tokio::sync::mpsc::{self, unbounded_channel};
 use crate::{
     db::api::peer::add_contact_by_ticket,
     error::Result,
-    events::{ImportErrorEvent, NotificationEvent, ShareRequest, ShareResponse, ShareResponseType},
+    events::{ImportErrorEvent, ShareRequest, ShareResponse, ShareResponseType},
     net::{
         api::download_inner,
         node::{ImportProgress, ImportProgressType},
