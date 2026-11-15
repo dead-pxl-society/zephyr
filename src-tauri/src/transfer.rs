@@ -10,7 +10,7 @@ use tokio::sync::mpsc;
 
 use crate::{
     error::Result,
-    events::{BlobConnectionEvent, NotificationEvent, SendEventType, SendProgressEvent},
+    events::{BlobConnectionEvent, SendEventType, SendProgressEvent},
     net::{
         export::{
             ExportEvent, ExportEventType, GetEventType, GetProgressEvent, PerConnectionProgress,
@@ -18,6 +18,7 @@ use crate::{
         proto::share::PeerInfo,
     },
     util::throttle::{PROGRESS_INTERVAL, ProgressThrottle},
+    notifications::set_transfer_progress,
 };
 
 async fn per_request_progress(
@@ -190,9 +191,11 @@ pub(crate) async fn handle_get_progress(
     app: tauri::AppHandle,
     peer: Option<PeerInfo>,
     mut receiver: mpsc::UnboundedReceiver<GetProgressEvent>,
-    notify: bool,
+    chime_on_start: bool,
 ) -> Result<()> {
     let mut throttle = ProgressThrottle::new(PROGRESS_INTERVAL);
+    let mut total_size = None;
+    let mut last_percent = None;
 
     while let Some(mut msg) = receiver.recv().await {
         if msg.event_type == GetEventType::Progress && !throttle.ready(()) {
@@ -207,24 +210,22 @@ pub(crate) async fn handle_get_progress(
             msg.from = peer.clone();
         }
 
-        if msg.event_type == GetEventType::Started && notify {
-            let event = NotificationEvent {
-                title: "notifications:receiving_files_title".to_string(),
-                body: Some("notifications:receiving_files_body".to_string()),
-                sound: Some("chime".to_string()),
-                args: None,
-            };
-            let _ = app.emit("notify", event);
+        if msg.event_type == GetEventType::Started {
+            total_size = msg.total_size;
+            if chime_on_start {
+                let _ = app.emit("sound:play", "chime");
+            }
         }
 
-        if msg.event_type == GetEventType::Done && notify {
-            let event = NotificationEvent {
-                title: "notifications:transfer_complete_title".to_string(),
-                body: Some("notifications:transfer_complete_body".to_string()),
-                sound: None,
-                args: None,
-            };
-            let _ = app.emit("notify", event);
+        if msg.event_type == GetEventType::Progress
+            && let (Some(offset), Some(total)) = (msg.progress, total_size.filter(|t| *t > 0))
+        {
+            // Progress can tick far more often than a notification can usefully change.
+            let percent = offset.min(total).saturating_mul(100) / total;
+            if last_percent != Some(percent) {
+                last_percent = Some(percent);
+                set_transfer_progress(&app, msg.transfer_id, percent as f64 / 100.0).await;
+            }
         }
 
         let _ = app.emit("get_progress", &msg);

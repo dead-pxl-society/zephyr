@@ -1,52 +1,79 @@
 import { invoke } from "@tauri-apps/api/core";
-import { emit, listen } from "@tauri-apps/api/event";
+import { listen } from "@tauri-apps/api/event";
 import { getCurrentWebviewWindow } from "@tauri-apps/api/webviewWindow";
-import {
-	sendNotification as _sendNotification,
-	isPermissionGranted,
-	type Options,
-	requestPermission,
-} from "@tauri-apps/plugin-notification";
-import type { SoundName } from "cuelume";
 import { useUserStore } from "@/lib/store/user";
-import i18n from "./i18n";
 
-type NotificationEvent = {
+export type NotificationOptions = {
+	/** Showing another notification with the same id replaces this one. */
+	id?: string;
 	title: string;
 	body?: string;
-	sound?: SoundName;
-	args?: Record<string, unknown>;
+	actions?: { id: string; label: string; destructive?: boolean }[];
+	persistent?: boolean;
+	/** Shows a progress bar starting at this fraction, from 0 to 1. */
+	progress?: number;
 };
 
+export type NotificationPermission =
+	| "granted"
+	| "denied"
+	| "notDetermined"
+	/** No notification service, such as under `tauri dev` on macOS. */
+	| "unavailable";
+
+export function getPermission() {
+	return invoke<NotificationPermission>("notification_permission");
+}
+
+/** Shows the OS prompt if the user hasn't been asked yet. */
+export function requestPermission() {
+	return invoke<NotificationPermission>("request_notification_permission");
+}
+
 async function checkPermission() {
-	if (!(await isPermissionGranted())) {
+	const permission = await getPermission();
+	if (permission === "notDetermined") {
 		return (await requestPermission()) === "granted";
 	}
-	return true;
+	return permission === "granted";
 }
 
 export async function openNotificationSettings() {
 	await invoke("open_notification_settings");
 }
 
-export async function sendNotification(options: Options) {
-	if (useUserStore.getState().user?.notifications === false) return;
+/** Returns whether a notification was actually shown. */
+export async function sendNotification(
+	options: NotificationOptions,
+): Promise<boolean> {
+	if (useUserStore.getState().user?.notifications === false) return false;
 
-	const isFocused = await getCurrentWebviewWindow().isFocused();
-	if (isFocused) return;
-	if (!(await checkPermission())) {
-		console.log("no permission");
-		return;
+	try {
+		const isFocused = await getCurrentWebviewWindow().isFocused();
+		if (isFocused) return false;
+		if (!(await checkPermission())) return false;
+
+		return await invoke<boolean>("show_notification", {
+			request: { id: crypto.randomUUID(), ...options },
+		});
+	} catch (e) {
+		console.error("[notify] couldn't show notification", e);
+		return false;
 	}
-	_sendNotification(options);
 }
 
-listen<NotificationEvent>("notify", (event) => {
-	const { title, body, sound, args } = event.payload;
+export function closeNotification(id: string) {
+	invoke("close_notification", { id }).catch((e) => {
+		console.error("[notify] couldn't close notification", e);
+	});
+}
 
-	const translatedBody = body ? i18n.t(body, args) : "";
-
-	if (sound) emit("sound:play", sound);
-
-	sendNotification({ title: i18n.t(title, args), body: translatedBody });
-});
+/** A notification's button was pressed. Only delivered to the main window. */
+export function onNotificationAction(
+	handler: (action: { id: string; actionId: string }) => void,
+) {
+	return listen<{ id: string; actionId: string }>(
+		"notification:action",
+		(event) => handler(event.payload),
+	);
+}

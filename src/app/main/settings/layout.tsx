@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Drop } from "@/components/drop";
+import { DeviceRequestDrawer } from "@/components/onboarding/device-request-drawer";
 import {
 	Sidebar,
 	SidebarDivider,
@@ -125,6 +126,7 @@ export const SettingsLayout = ({ dragging }: { dragging: boolean }) => {
 					)}
 				</motion.div>
 			</motion.div>
+			<DeviceRequestDrawer onlyAcceptedFromNotification />
 		</main>
 	);
 };

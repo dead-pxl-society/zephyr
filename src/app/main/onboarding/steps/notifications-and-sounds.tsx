@@ -1,16 +1,12 @@
 import { invoke } from "@tauri-apps/api/core";
 import { emit } from "@tauri-apps/api/event";
-import {
-	isPermissionGranted,
-	requestPermission,
-} from "@tauri-apps/plugin-notification";
 import { motion, type Variants } from "motion/react";
-import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { HolographicModelCanvas } from "@/components/holographic-crt";
 import { ContinueButton } from "@/components/onboarding/continue-button";
 import { Topography } from "@/components/onboarding/topography";
+import { NotificationPermissionNotice } from "@/components/settings/notification-permission-notice";
 import {
 	Setting,
 	SettingDescription,
@@ -18,6 +14,7 @@ import {
 	SettingTitle,
 } from "@/components/settings/setting";
 import { Switch } from "@/components/ui/switch";
+import { useNotificationPermission } from "@/lib/hooks/use-notification-permission";
 import { useUser } from "@/lib/store/user";
 import { useOnboarding } from "../use-onboarding";
 
@@ -39,19 +36,11 @@ export const NotificationsAndSoundsStep = () => {
 	const { next } = useOnboarding();
 	const user = useUser();
 
-	const [granted, setGranted] = useState(false);
-	const asked = useRef(false);
+	const { permission, granted, request } = useNotificationPermission({
+		requestOnMount: true,
+	});
 
 	const { t } = useTranslation();
-
-	const askForPermission = async () => {
-		if (await isPermissionGranted()) {
-			setGranted(true);
-			return;
-		}
-
-		setGranted((await requestPermission()) === "granted");
-	};
 
 	const handleToggle =
 		(key: "notifications" | "sounds") => async (value: boolean) => {
@@ -64,13 +53,6 @@ export const NotificationsAndSoundsStep = () => {
 				toast.error(t("errors:error_updating_preferences"));
 			}
 		};
-
-	useEffect(() => {
-		if (asked.current) return;
-		asked.current = true;
-
-		askForPermission();
-	}, []);
 
 	return (
 		<div className="relative grid h-full w-full grid-cols-[1.4fr_1fr] gap-4 p-4 py-10">
@@ -107,12 +89,16 @@ export const NotificationsAndSoundsStep = () => {
 							<SettingsAction>
 								<Switch
 									disabled={!granted}
-									checked={user?.notifications ?? false}
+									checked={granted && (user?.notifications ?? false)}
 									onCheckedChange={handleToggle("notifications")}
 								/>
 							</SettingsAction>
 						</Setting>
 					</div>
+					<NotificationPermissionNotice
+						permission={permission}
+						onRequest={request}
+					/>
 				</motion.div>
 				<motion.div variants={itemVariants} className="w-md self-center">
 					<div className="mb-2 h-px w-full bg-border" />

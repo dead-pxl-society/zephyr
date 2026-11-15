@@ -105,7 +105,7 @@ export const OnboardingLayout = () => {
 				</motion.div>
 			</motion.div>
 			<AddContactDrawer ref={addContactDrawerRef} fullscreen />
-			<DeviceRequestDrawer />
+			<DeviceRequestDrawer fullscreen />
 		</main>
 	);
 };

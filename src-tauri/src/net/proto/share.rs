@@ -1,4 +1,7 @@
-use std::sync::Arc;
+use std::sync::{
+    Arc,
+    atomic::{AtomicUsize, Ordering},
+};
 
 use dashmap::DashMap;
 use iroh::{
@@ -110,6 +113,7 @@ pub struct ShareProtocol {
     endpoint: Endpoint,
     identity: IdentityProtocol,
     pending: Arc<DashMap<usize, CancellationToken>>,
+    next_incoming_id: Arc<AtomicUsize>,
 }
 
 impl ShareWire {
@@ -194,10 +198,14 @@ impl ProtocolHandler for ShareProtocol {
         let bytes = read_prefixed_bytes(&mut recv).await?;
         let wire: ShareWire = postcard::from_bytes(&bytes).map_err(AcceptError::from_err)?;
 
-        let (request_id, info) = match wire {
+        let (wire_request_id, info) = match wire {
             ShareWire::Request { request_id, info } => (request_id, info),
             _ => return Ok(()),
         };
+
+        // The wire id is chosen by the sender, so it's only ever echoed back to them. Answers
+        // are keyed on this one, so that each goes to the request the user was looking at.
+        let request_id = self.next_incoming_id.fetch_add(1, Ordering::Relaxed);
 
         let (tx, rx) = oneshot::channel::<bool>();
 
@@ -215,7 +223,10 @@ impl ProtocolHandler for ShareProtocol {
                 .await
                 .map_err(AcceptError::from_err)?;
 
-            let bytes = ShareWire::Accept { request_id }.to_bytes();
+            let bytes = ShareWire::Accept {
+                request_id: wire_request_id,
+            }
+            .to_bytes();
             write_prefixed_bytes(&mut send, &bytes).await?;
 
             let _ = send.finish();
@@ -270,9 +281,13 @@ impl ProtocolHandler for ShareProtocol {
 
         if let Some(accepted) = decision {
             let response = if accepted {
-                ShareWire::Accept { request_id }
+                ShareWire::Accept {
+                    request_id: wire_request_id,
+                }
             } else {
-                ShareWire::Reject { request_id }
+                ShareWire::Reject {
+                    request_id: wire_request_id,
+                }
             };
 
             write_prefixed_bytes(&mut send, &response.to_bytes()).await?;
@@ -298,6 +313,9 @@ impl ShareProtocol {
             endpoint,
             identity,
             pending: Arc::new(DashMap::new()),
+            // Outgoing ids are connection addresses, which are never this small, so the two
+            // can't be confused in `share_response`.
+            next_incoming_id: Arc::new(AtomicUsize::new(1)),
         }
     }
 
@@ -420,5 +438,165 @@ impl ShareProtocol {
         if let Some((_, token)) = self.pending.remove(&request_id) {
             token.cancel();
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use iroh::{RelayMode, endpoint::presets, protocol::Router};
+    use iroh_blobs::{BlobFormat, Hash};
+    use iroh_util::connection_pool::{ConnectionPool, Options as PoolOptions};
+    use surrealdb::engine::local::RocksDb;
+
+    use super::*;
+    use crate::{
+        db::{
+            api::user::create_user,
+            define_tables,
+            model::{peer::PeerKind, user::NewUser},
+        },
+        net::proto::identity::INFO_ALPN,
+        util,
+    };
+
+    async fn bind_endpoint() -> Endpoint {
+        Endpoint::builder(presets::Minimal)
+            .relay_mode(RelayMode::Disabled)
+            .bind()
+            .await
+            .unwrap()
+    }
+
+    /// Everything that has to stay alive for a sender's connection to stay open.
+    struct PendingSend {
+        _endpoint: Endpoint,
+        connection: Connection,
+        recv: iroh::endpoint::RecvStream,
+        _send: iroh::endpoint::SendStream,
+    }
+
+    async fn send_request(receiver: &Endpoint, db: &Surreal<Db>, wire_id: usize) -> PendingSend {
+        let sender = bind_endpoint().await;
+        let new_peer = NewPeer {
+            endpoint_id: sender.id(),
+            ticket: EndpointTicket::from(sender.addr()),
+            name: None,
+            platform: None,
+            kind: Some(PeerKind::Stranger),
+            trust_level: Some(TrustLevel::Untrusted),
+            created_at: None,
+            updated_at: None,
+            last_seen: None,
+        };
+        PeerController::create(db, &new_peer).await.unwrap();
+
+        let connection = sender.connect(receiver.addr(), SHARE_ALPN).await.unwrap();
+        let (mut send, recv) = connection.open_bi().await.unwrap();
+        let info = ShareInfo {
+            ticket: BlobTicket::new(sender.addr(), Hash::new(b"file"), BlobFormat::Raw),
+            total_files: 1,
+            size: 1,
+        };
+        let wire = ShareWire::Request {
+            request_id: wire_id,
+            info,
+        };
+        write_prefixed_bytes(&mut send, &wire.to_bytes())
+            .await
+            .unwrap();
+        PendingSend {
+            _endpoint: sender,
+            connection,
+            recv,
+            _send: send,
+        }
+    }
+
+    async fn next_request(
+        messages: &mut mpsc::Receiver<ShareMessage>,
+    ) -> (usize, oneshot::Sender<bool>) {
+        let message = tokio::time::timeout(Duration::from_secs(20), messages.recv())
+            .await
+            .expect("no share request arrived");
+        match message {
+            Some(ShareMessage::Requested {
+                request_id,
+                responder,
+                ..
+            }) => (request_id, responder),
+            _ => panic!("expected a share request"),
+        }
+    }
+
+    /// The wire id is chosen by the sender, so it must not be what an answer is keyed on:
+    /// a second request reusing it would otherwise take over the first one's answer.
+    #[tokio::test]
+    async fn requests_reusing_a_wire_id_are_answered_independently() {
+        let dir = std::env::temp_dir().join(format!("zephyr-share-test-{}", std::process::id()));
+        let db = Surreal::new::<RocksDb>(dir.clone()).await.unwrap();
+        db.use_ns("zephyr").use_db("db").await.unwrap();
+        define_tables(&db).await.unwrap();
+        let user = create_user(
+            &db,
+            &NewUser {
+                endpoint_id: None,
+                name: "receiver".to_string(),
+                platform: util::device::get_platform(),
+            },
+        )
+        .await
+        .unwrap();
+
+        let receiver = bind_endpoint().await;
+        let (identity_tx, _identity_rx) = mpsc::channel(1);
+        let pool = ConnectionPool::new(receiver.clone(), INFO_ALPN, PoolOptions::default());
+        let identity = IdentityProtocol::new(user, identity_tx, pool);
+        let (share_tx, mut messages) = mpsc::channel(8);
+        let protocol = ShareProtocol::new(db.clone(), share_tx, receiver.clone(), identity);
+        let router = Router::builder(receiver.clone())
+            .accept(SHARE_ALPN, protocol)
+            .spawn();
+
+        const WIRE_ID: usize = 7;
+        let mut first = send_request(&receiver, &db, WIRE_ID).await;
+        let (first_id, first_responder) = next_request(&mut messages).await;
+        let mut second = send_request(&receiver, &db, WIRE_ID).await;
+        let (second_id, second_responder) = next_request(&mut messages).await;
+
+        assert_ne!(first_id, second_id, "each request needs its own id");
+
+        // Keyed the way `handle_share_messages` does, for `answer_share_request` to look up.
+        let pending = DashMap::new();
+        pending.insert(first_id, first_responder);
+        pending.insert(second_id, second_responder);
+        let answer = |id: usize, accepted: bool| {
+            let (_, responder) = pending.remove(&id).expect("request should be pending");
+            responder.send(accepted).unwrap();
+        };
+
+        answer(first_id, true);
+        answer(second_id, false);
+
+        // Senders match replies against the id they sent, so it has to be echoed unchanged.
+        let first_reply = read_prefixed_bytes(&mut first.recv).await.unwrap();
+        assert!(matches!(
+            ShareWire::from_bytes(&first_reply).unwrap(),
+            ShareWire::Accept {
+                request_id: WIRE_ID
+            }
+        ));
+        let second_reply = read_prefixed_bytes(&mut second.recv).await.unwrap();
+        assert!(matches!(
+            ShareWire::from_bytes(&second_reply).unwrap(),
+            ShareWire::Reject {
+                request_id: WIRE_ID
+            }
+        ));
+
+        first.connection.close(CLOSE_DONE.into(), b"done");
+        second.connection.close(CLOSE_DONE.into(), b"done");
+        router.shutdown().await.unwrap();
+        drop(db);
+        let _ = std::fs::remove_dir_all(dir);
     }
 }

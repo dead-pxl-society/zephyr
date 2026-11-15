@@ -6,6 +6,7 @@ mod events;
 mod family;
 mod menu;
 mod net;
+mod notifications;
 mod settings;
 mod setup;
 mod sharing;
@@ -60,7 +61,17 @@ async fn delete_resumable_transfers(app: tauri::AppHandle) -> Result<u64> {
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    let context = tauri::generate_context!();
+    let app_name = context
+        .config()
+        .product_name
+        .clone()
+        .unwrap_or_else(|| "Zephyr".to_string());
+    let (notifications, notification_events) =
+        notifications::init(&context.config().identifier, &app_name);
+
     tauri::Builder::default()
+        .manage(notifications)
         .plugin(tauri_plugin_single_instance::init(|app, _args, _cwd| {
             // A second launch (Start menu, desktop shortcut) should surface the
             // running instance rather than silently doing nothing.
@@ -68,7 +79,6 @@ pub fn run() {
         }))
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_fs::init())
-        .plugin(tauri_plugin_notification::init())
         .plugin(tauri_plugin_os::init())
         .plugin(tauri_plugin_clipboard_manager::init())
         .plugin(tauri_plugin_opener::init())
@@ -82,6 +92,7 @@ pub fn run() {
             let window_hider = window.clone();
 
             let handle = app.handle().clone();
+            notifications::forward_events(handle.clone(), notification_events);
 
             #[cfg(not(target_os = "windows"))]
             {
@@ -162,6 +173,10 @@ pub fn run() {
             family::api::leave_family,
             family::api::get_family,
             family::api::list_devices,
+            notifications::show_notification,
+            notifications::close_notification,
+            notifications::notification_permission,
+            notifications::request_notification_permission,
             settings::open_notification_settings,
             shortcuts::update_shortcut,
             shortcuts::pause_shortcuts,
@@ -171,7 +186,7 @@ pub fn run() {
             discovery::api::mdns_enabled_cmd,
             discovery::api::refresh_discovery_cmd,
         ])
-        .build(tauri::generate_context!())
+        .build(context)
         .expect("error while running tauri application")
         .run(move |app, event| match event {
             #[cfg(target_os = "macos")]

@@ -1,15 +1,18 @@
 {
 	"enable_notifications": "Allow notifications",
 	"enable_notifications_description": "Get notified about incoming requests and transfers while Zephyr runs in the background.",
+	"permission_not_determined": "Zephyr needs your permission to show notifications.",
+	"permission_denied": "Notifications for Zephyr are turned off in your system settings.",
+	"allow_notifications_action": "Allow",
+	"open_system_settings_action": "Open settings",
 
-	"share_request_description_one": "A peer is trying to send {{count}} file ({{size}}). Open Zephyr to accept/reject the request.",
-	"share_request_description_other": "A peer is trying to send {{count}} files ({{size}}). Open Zephyr to accept/reject the request.",
+	"share_request_description_one": "A peer is trying to send {{count}} file ({{size}}).",
+	"share_request_description_other": "A peer is trying to send {{count}} files ({{size}}).",
 
 	"receiving_files_title": "Receiving files",
 	"receiving_files_body": "We'll let you know when the transfer is done.",
 	"transfer_complete_title": "Transfer complete",
 	"transfer_complete_body": "Your files are ready in your downloads folder.",
-	"receiving_trusted_files_title": "Receiving trusted files",
 	"receiving_trusted_files_body": "{{peer}} is sending you files. We'll let you know when it's done.",
 	"receiving_trusted_files_body_unknown": "A trusted peer is sending you files. We'll let you know when it's done.",
 

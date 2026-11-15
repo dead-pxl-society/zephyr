@@ -2,7 +2,6 @@ use std::{path::PathBuf, str::FromStr};
 
 use iroh_blobs::ticket::BlobTicket;
 use iroh_tickets::endpoint::EndpointTicket;
-use serde_json::json;
 use tauri::{Emitter, Manager};
 use tauri_plugin_clipboard_manager::ClipboardExt;
 use tokio::sync::mpsc::{self, unbounded_channel};
@@ -234,22 +233,7 @@ pub(crate) async fn handle_share_messages(
                     continue;
                 }
 
-                let (body, args) = match peer_name {
-                    Some(name) => (
-                        "notifications:receiving_trusted_files_body",
-                        Some(json!({ "peer": name })),
-                    ),
-                    None => ("notifications:receiving_trusted_files_body_unknown", None),
-                };
-
-                let event = NotificationEvent {
-                    title: "notifications:receiving_trusted_files_title".to_string(),
-                    body: Some(body.to_string()),
-                    sound: Some("chime".to_string()),
-                    args,
-                };
-
-                let _ = app.emit("notify", event);
+                let _ = app.emit("sound:play", "chime");
             }
         }
     }
