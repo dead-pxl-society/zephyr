@@ -20,7 +20,7 @@ type ContactTableActions = {
 	onSend(peer: Peer): void;
 	onRemoveContact(dbId: string): void;
 	onToggleTrust(dbId: string, current: TrustLevel): void;
-	onAddToPersonal?: (peer: Peer) => Promise<void>;
+	onAddToPersonal?: (endpointId: string) => Promise<void>;
 };
 
 export type PlatformMeta = {
@@ -98,7 +98,7 @@ export const createColumns = (
 			};
 
 			const handleAddToPersonal = () => {
-				actions.onAddToPersonal?.(peer);
+				actions.onAddToPersonal?.(peer.endpointId);
 			};
 
 			const handleRemove = () => {

@@ -29,6 +29,8 @@ export type PeerWideCardProps = {
 	onSelect?: (peer: Partial<Peer>) => void;
 	onSendFiles?: () => void;
 	onBlockPeer?: (peer: Partial<Peer>) => void;
+	onAddToPersonal?: (endpointId: string) => Promise<void>;
+	dismiss?: () => void;
 };
 
 type PeerCardActionStatus = "idle" | "processing" | "error" | "success";
@@ -57,6 +59,8 @@ export const PeerWideCard = forwardRef(
 			onSelect,
 			onSendFiles,
 			onBlockPeer,
+			onAddToPersonal,
+			dismiss,
 		}: PeerWideCardProps,
 		ref: ForwardedRef<HTMLDivElement>,
 	) => {
@@ -96,6 +100,11 @@ export const PeerWideCard = forwardRef(
 					setContactStatus("idle");
 				}, 1000);
 			}
+		};
+
+		const onAddPersonalDevice = async () => {
+			dismiss?.();
+			await onAddToPersonal?.(endpointId);
 		};
 
 		const translateX = useMemo(() => {
@@ -234,6 +243,13 @@ export const PeerWideCard = forwardRef(
 									label={addContactLabel()}
 									status={contactStatus}
 									onClick={onAddContact}
+								/>
+							)}
+							{peer.kind !== "device" && (
+								<PeerCardAction
+									iconName="computer-desktop"
+									label={t("peers:action_add_as_personal")}
+									onClick={onAddPersonalDevice}
 								/>
 							)}
 							{peer.kind !== "device" && (
