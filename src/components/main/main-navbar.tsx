@@ -11,6 +11,7 @@ import {
 import {
 	Navbar,
 	NavbarAction,
+	NavbarDivider,
 	NavbarGroup,
 	NavbarNavigation,
 	NavbarSection,
@@ -46,16 +47,29 @@ export const MainNav = ({ className }: HTMLAttributes<HTMLDivElement>) => {
 				/>
 			</NavbarSection>
 			<NavbarSection align="end">
+				{/*
+					The share and close groups share a key on purpose: React keeps the
+					same pill mounted so its width morphs while only the actions inside
+					swap. Every child of an AnimatePresence needs a unique key for its
+					exit animation to run.
+				*/}
 				{!pathname.startsWith("/settings") && (
-					<NavbarGroup layoutId="nav-group-0" glare className="z-10">
+					<NavbarGroup
+						key="nav-group-0"
+						layoutId="nav-group-0"
+						glare
+						className="z-10"
+					>
 						<NavbarAction
+							key="receive-files-action"
 							iconName="arrow-down-tray"
 							tooltip={t("share:action_receive_files")}
 							layoutId="receive-files-action"
 							onClick={displayReceiveDialog}
 						/>
-						<div className="h-5 w-px bg-border" />
+						<NavbarDivider key="share-divider" />
 						<NavbarAction
+							key="send-files-action"
 							layoutId="send-files-action"
 							iconName="send"
 							tooltip={t("share:action_share_files")}
@@ -64,8 +78,9 @@ export const MainNav = ({ className }: HTMLAttributes<HTMLDivElement>) => {
 					</NavbarGroup>
 				)}
 				{pathname === "/peers" && (
-					<NavbarGroup layoutId="nav-group-1" glare>
+					<NavbarGroup key="nav-group-1" layoutId="nav-group-1" glare>
 						<NavbarAction
+							key="add-contact-action"
 							layoutId="add-contact-action"
 							iconName="user-plus"
 							tooltip={t("peers:action_add_contact")}
@@ -74,8 +89,9 @@ export const MainNav = ({ className }: HTMLAttributes<HTMLDivElement>) => {
 					</NavbarGroup>
 				)}
 				{pathname.startsWith("/settings") && (
-					<NavbarGroup layoutId="nav-group-0" glare>
+					<NavbarGroup key="nav-group-0" layoutId="nav-group-0" glare>
 						<NavbarAction
+							key="close-action"
 							layoutId="close-action"
 							iconName="close"
 							tooltip={t("common:exit")}
