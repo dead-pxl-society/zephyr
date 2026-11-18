@@ -90,9 +90,9 @@ const DropContent = () => {
 
 	return (
 		<div className="relative flex flex-col items-center gap-y-4">
-			{burstZephs.map((zeph, i) => (
+			{burstZephs.map((zeph) => (
 				<motion.div
-					key={`burst-zeph-${i}`}
+					key={`burst-zeph-${zeph.x}-${zeph.y}`}
 					className="pointer-events-none absolute top-1/2 left-1/2"
 					initial={{
 						transform: `translateX(0px) translateY(${-zeph.size / 2}px) scale(0.5) rotate(0deg)`,
