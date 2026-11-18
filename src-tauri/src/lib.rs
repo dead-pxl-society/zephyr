@@ -1,3 +1,4 @@
+mod autostart;
 mod clipboard;
 mod db;
 mod discovery;
@@ -85,6 +86,7 @@ pub fn run() {
         .plugin(tauri_plugin_global_shortcut::Builder::new().build())
         .plugin(tauri_plugin_process::init())
         .plugin(tauri_plugin_updater::Builder::new().build())
+        .plugin(autostart::plugin())
         .setup(|app| {
             let window = app
                 .get_webview_window("main")
@@ -150,6 +152,7 @@ pub fn run() {
             net::api::endpoint_ticket,
             db::api::user::update_user_cmd,
             db::api::user::get_one_user,
+            autostart::set_autostart_cmd,
             db::api::config::set_clipboard_settings_cmd,
             db::api::config::get_config,
             db::api::transfer::create_transfer_cmd,
@@ -201,7 +204,11 @@ pub fn run() {
             }
 
             RunEvent::Ready => {
-                if let Some(window) = app.get_webview_window("main") {
+                let start_hidden = app
+                    .try_state::<AppState>()
+                    .is_some_and(|state| state.start_hidden());
+
+                if !start_hidden && let Some(window) = app.get_webview_window("main") {
                     let _ = window.show();
                     let _ = window.set_focus();
                 }

@@ -86,6 +86,7 @@ export interface User {
 	shortcuts: ShortcutConfig;
 	notifications: boolean;
 	sounds: boolean;
+	autostart: boolean;
 	onboarding: Onboarding;
 }
 

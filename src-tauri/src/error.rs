@@ -56,6 +56,9 @@ pub enum Error {
     #[error("Shortcut error: {0}")]
     Shortcut(String),
 
+    #[error("Launch at login error: {0}")]
+    Autostart(String),
+
     #[error("A device pairing is already in progress")]
     PairingInProgress,
 
