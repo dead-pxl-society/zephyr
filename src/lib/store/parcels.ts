@@ -134,6 +134,7 @@ export const useImportProgress = (id: number | undefined) =>
 	useParcelStore((s) => (id !== undefined ? (s.importProgress[id] ?? 0) : 0));
 
 const fileProgress = new Map<string, number>();
+const fileSizes = new Map<string, number>();
 const dirtyParcels = new Set<number>();
 let frameScheduled = false;
 
@@ -211,9 +212,18 @@ listen<ImportProgressEvent>("import_progress", (event) => {
 	const { type, size, progress, parcelId, key } = event.payload;
 	const { incrementSize } = useParcelStore.getState();
 
-	if (type === "size") incrementSize(parcelId, size || 0);
-	else if (type === "outboardProgress" && progress !== undefined)
+	if (type === "size") {
+		incrementSize(parcelId, size || 0);
+		fileSizes.set(`${parcelId}:${key}`, size || 0);
+	} else if (type === "outboardProgress" && progress !== undefined) {
 		scheduleProgress(parcelId, key, progress);
+	} else if (type === "done") {
+		// Outboard ticks are throttled on the backend, so the last one for a
+		// file is usually dropped. Mark the file complete so the bar doesn't
+		// stall until share_ready.
+		const fileSize = fileSizes.get(`${parcelId}:${key}`);
+		if (fileSize !== undefined) scheduleProgress(parcelId, key, fileSize);
+	}
 });
 
 const clearFileProgress = (parcelId: number) => {
@@ -223,6 +233,11 @@ const clearFileProgress = (parcelId: number) => {
 	for (const key of fileProgress.keys()) {
 		if (key.startsWith(prefix)) {
 			fileProgress.delete(key);
+		}
+	}
+	for (const key of fileSizes.keys()) {
+		if (key.startsWith(prefix)) {
+			fileSizes.delete(key);
 		}
 	}
 };

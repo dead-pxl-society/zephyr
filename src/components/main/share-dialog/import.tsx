@@ -1,7 +1,7 @@
 import { AnimatePresence, motion, useSpring } from "motion/react";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { ProgressBar } from "@/components/progress-bar";
+import { PROGRESS_SPRING, ProgressBar } from "@/components/progress-bar";
 import { FolderCogIcon } from "@/components/share/folder-cog-icon";
 import { Spinner } from "@/components/ui/spinner";
 import { useImportProgress } from "@/lib/store/parcels";
@@ -19,7 +19,7 @@ export const ImportSection = ({
 }: ImportSectionProps) => {
 	const importProgress = useImportProgress(parcelId || 0);
 
-	const progress = useSpring(0, { duration: 0.2, bounce: 0 });
+	const progress = useSpring(0, PROGRESS_SPRING);
 
 	const { t } = useTranslation(["share"]);
 
