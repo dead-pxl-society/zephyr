@@ -38,6 +38,7 @@ use crate::{
     db::model::{peer::PeerController, user::User},
     error::{Error, Result},
     net::{
+        clip::{CLIP_ALPN, CLIP_LZ4_ALPN, Lz4BlobsProtocol},
         export::{ExportEvent, GetEventType, GetProgressEvent, next_transfer_id},
         proto::{
             device::{DEVICE_ALPN, DeviceMessage, DeviceProtocol},
@@ -49,7 +50,6 @@ use crate::{
 };
 
 const GOSSIP_MAX_MESSAGE_SIZE: usize = 65_536;
-pub const CLIP_ALPN: &[u8] = b"zephyr/clip/0";
 
 const BLOCKED_CLOSE_CODE: u32 = 9;
 
@@ -84,7 +84,7 @@ impl EndpointHooks for BlockHook {
 #[derive(Debug, Clone)]
 pub struct ClipboardBlobs {
     pub store: MemStore,
-    pub pool: ConnectionPool,
+    pub endpoint: Endpoint,
 }
 
 #[allow(dead_code)]
@@ -190,8 +190,7 @@ impl Node {
         };
         let identity_pool = ConnectionPool::new(endpoint.clone(), INFO_ALPN, pool_opts.clone());
         let device_pool = ConnectionPool::new(endpoint.clone(), DEVICE_ALPN, pool_opts.clone());
-        let blobs_pool = ConnectionPool::new(endpoint.clone(), BLOBS_ALPN, pool_opts.clone());
-        let clip_pool = ConnectionPool::new(endpoint.clone(), CLIP_ALPN, pool_opts);
+        let blobs_pool = ConnectionPool::new(endpoint.clone(), BLOBS_ALPN, pool_opts);
 
         let identity = IdentityProtocol::new(user.clone(), senders.identity, identity_pool);
         let share = ShareProtocol::new(
@@ -214,6 +213,7 @@ impl Node {
 
         let clip_store = MemStore::new();
         let clip_blobs = BlobsProtocol::new(&clip_store, None);
+        let clip_lz4_blobs = Lz4BlobsProtocol::new(&clip_store);
 
         let mdns = MdnsAddressLookup::builder().build(endpoint.id())?;
         endpoint.address_lookup()?.add(mdns.clone());
@@ -223,6 +223,7 @@ impl Node {
 
         let router = iroh::protocol::Router::builder(endpoint.clone())
             .accept(BLOBS_ALPN, blobs.clone())
+            .accept(CLIP_LZ4_ALPN, clip_lz4_blobs)
             .accept(CLIP_ALPN, clip_blobs)
             .accept(GOSSIP_ALPN, gossip.clone())
             .accept(INFO_ALPN, identity.clone())
@@ -241,7 +242,7 @@ impl Node {
             blobs_pool,
             clip: ClipboardBlobs {
                 store: clip_store,
-                pool: clip_pool,
+                endpoint: endpoint.clone(),
             },
             memory_lookup,
         })
@@ -259,7 +260,6 @@ impl Node {
         let _ = self.identity.pool.close(id).await;
         let _ = self.device.pool.close(id).await;
         let _ = self.blobs_pool.close(id).await;
-        let _ = self.clip.pool.close(id).await;
     }
 
     pub async fn shutdown(&self) {

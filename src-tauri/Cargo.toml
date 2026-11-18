@@ -21,6 +21,8 @@ tauri-build = { version = "2", features = [] }
 [dependencies]
 async-trait = " 0.1.88"
 anyhow = "1"
+async-compression = { version = "0.4.30", features = ["tokio", "lz4"] }
+bytes = "1"
 dashmap = "6.1.0"
 futures-buffered = "0.2.11"
 hex = "0.4"

@@ -40,6 +40,7 @@ use crate::{
         wipe_family,
     },
     net::{
+        clip,
         node::ClipboardBlobs,
         proto::device::{DeviceProtocol, SyncOutcome},
         util::{get_export_path, paths_to_data_sources},
@@ -769,12 +770,13 @@ impl FamilyRuntime {
                     return Ok(None);
                 }
 
-                let conn = self.clip.pool.get_or_connect(from).await?;
-                self.clip
-                    .store
-                    .remote()
-                    .fetch((*conn).clone(), HashAndFormat::raw(*hash))
-                    .await?;
+                clip::fetch(
+                    &self.clip.endpoint,
+                    from,
+                    &self.clip.store,
+                    HashAndFormat::raw(*hash),
+                )
+                .await?;
 
                 let bytes = self.clip.store.get_bytes(*hash).await?;
                 let text = String::from_utf8(bytes.to_vec()).map_err(|_| Error::ClipboardCrypto)?;
@@ -795,12 +797,13 @@ impl FamilyRuntime {
                     return Ok(None);
                 }
 
-                let conn = self.clip.pool.get_or_connect(from).await?;
-                self.clip
-                    .store
-                    .remote()
-                    .fetch((*conn).clone(), HashAndFormat::hash_seq(*hash))
-                    .await?;
+                clip::fetch(
+                    &self.clip.endpoint,
+                    from,
+                    &self.clip.store,
+                    HashAndFormat::hash_seq(*hash),
+                )
+                .await?;
 
                 let collection = Collection::load(*hash, &*self.clip.store).await?;
 
