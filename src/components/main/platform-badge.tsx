@@ -52,7 +52,7 @@ export const PlatformBadge = ({ platform }: PlatformBadgeProps) => {
 			)}
 		>
 			<PlatformIcon name={icon as PlatformIconName} className="h-4 w-4" />
-			<p className="text-xs font-mono">{platformText}</p>
+			<p className="font-mono text-xs">{platformText}</p>
 		</div>
 	);
 };

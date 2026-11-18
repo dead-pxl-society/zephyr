@@ -194,9 +194,9 @@ export const FlyingPlane = ({ className }: { className?: string }) => {
 		>
 			{measured &&
 				!reduced &&
-				PLANES.map((flight, i) => (
+				PLANES.map((flight) => (
 					<Plane
-						key={i}
+						key={`${flight.startLeg}-${flight.offset}`}
 						flight={flight}
 						width={width}
 						height={height}
