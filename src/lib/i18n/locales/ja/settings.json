@@ -15,5 +15,8 @@
 	"clipboard_files_description": "コピーしたファイルも対象にします。バックグラウンドでダウンロードされるので、Finder やエクスプローラーにそのまま貼り付けられます。",
 	"clipboard_max_size": "最大サイズ",
 	"clipboard_max_size_description": "これを超えるコピーは同期されません。",
-	"clipboard_max_size_warning": "上限を大きくすると、コピーのたびに時間がかかり、送信側のデバイスのメモリも消費します。大きなファイルには共有機能の方が向いています。"
+	"clipboard_max_size_warning": "上限を大きくすると、コピーのたびに時間がかかり、送信側のデバイスのメモリも消費します。大きなファイルには共有機能の方が向いています。",
+	"startup_section": "起動",
+	"launch_at_login": "ログイン時に開く",
+	"launch_at_login_description": "サインイン時に Zephyr をバックグラウンドで起動し、デバイスや連絡先からすぐに届くようにします。"
 }

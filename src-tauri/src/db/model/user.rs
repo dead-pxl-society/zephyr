@@ -189,6 +189,9 @@ pub struct User {
     #[serde(default = "default_true")]
     #[surreal(default = "default_true")]
     pub sounds: bool,
+    #[serde(default = "default_true")]
+    #[surreal(default = "default_true")]
+    pub autostart: bool,
 
     #[serde(default)]
     #[surreal(default)]
@@ -221,6 +224,8 @@ pub struct UserPatch {
     pub notifications: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub sounds: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub autostart: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub onboarding: Option<OnboardingPatch>,
 }
@@ -268,6 +273,7 @@ impl User {
             shortcuts: ShortcutConfig::default(),
             notifications: true,
             sounds: true,
+            autostart: true,
             onboarding: Onboarding::default(),
         })
     }

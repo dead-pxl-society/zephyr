@@ -42,6 +42,14 @@ pub(crate) async fn initialize(handle: &tauri::AppHandle) -> Result<()> {
     let user = create_initial_user(&surreal).await?;
     let shortcuts = user.shortcuts.clone();
 
+    crate::autostart::sync(handle, &user);
+    // A login launch should stay out of the way, unless onboarding is still
+    // pending: then the window is the only thing that tells the user what
+    // the app is.
+    handle
+        .state::<AppState>()
+        .set_start_hidden(crate::autostart::launched_at_login() && user.onboarding.completed);
+
     setup_node(handle, user).await?;
 
     if let Err(e) = crate::shortcuts::register_all(handle, &shortcuts) {
