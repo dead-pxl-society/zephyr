@@ -36,7 +36,7 @@ export const SidebarUserItem = ({
 	return (
 		<button
 			type="button"
-			className="flex w-full flex-row items-center gap-x-1 rounded-lg px-1 py-2 text-start hover:bg-background-top/80 dark:hover:bg-background-top"
+			className="pill-surface flex w-full flex-row items-center gap-x-1 rounded-lg px-1 py-2 text-start hover:before:bg-white/50 dark:hover:before:bg-white/6"
 			{...buttonProps}
 		>
 			<DicebearAvatar
@@ -63,8 +63,10 @@ export const SidebarItem = ({
 	<Button
 		variant="ghost"
 		className={cn(
-			"w-full justify-start px-2! font-normal transition-none hover:bg-background-top",
-			active && "bg-background-popup hover:bg-background-popup",
+			"pill-surface w-full justify-start px-2! font-normal transition-none hover:bg-transparent",
+			!active &&
+				"hover:before:bg-white/50 dark:hover:before:bg-white/6 [&_svg]:text-muted",
+			active && "glass-pill",
 			className,
 		)}
 		{...buttonProps}
