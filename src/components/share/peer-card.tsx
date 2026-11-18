@@ -1,9 +1,17 @@
-import { AnimatePresence, motion, type Variants } from "motion/react";
+import {
+	AnimatePresence,
+	motion,
+	useReducedMotion,
+	type Variants,
+} from "motion/react";
 import {
 	type MouseEvent,
 	type MouseEventHandler,
 	useCallback,
+	useEffect,
 	useMemo,
+	useRef,
+	useState,
 } from "react";
 import { useTranslation } from "react-i18next";
 import { getAvatarColor } from "@/lib/hooks/use-avatar";
@@ -16,7 +24,8 @@ import type { EphemeralPeer, PeerStatus } from "@/type";
 import { DicebearAvatar } from "../dicebear-avatar";
 import { HeroIcon } from "../hero-icon";
 import { LucideIcon } from "../lucide-icon";
-import { CheckIcon } from "./check-icon";
+import { DoneBadge } from "./done-badge";
+import { PeerDoneBurst } from "./peer-done-burst";
 
 type PeerCardProps = {
 	ephemeral: EphemeralPeer;
@@ -52,6 +61,20 @@ export const PeerCard = ({
 	const status = outbound?.status || "idle";
 
 	const { t } = useTranslation("peers");
+
+	// Celebrate only the live transition into "done"; a card that mounts (or
+	// remounts after the window is reopened) already done stays quiet.
+	const reducedMotion = useReducedMotion();
+	const prevStatus = useRef(status);
+	const [celebrating, setCelebrating] = useState(false);
+
+	useEffect(() => {
+		const prev = prevStatus.current;
+		prevStatus.current = status;
+
+		if (status !== "done") setCelebrating(false);
+		else if (prev !== "done") setCelebrating(true);
+	}, [status]);
 
 	const peerName = useMemo(() => {
 		if (ephemeral.peer?.name) return ephemeral.peer.name;
@@ -92,13 +115,15 @@ export const PeerCard = ({
 
 		if (status === "done")
 			return (
-				<div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#161616]">
-					<CheckIcon strokeColor="#eeeeee" />
-				</div>
+				<DoneBadge
+					seed={ephemeral.endpointId}
+					color={avatarColor}
+					animated={celebrating && !reducedMotion}
+				/>
 			);
 
 		return null;
-	}, [status, progress]);
+	}, [status, progress, celebrating, reducedMotion, avatarColor]);
 
 	const renderKindIcon = () => {
 		if (ephemeral.peer?.kind === "device")
@@ -189,12 +214,36 @@ export const PeerCard = ({
 				<DicebearAvatar seed={ephemeral.endpointId} className="h-full w-full" />
 			</div>
 			<div className="bdrop pointer-events-none absolute inset-0 rounded-xl bg-background-surface/20 opacity-50 mix-blend-plus-darker backdrop-blur-xl transition-opacity dark:mix-blend-plus-lighter" />
+			{celebrating && status === "done" && (
+				<PeerDoneBurst
+					color={avatarColor}
+					reduced={!!reducedMotion}
+					onFinished={() => setCelebrating(false)}
+				/>
+			)}
 			<button
 				className="flex h-full w-full flex-col items-center justify-between px-2 py-4 active:[&_.avatar]:scale-[0.97]"
 				type="button"
 				onClick={handleClick}
 			>
-				<div className="flex items-center justify-center">
+				<motion.div
+					className="flex items-center justify-center"
+					animate={
+						celebrating && !reducedMotion
+							? { transform: ["scale(1)", "scale(1.1)", "scale(1)"] }
+							: undefined
+					}
+					transition={{
+						duration: 0.5,
+						times: [0, 0.3, 1],
+						// Quick swell, then a back-out settle that dips just under 1:
+						// a small element needs the overshoot for the pop to read.
+						ease: [
+							[0.25, 0.46, 0.45, 0.94],
+							[0.34, 1.56, 0.64, 1],
+						],
+					}}
+				>
 					<DicebearAvatar
 						seed={ephemeral.endpointId}
 						className="avatar subtle-inner-border h-14 w-14 transition-transform duration-150"
@@ -212,9 +261,13 @@ export const PeerCard = ({
 							{renderAvatarContent()}
 						</motion.div>
 					</AnimatePresence>
-				</div>
+				</motion.div>
 				<div className="overflow-hidden">
-					<p className="subtle-inner-border text-center text-xs">{peerName}</p>
+					{/* Positioned so it paints above the background layers (the done
+					    glow included) like the avatar and status text already do. */}
+					<p className="subtle-inner-border relative text-center text-xs">
+						{peerName}
+					</p>
 					<div className="mt-1 h-4 overflow-hidden">
 						<AnimatePresence initial={false} mode="popLayout">
 							<motion.p

@@ -54,12 +54,18 @@ pub(crate) fn handle_selected_files(
         tauri::async_runtime::spawn(async move {
             let mut throttle = ProgressThrottle::new(PROGRESS_INTERVAL);
             while let Some(msg) = progress_rx.recv().await {
-                let is_tick = matches!(
-                    msg.event_type,
-                    ImportProgressType::CopyProgress | ImportProgressType::OutboardProgress
-                );
-                if is_tick && !throttle.ready(msg.key.clone()) {
-                    continue;
+                match msg.event_type {
+                    // The UI tracks import progress through outboard ticks only.
+                    ImportProgressType::CopyProgress => continue,
+                    ImportProgressType::OutboardProgress => {
+                        if !throttle.ready(msg.key.clone()) {
+                            continue;
+                        }
+                    }
+                    ImportProgressType::Done | ImportProgressType::Error => {
+                        throttle.forget(&msg.key)
+                    }
+                    _ => {}
                 }
                 let _ = app_clone.emit("import_progress", &msg);
             }

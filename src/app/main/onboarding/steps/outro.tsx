@@ -2,7 +2,8 @@ import { motion, type Variants } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import handHeartPath from "@/assets/icons/hand-heart.svg";
-import wordmarkPath from "@/assets/icons/wordmark.svg";
+import wordmarkDarkPath from "@/assets/icons/wordmark-dark.svg";
+import wordmarkLightPath from "@/assets/icons/wordmark-light.svg";
 import { ZephConfetti } from "@/components/onboarding/zeph-confetti";
 import { useOnboarding } from "../use-onboarding";
 
@@ -56,7 +57,16 @@ export const OutroStep = () => {
 				variants={itemVariants}
 				className="relative z-10 flex items-center gap-4"
 			>
-				<img src={wordmarkPath} alt="Zephyr wordmark" className="w-72" />
+				<img
+					src={wordmarkLightPath}
+					alt="Zephyr wordmark"
+					className="w-72 dark:hidden"
+				/>
+				<img
+					src={wordmarkDarkPath}
+					alt="Zephyr wordmark"
+					className="hidden w-72 dark:block"
+				/>
 			</motion.div>
 			<motion.span
 				variants={itemVariants}

@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import { useImportProgress } from "@/lib/store/parcels";
 import { cn } from "@/lib/utils";
 import { HeroIcon } from "../hero-icon";
-import { ProgressBar } from "../progress-bar";
+import { PROGRESS_SPRING, ProgressBar } from "../progress-bar";
 import { FolderCogIcon } from "./folder-cog-icon";
 
 interface ImportingSectionProps {
@@ -57,7 +57,7 @@ export const ImportingSection = ({
 	const { t } = useTranslation("share");
 
 	const importProgress = useImportProgress(parcelId);
-	const progress = useSpring(0, { duration: 0.2, bounce: 0 });
+	const progress = useSpring(0, PROGRESS_SPRING);
 
 	useEffect(() => {
 		progress.set(importProgress);
