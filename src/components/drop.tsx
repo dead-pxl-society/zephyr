@@ -1,17 +1,19 @@
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { randomZephUrls } from "@/lib/zephs";
 import { LucideIcon, type LucideIconName } from "./lucide-icon";
+import { WarpOverlay } from "./warp-overlay";
 
-type BurstIconDef = {
-	name: LucideIconName;
+type BurstZephDef = {
 	rotation: number;
 	size: number;
 	floatY: number;
 	floatDuration: number;
 };
 
-type BurstIcon = BurstIconDef & {
+type BurstZeph = BurstZephDef & {
+	url: string;
 	x: number;
 	y: number;
 	delay: number;
@@ -19,46 +21,16 @@ type BurstIcon = BurstIconDef & {
 
 const ICON_INTERVAL = 600;
 
-const ICON_POOL: Array<BurstIconDef> = [
-	{ name: "file", rotation: -15, size: 22, floatY: 8, floatDuration: 3.2 },
-	{ name: "file-image", rotation: 12, size: 26, floatY: 6, floatDuration: 2.8 },
-	{
-		name: "file-text",
-		rotation: -20,
-		size: 20,
-		floatY: 10,
-		floatDuration: 3.6,
-	},
-	{
-		name: "folder-closed",
-		rotation: 15,
-		size: 24,
-		floatY: 7,
-		floatDuration: 3.0,
-	},
-	{
-		name: "file-code-corner",
-		rotation: 10,
-		size: 18,
-		floatY: 9,
-		floatDuration: 3.4,
-	},
-	{ name: "file-key", rotation: -8, size: 22, floatY: 5, floatDuration: 2.6 },
-	{
-		name: "file-volume",
-		rotation: -12,
-		size: 20,
-		floatY: 7,
-		floatDuration: 3.1,
-	},
-	{ name: "file-cog", rotation: 18, size: 18, floatY: 6, floatDuration: 2.9 },
-	{
-		name: "file-digit",
-		rotation: -22,
-		size: 20,
-		floatY: 9,
-		floatDuration: 3.5,
-	},
+const BURST_POOL: Array<BurstZephDef> = [
+	{ rotation: -15, size: 32, floatY: 8, floatDuration: 3.2 },
+	{ rotation: 12, size: 36, floatY: 6, floatDuration: 2.8 },
+	{ rotation: -20, size: 30, floatY: 10, floatDuration: 3.6 },
+	{ rotation: 15, size: 34, floatY: 7, floatDuration: 3.0 },
+	{ rotation: 10, size: 28, floatY: 9, floatDuration: 3.4 },
+	{ rotation: -8, size: 32, floatY: 5, floatDuration: 2.6 },
+	{ rotation: -12, size: 30, floatY: 7, floatDuration: 3.1 },
+	{ rotation: 18, size: 28, floatY: 6, floatDuration: 2.9 },
+	{ rotation: -22, size: 30, floatY: 9, floatDuration: 3.5 },
 ];
 
 const LEFT_SLOTS = [
@@ -73,24 +45,37 @@ const RIGHT_SLOTS = [
 	{ x: 120, y: 85 },
 ];
 
-function pickBurstIcons(): Array<BurstIcon> {
-	const shuffled = [...ICON_POOL].sort(() => Math.random() - 0.5);
+function pickBurstZephs(): Array<BurstZeph> {
+	const shuffled = [...BURST_POOL].sort(() => Math.random() - 0.5);
 	const picked = shuffled.slice(0, 6);
 
-	return picked.map((icon, i) => {
+	const urls = randomZephUrls(picked.length);
+	return picked.map((zeph, i) => {
 		const isLeft = i < 3;
 		const slot = isLeft ? LEFT_SLOTS[i] : RIGHT_SLOTS[i - 3];
 		return {
-			...icon,
+			...zeph,
+			url: urls[i % urls.length],
 			x: slot.x,
 			y: slot.y,
-			delay: i * 0.04,
+			delay: i * 0.03,
 		};
 	});
 }
 
-export const Drop = () => {
-	const [burstIcons] = useState(() => pickBurstIcons());
+type DropOverlayProps = {
+	visible: boolean;
+	className?: string;
+};
+
+export const DropOverlay = ({ visible, className }: DropOverlayProps) => (
+	<WarpOverlay visible={visible} className={className}>
+		<DropContent />
+	</WarpOverlay>
+);
+
+const DropContent = () => {
+	const [burstZephs] = useState(() => pickBurstZephs());
 	const [iconName, setIconName] = useState<LucideIconName>("hand-grab");
 
 	const { t } = useTranslation("share");
@@ -104,79 +89,62 @@ export const Drop = () => {
 	}, []);
 
 	return (
-		<div className="relative h-full w-full overflow-hidden">
-			<AnimatePresence mode="popLayout" initial={true}>
+		<div className="relative flex flex-col items-center gap-y-4">
+			{burstZephs.map((zeph, i) => (
 				<motion.div
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					className="pointer-events-none absolute inset-0"
-					style={{
-						background:
-							"radial-gradient(ellipse at 50% 28vh, oklch(0.623 0.214 259.815 / 0.1) 0%, transparent 99%)",
+					key={`burst-zeph-${i}`}
+					className="pointer-events-none absolute top-1/2 left-1/2"
+					initial={{
+						transform: `translateX(0px) translateY(${-zeph.size / 2}px) scale(0.5) rotate(0deg)`,
+						opacity: 0,
 					}}
-				/>
-				{burstIcons.map((icon) => (
+					animate={{
+						transform: `translateX(${zeph.x}px) translateY(${zeph.y}px) scale(1) rotate(${zeph.rotation}deg)`,
+						opacity: 0.9,
+					}}
+					transition={{
+						type: "spring",
+						stiffness: 280,
+						damping: 22,
+						delay: 0.08 + zeph.delay,
+					}}
+				>
 					<motion.div
-						key={`burst-icon-${icon.name}`}
-						className="pointer-events-none absolute top-[28vh] left-1/2"
-						initial={{
-							transform: `translateX(0px) translateY(${-icon.size / 2}px) scale(0.5) rotate(0deg)`,
-							opacity: 0,
-						}}
 						animate={{
-							transform: `translateX(${icon.x}px) translateY(${icon.y}px) scale(1) rotate(${icon.rotation}deg)`,
-							opacity: 0.6,
+							transform: [
+								"translateY(0px)",
+								`translateY(${-zeph.floatY}px)`,
+								"translateY(0px)",
+							],
 						}}
 						transition={{
-							type: "spring",
-							stiffness: 180,
-							damping: 18,
-							delay: icon.delay,
+							duration: zeph.floatDuration,
+							repeat: Infinity,
+							ease: "easeInOut",
+							delay: zeph.delay + 0.4,
 						}}
 					>
-						<motion.div
-							animate={{
-								transform: [
-									"translateY(0px)",
-									`translateY(${-icon.floatY}px)`,
-									"translateY(0px)",
-								],
-							}}
-							transition={{
-								duration: icon.floatDuration,
-								repeat: Infinity,
-								ease: "easeInOut",
-								delay: icon.delay + 0.4,
-							}}
-						>
-							<LucideIcon
-								name={icon.name}
-								width={icon.size}
-								height={icon.size}
-								strokeWidth={1.5}
-								className="text-muted-foreground"
-							/>
-						</motion.div>
+						<img
+							src={zeph.url}
+							alt=""
+							draggable={false}
+							width={zeph.size}
+							height={zeph.size}
+						/>
 					</motion.div>
-				))}
-			</AnimatePresence>
-			<div className="relative z-10 flex h-full w-full flex-col items-center gap-y-4 pt-[16vh] pb-[16vh]">
-				<div>
-					<AnimatePresence mode="popLayout" initial={false}>
-						<motion.div
-							className="z-10 flex rotate-180 items-center justify-center overflow-hidden"
-							style={{ height: 48, width: 48, borderRadius: 12 }}
-						>
-							<LucideIcon key={iconName} name={iconName} />
-						</motion.div>
-					</AnimatePresence>
-				</div>
-				<div className="w-full">
-					<p className="text-center text-lg">{t("drop_files_title")}</p>
-					<p className="text-center text-muted">
-						{t("drop_files_description")}
-					</p>
-				</div>
+				</motion.div>
+			))}
+			<div
+				className="relative z-10 flex rotate-180 items-center justify-center"
+				style={{ height: 48, width: 48 }}
+			>
+				<LucideIcon key={iconName} name={iconName} />
+			</div>
+			<div className="relative z-10 w-full">
+				<p className="text-center text-lg">{t("drop_files_title")}</p>
+				<p className="text-center text-foreground/70">
+					{t("drop_files_description")}
+				</p>
 			</div>
 		</div>
 	);

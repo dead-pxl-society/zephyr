@@ -7,20 +7,16 @@ import {
 } from "@tauri-apps/api/event";
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { platform } from "@tauri-apps/plugin-os";
-import {
-	AnimatePresence,
-	MotionConfig,
-	motion,
-	type Variants,
-} from "motion/react";
+import { MotionConfig, type Variants } from "motion/react";
 import { useCallback, useEffect, useRef } from "react";
-import { Drop } from "@/components/drop";
+import { DropOverlay } from "@/components/drop";
 import { ImportingSection } from "@/components/share/importing-section";
 import {
 	type ContentStatus,
 	ShareSection,
 } from "@/components/share/share-section";
 import { UnselectedSection } from "@/components/share/unselected-section";
+import { WarpContent } from "@/components/warp-overlay";
 import { useStateRef } from "@/lib/hooks/use-state-ref";
 import { useWindowDragDrop } from "@/lib/hooks/use-window-drag-drop";
 import { hydrateFamilyStore } from "@/lib/store/family";
@@ -40,17 +36,6 @@ const avatarVariants: Variants = {
 	initial: { filter: "blur(4px)", opacity: 0.75 },
 	visible: { filter: "blur(0px)", opacity: 1 },
 	exit: { filter: "blur(4px)", opacity: 0.75 },
-};
-
-const dragContainerVariants: Variants = {
-	initial: { filter: "blur(4px)", opacity: 0, transform: "translateY(-8px)" },
-	visible: {
-		filter: "blur(0px)",
-		opacity: 1,
-		transform: "translateY(0px)",
-		transitionEnd: { filter: "none" },
-	},
-	exit: { filter: "blur(4px)", opacity: 0, transform: "translateY(8px)" },
 };
 
 export const App = () => {
@@ -287,43 +272,23 @@ export const App = () => {
 		};
 	}, [handleDone, dragging]);
 
+	const showDropOverlay = dragging && shareState === "unselected";
+
 	return (
 		<main className="h-full w-full macos-glass:rounded-3xl macos-glass:bg-background/70 macos-glass:backdrop-blur-xl">
 			<div
 				data-tauri-drag-region
 				className="absolute top-0 right-0 left-0 z-20 h-4"
 			/>
-			<AnimatePresence mode="popLayout" initial={false}>
-				{dragging && shareState === "unselected" ? (
-					<motion.div
-						key="dragging"
-						className="h-full w-full"
-						variants={dragContainerVariants}
-						initial="initial"
-						animate="visible"
-						exit="exit"
-						transition={{ duration: 0.14, bounce: 0 }}
-					>
-						<Drop />
-					</motion.div>
-				) : (
-					<motion.div
-						key="sharecontent"
-						className="h-full w-full"
-						variants={dragContainerVariants}
-						initial="initial"
-						animate="visible"
-						exit="exit"
-						transition={{ duration: 0.14, bounce: 0 }}
-					>
-						<MotionConfig
-							transition={{ type: "spring", duration: 0.4, bounce: 0 }}
-						>
-							{renderContent()}
-						</MotionConfig>
-					</motion.div>
-				)}
-			</AnimatePresence>
+			<WarpContent active={showDropOverlay} className="h-full w-full">
+				<MotionConfig transition={{ type: "spring", duration: 0.4, bounce: 0 }}>
+					{renderContent()}
+				</MotionConfig>
+			</WarpContent>
+			<DropOverlay
+				visible={showDropOverlay}
+				className="macos-glass:rounded-3xl"
+			/>
 		</main>
 	);
 };
