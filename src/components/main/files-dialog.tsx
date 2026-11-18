@@ -167,7 +167,7 @@ export const FilesDialog = forwardRef(
 		return (
 			<Dialog open={open} onOpenChange={setOpen}>
 				<DialogContent
-					className="top-[calc(-0.01px+8vh)] left-[calc(50%+112px)] flex w-[28rem] translate-y-0 flex-col gap-0 rounded-xl border-border bg-background-top p-0"
+					className="top-[calc(-0.01px+8vh)] left-[calc(50%+112px)] flex w-[28rem] translate-y-0 flex-col gap-0 rounded-xl border-border bg-background-top/80 p-0"
 					showCloseButton={false}
 				>
 					<DialogHeader className="p-4">
