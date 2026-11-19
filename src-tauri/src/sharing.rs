@@ -2,7 +2,6 @@ use std::{path::PathBuf, str::FromStr};
 
 use iroh_blobs::ticket::BlobTicket;
 use iroh_tickets::endpoint::EndpointTicket;
-use serde_json::json;
 use tauri::{Emitter, Manager};
 use tauri_plugin_clipboard_manager::ClipboardExt;
 use tokio::sync::mpsc::{self, unbounded_channel};
@@ -10,11 +9,20 @@ use tokio::sync::mpsc::{self, unbounded_channel};
 use crate::{
     db::api::peer::add_contact_by_ticket,
     error::Result,
-    events::{ImportErrorEvent, NotificationEvent, ShareRequest, ShareResponse, ShareResponseType},
-    net::{api::download_inner, node::ImportProgress, proto::share::ShareMessage},
+    events::{ImportErrorEvent, ShareRequest, ShareResponse, ShareResponseType},
+    net::{
+        api::download_inner,
+        node::{ImportProgress, ImportProgressType},
+        proto::share::ShareMessage,
+    },
     state::AppState,
     transfer::{handle_export_events, handle_get_progress},
-    util::{file::calculate_selection_hash, parcel::Parcel, peer_cache::refresh_nearby},
+    util::{
+        file::calculate_selection_hash,
+        parcel::Parcel,
+        peer_cache::refresh_nearby,
+        throttle::{PROGRESS_INTERVAL, ProgressThrottle},
+    },
     window::{hide_window, show_window},
 };
 
@@ -44,7 +52,21 @@ pub(crate) fn handle_selected_files(
 
         let app_clone = app.clone();
         tauri::async_runtime::spawn(async move {
+            let mut throttle = ProgressThrottle::new(PROGRESS_INTERVAL);
             while let Some(msg) = progress_rx.recv().await {
+                match msg.event_type {
+                    // The UI tracks import progress through outboard ticks only.
+                    ImportProgressType::CopyProgress => continue,
+                    ImportProgressType::OutboardProgress => {
+                        if !throttle.ready(msg.key.clone()) {
+                            continue;
+                        }
+                    }
+                    ImportProgressType::Done | ImportProgressType::Error => {
+                        throttle.forget(&msg.key)
+                    }
+                    _ => {}
+                }
                 let _ = app_clone.emit("import_progress", &msg);
             }
         });
@@ -217,22 +239,7 @@ pub(crate) async fn handle_share_messages(
                     continue;
                 }
 
-                let (body, args) = match peer_name {
-                    Some(name) => (
-                        "notifications:receiving_trusted_files_body",
-                        Some(json!({ "peer": name })),
-                    ),
-                    None => ("notifications:receiving_trusted_files_body_unknown", None),
-                };
-
-                let event = NotificationEvent {
-                    title: "notifications:receiving_trusted_files_title".to_string(),
-                    body: Some(body.to_string()),
-                    sound: Some("chime".to_string()),
-                    args,
-                };
-
-                let _ = app.emit("notify", event);
+                let _ = app.emit("sound:play", "chime");
             }
         }
     }

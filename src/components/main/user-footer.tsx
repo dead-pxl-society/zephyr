@@ -13,6 +13,7 @@ import {
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useUpdaterStore } from "@/lib/store/updater";
+import { cn } from "@/lib/utils";
 import type { User } from "@/type";
 import {
 	DropdownMenu,
@@ -35,6 +36,7 @@ export const UserFooter = ({ user }: UserFooterProps) => {
 	const navToSettings = () => navigate("/settings");
 
 	const [mdnsEnabled, setMdnsEnabled] = useState(true);
+	const [menuOpen, setMenuOpen] = useState(false);
 
 	const updateStatus = useUpdaterStore((s) => s.status);
 	const updateVersion = useUpdaterStore((s) => s.version);
@@ -82,10 +84,20 @@ export const UserFooter = ({ user }: UserFooterProps) => {
 
 	return (
 		<TooltipProvider delayDuration={1000} skipDelayDuration={500}>
-			<DropdownMenu>
+			{/* Non-modal: a modal menu sets pointer-events: none on <body>, which
+			    drops :hover from the trigger and makes it flash its unhovered
+			    state when the menu closes until the pointer moves again. */}
+			<DropdownMenu modal={false} open={menuOpen} onOpenChange={setMenuOpen}>
 				<DropdownMenuTrigger className="group">
 					<div className="absolute bottom-0 w-full px-1">
-						<div className="flex w-full flex-row items-center rounded-full p-1 group-hover:bg-background-popup group-data-[state=open]:bg-background-popup windows:dark:group-data-[state=open]:bg-neutral-800 windows:dark:group-hover:bg-neutral-800">
+						<div
+							className={cn(
+								"pill-surface flex w-full flex-row items-center rounded-full p-1",
+								menuOpen
+									? "glass-pill"
+									: "group-hover:before:bg-white/50 dark:group-hover:before:bg-white/6",
+							)}
+						>
 							<div className="flex flex-1 flex-row items-center gap-x-1">
 								<DicebearAvatar
 									seed={user?.endpointId}
@@ -123,7 +135,9 @@ export const UserFooter = ({ user }: UserFooterProps) => {
 						</div>
 					</div>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent className="ml-2 w-[208px] windows:dark:bg-neutral-800">
+				{/* The glass sits on top of the menu's opaque background so the menu
+				    stays readable over the page while matching the open trigger. */}
+				<DropdownMenuContent className="pill-surface glass-pill ml-2 w-[208px] windows:dark:bg-neutral-800">
 					<DropdownMenuLabel className="text-xs">
 						{t("common:device")}
 					</DropdownMenuLabel>
@@ -151,7 +165,7 @@ export const UserFooter = ({ user }: UserFooterProps) => {
 					</DropdownMenuItem>
 					{updatePending && (
 						<>
-							<DropdownMenuSeparator />
+							<DropdownMenuSeparator className="dark:bg-white/10" />
 							<DropdownMenuLabel className="text-xs">
 								{t("updater:update_available")}
 							</DropdownMenuLabel>
@@ -179,7 +193,7 @@ export const UserFooter = ({ user }: UserFooterProps) => {
 							</DropdownMenuItem>
 						</>
 					)}
-					<DropdownMenuSeparator />
+					<DropdownMenuSeparator className="dark:bg-white/10" />
 					<DropdownMenuLabel className="text-xs">Discovery</DropdownMenuLabel>
 					<DropdownMenuItem
 						className="text-xs hover:bg-black/10! dark:hover:bg-foreground/10!"

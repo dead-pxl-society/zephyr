@@ -28,6 +28,26 @@ export const randomZephUrl = (exclude?: string) => {
 	return candidates[candidates.length - 1].url;
 };
 
+export const randomZephUrls = (count: number) => {
+	const pool = [...zephs];
+	const picked: string[] = [];
+
+	while (picked.length < count && pool.length > 0) {
+		const total = pool.reduce((sum, zeph) => sum + zeph.weight, 0);
+		let roll = Math.random() * total;
+		let index = pool.findIndex((zeph) => {
+			roll -= zeph.weight;
+			return roll < 0;
+		});
+		if (index === -1) index = pool.length - 1;
+
+		picked.push(pool[index].url);
+		pool.splice(index, 1);
+	}
+
+	return picked;
+};
+
 export const ZEPH_COLORS = {
 	happy: "#FFF180",
 	happy2: "#80FFAD",

@@ -15,5 +15,8 @@
 	"clipboard_files_description": "Includi i file copiati. Vengono scaricati in background così puoi incollarli direttamente nel Finder o in Esplora file.",
 	"clipboard_max_size": "Dimensione massima",
 	"clipboard_max_size_description": "Le copie più grandi di così non vengono sincronizzate.",
-	"clipboard_max_size_warning": "Limiti elevati rallentano ogni copia e occupano memoria sul dispositivo che invia. Per i file grandi è meglio usare la condivisione."
+	"clipboard_max_size_warning": "Limiti elevati rallentano ogni copia e occupano memoria sul dispositivo che invia. Per i file grandi è meglio usare la condivisione.",
+	"startup_section": "Avvio",
+	"launch_at_login": "Apri all’accesso",
+	"launch_at_login_description": "Avvia Zephyr in background quando accedi, così i tuoi dispositivi e contatti possono raggiungerti subito."
 }

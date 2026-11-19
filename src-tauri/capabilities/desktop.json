@@ -7,9 +7,6 @@
 		"clipboard-manager:default",
 		"clipboard-manager:allow-write-text",
 		"clipboard-manager:allow-read-text",
-		"core:window:allow-start-dragging",
-		"notification:default",
-		"notification:allow-notify",
-		"notification:allow-show"
+		"core:window:allow-start-dragging"
 	]
 }

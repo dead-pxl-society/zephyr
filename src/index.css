@@ -443,6 +443,55 @@ pre:not(.not-shiki) {
 	}
 }
 
+/*
+ * Shape for a background drawn on ::before instead of the element itself, so
+ * hover and selected states share one surface. Fill it with `before:bg-*` or
+ * `glass-pill`. The pill sits at z-index -1 inside an isolated stacking
+ * context so it renders above the element's own background but below its
+ * icon and label.
+ */
+@utility pill-surface {
+	position: relative;
+	isolation: isolate;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0.5px 0;
+		z-index: -1;
+		border-radius: inherit;
+		pointer-events: none;
+	}
+}
+
+/*
+ * Fill for a selected `pill-surface`.
+ * Light: a raised white card — faint dark ring and drop shadow for the edge,
+ * crisp inset white line along the top.
+ * Dark: translucent white glass with soft inner glow that reads lighter along
+ * the top and bottom edges; white highlights don't register on light
+ * surfaces, hence the separate treatment.
+ */
+@utility glass-pill {
+	&::before {
+		background-color: rgba(255, 255, 255, 0.75);
+		box-shadow:
+			inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+			0 1px 2px 0 rgba(0, 0, 0, 0.06),
+			0 0 0 1px rgba(0, 0, 0, 0.06);
+
+		@media (prefers-color-scheme: dark) {
+			background-color: rgba(255, 255, 255, 0.11);
+			box-shadow:
+				inset 0 0 0 1px rgba(255, 255, 255, 0.02),
+				inset 0 1px 1px 0 rgba(255, 255, 255, 0.06),
+				inset 0 0 12px 1px rgba(255, 255, 255, 0.06),
+				0 1px 2px 0 rgba(0, 0, 0, 0.1),
+				0 0 0 1px rgba(0, 0, 0, 0.1);
+		}
+	}
+}
+
 .menu-overlay {
 	backface-visibility: hidden;
 	position: relative;
@@ -581,5 +630,107 @@ pre:not(.not-shiki) {
 	}
 	70% {
 		opacity: 0.99;
+	}
+}
+
+/*
+ * Dialog "mist" entrance: the surface starts oversized, blurred and
+ * transparent, then condenses into place with a slightly underdamped spring
+ * on scale. Scale, opacity and blur run as separate animations because a
+ * spring curve overshoots past 1, which would push opacity/blur out of range.
+ *
+ * Uses the individual `scale` property so it composes with Tailwind's
+ * `translate` centering instead of overwriting `transform`. No fill-mode on
+ * the filter keyframes so `filter` is dropped once the animation ends —
+ * a lingering filter would create a backdrop root and stop `backdrop-filter`
+ * from sampling the page behind the dialog in some engines.
+ */
+:root {
+	/* Spring (k=260, c=22, m=1) sampled into linear(); ~5% overshoot. */
+	--ease-spring-soft: linear(
+		0,
+		0.0575,
+		0.1923,
+		0.3594,
+		0.5283,
+		0.6803,
+		0.8061,
+		0.9026,
+		0.9712,
+		1.0157,
+		1.0409,
+		1.0518,
+		1.0528,
+		1.0479,
+		1.0398,
+		1.0307,
+		1.0219,
+		1.0143,
+		1.0082,
+		1.0036,
+		1.0005,
+		0.9985,
+		0.9975,
+		0.9972,
+		0.9973,
+		0.9976,
+		0.9981,
+		0.9985,
+		1
+	);
+	--ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes mist-scale-in {
+	from {
+		scale: 1.08;
+	}
+	to {
+		scale: 1;
+	}
+}
+
+@keyframes mist-condense {
+	from {
+		opacity: 0;
+		filter: blur(12px);
+	}
+	to {
+		opacity: 1;
+		filter: blur(0);
+	}
+}
+
+@keyframes mist-dissolve {
+	to {
+		opacity: 0;
+		scale: 1.04;
+		filter: blur(8px);
+	}
+}
+
+@keyframes mist-fade {
+	from {
+		opacity: 0;
+	}
+}
+
+.dialog-mist[data-state="open"] {
+	animation:
+		mist-scale-in 640ms var(--ease-spring-soft),
+		mist-condense 360ms var(--ease-out-strong);
+}
+
+.dialog-mist[data-state="closed"] {
+	animation: mist-dissolve 180ms var(--ease-out-strong) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.dialog-mist[data-state="open"] {
+		animation: mist-fade 200ms ease-out;
+	}
+
+	.dialog-mist[data-state="closed"] {
+		animation: mist-fade 150ms ease-out reverse forwards;
 	}
 }

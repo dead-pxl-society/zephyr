@@ -5,6 +5,9 @@ pub enum Error {
     #[error("Node not available")]
     NodeUnavailable,
 
+    #[error("Notification failed: {0}")]
+    Notification(String),
+
     #[error("Unknown peer")]
     UnknownPeer,
 
@@ -52,6 +55,9 @@ pub enum Error {
 
     #[error("Shortcut error: {0}")]
     Shortcut(String),
+
+    #[error("Launch at login error: {0}")]
+    Autostart(String),
 
     #[error("A device pairing is already in progress")]
     PairingInProgress,

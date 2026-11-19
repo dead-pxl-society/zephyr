@@ -2,7 +2,8 @@ import { motion, type Variants } from "motion/react";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { Drop } from "@/components/drop";
+import { DropOverlay } from "@/components/drop";
+import { DeviceRequestDrawer } from "@/components/onboarding/device-request-drawer";
 import {
 	Sidebar,
 	SidebarDivider,
@@ -10,6 +11,7 @@ import {
 	SidebarUserItem,
 } from "@/components/settings/sidebar";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { WarpContent } from "@/components/warp-overlay";
 import { useExitSettings } from "@/lib/hooks/use-exit-settings";
 import { useUser } from "@/lib/store/user";
 import { cn } from "@/lib/utils";
@@ -62,7 +64,12 @@ export const SettingsLayout = ({ dragging }: { dragging: boolean }) => {
 					exit="exit"
 					className="flex h-full w-full flex-row"
 				>
-					<div className={cn("h-full", dragging && "opacity-20")}>
+					<div
+						className={cn(
+							"h-full transition-opacity",
+							dragging && "opacity-20",
+						)}
+					>
 						<Sidebar>
 							<SidebarUserItem
 								user={user}
@@ -114,17 +121,17 @@ export const SettingsLayout = ({ dragging }: { dragging: boolean }) => {
 							</SidebarItem>
 						</Sidebar>
 					</div>
-					{dragging ? (
-						<div className="h-full w-full rounded-r-lg border-2 border-blue-500/60">
-							<Drop />
-						</div>
-					) : (
-						<ScrollArea className="h-full w-[calc(100%-224px)] self-end rounded-lg pt-16">
-							<Outlet />
-						</ScrollArea>
-					)}
+					<div className="relative h-full w-[calc(100%-224px)] self-end">
+						<WarpContent active={dragging} className="h-full w-full">
+							<ScrollArea className="h-full w-full rounded-lg pt-16">
+								<Outlet />
+							</ScrollArea>
+						</WarpContent>
+						<DropOverlay visible={dragging} className="rounded-r-lg" />
+					</div>
 				</motion.div>
 			</motion.div>
+			<DeviceRequestDrawer onlyAcceptedFromNotification />
 		</main>
 	);
 };

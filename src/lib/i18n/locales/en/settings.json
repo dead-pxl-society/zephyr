@@ -15,5 +15,8 @@
 	"clipboard_files_description": "Include copied files. They download in the background so you can paste them straight into Finder or Explorer.",
 	"clipboard_max_size": "Maximum Size",
 	"clipboard_max_size_description": "Copies larger than this are not synced.",
-	"clipboard_max_size_warning": "Large limits slow down every copy and use memory on the sending device. The share flow is a better fit for big files."
+	"clipboard_max_size_warning": "Large limits slow down every copy and use memory on the sending device. The share flow is a better fit for big files.",
+	"startup_section": "Startup",
+	"launch_at_login": "Launch at Login",
+	"launch_at_login_description": "Open Zephyr in the background when you sign in, so devices and contacts can reach you right away."
 }

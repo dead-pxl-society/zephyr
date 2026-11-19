@@ -6,7 +6,7 @@ import {
 	useMotionTemplate,
 	useSpring,
 } from "motion/react";
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode, Ref } from "react";
 import useMeasure from "react-use-measure";
 import { cn } from "@/lib/utils";
 import { HeroIcon, type HeroIconName } from "../hero-icon";
@@ -35,7 +35,8 @@ type NavbarActionProps = {
 	iconName?: HeroIconName;
 	tooltip?: string;
 	iconClassName?: string;
-} & ButtonProps;
+	ref?: Ref<HTMLDivElement>;
+} & Omit<ButtonProps, "ref">;
 
 type NavbarNavigationProps = {
 	canGoBack?: boolean;
@@ -120,7 +121,6 @@ export const NavbarGroup = ({
 
 	return (
 		<motion.div
-			key={layoutId}
 			layoutId={layoutId}
 			initial={{ x: -16, opacity: 0, filter: "blur(4px)" }}
 			animate={{
@@ -131,7 +131,9 @@ export const NavbarGroup = ({
 			}}
 			exit={{ x: -16, opacity: 0, filter: "blur(4px)" }}
 			className={cn(
-				"flex flex-row items-center",
+				// `relative` anchors the glare overlay and the absolutely positioned
+				// children that AnimatePresence's popLayout mode pops out on exit.
+				"relative flex flex-row items-center",
 				"edge-highlight h-10 gap-x-0.5 overflow-hidden rounded-3xl bg-background-popup/80 shadow-lg backdrop-blur-xl dark:bg-background-popup/70",
 				className,
 			)}
@@ -158,16 +160,25 @@ export const NavbarGroup = ({
 	);
 };
 
+/**
+ * Callers must give each action a unique `key` (typically its `layoutId`):
+ * the parent AnimatePresence identifies children by key, and without one it
+ * can't detect removals, so exit animations never run.
+ *
+ * `ref` is forwarded to the motion wrapper rather than the Button so that
+ * popLayout pops the whole wrapper out of the flow while it exits.
+ */
 export const NavbarAction = ({
+	ref,
 	iconName,
 	tooltip,
-	layoutId,
+	layoutId: _layoutId,
 	iconClassName,
 	...props
 }: NavbarActionProps) => {
 	const content = (
 		<motion.div
-			key={layoutId}
+			ref={ref}
 			initial={{ opacity: 0, filter: "blur(4px)" }}
 			animate={{ opacity: 1, filter: "blur(0px)" }}
 			exit={{ opacity: 0, filter: "blur(4px)" }}
@@ -195,6 +206,22 @@ export const NavbarAction = ({
 	);
 };
 
+/**
+ * Vertical separator between actions in a NavbarGroup. A motion element so it
+ * can blur out alongside the actions; like NavbarAction, it needs a `key`.
+ */
+export const NavbarDivider = ({ ref }: { ref?: Ref<HTMLDivElement> }) => (
+	<motion.div
+		ref={ref}
+		aria-hidden
+		className="h-5 w-px bg-border"
+		initial={{ opacity: 0, filter: "blur(4px)" }}
+		animate={{ opacity: 1, filter: "blur(0px)" }}
+		exit={{ opacity: 0, filter: "blur(4px)" }}
+		transition={baseTransition}
+	/>
+);
+
 export const NavbarNavigation = ({
 	navBack,
 	navForward,
@@ -203,14 +230,16 @@ export const NavbarNavigation = ({
 }: NavbarNavigationProps) => (
 	<NavbarGroup layoutId="nav-group-navigation" glare>
 		<NavbarAction
+			key="nav-back"
 			layoutId="nav-back"
 			iconName="chevron-left"
 			iconClassName="-ml-0.5"
 			disabled={!canGoBack}
 			onClick={navBack}
 		/>
-		<div className="h-5 w-px bg-border" />
+		<NavbarDivider key="nav-divider" />
 		<NavbarAction
+			key="nav-forward"
 			layoutId="nav-forward"
 			iconName="chevron-right"
 			iconClassName="-mr-0.5"

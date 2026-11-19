@@ -86,6 +86,7 @@ export interface User {
 	shortcuts: ShortcutConfig;
 	notifications: boolean;
 	sounds: boolean;
+	autostart: boolean;
 	onboarding: Onboarding;
 }
 
@@ -180,7 +181,11 @@ export interface DevicePresence {
 
 export type IncomingRequest =
 	| ({ type: "share" } & ShareRequest)
-	| ({ type: "device" } & DeviceRequest);
+	| ({
+			type: "device";
+			/** Accepted from a notification, so it's waiting on the code in a drawer. */
+			acceptedFromNotification?: boolean;
+	  } & DeviceRequest);
 
 export interface ShareInfo {
 	ticket: string;

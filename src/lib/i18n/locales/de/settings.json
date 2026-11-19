@@ -15,5 +15,8 @@
 	"clipboard_files_description": "Kopierte Dateien einbeziehen. Sie werden im Hintergrund geladen, damit du sie direkt im Finder oder Explorer einfügen kannst.",
 	"clipboard_max_size": "Maximale Größe",
 	"clipboard_max_size_description": "Kopien, die größer sind, werden nicht synchronisiert.",
-	"clipboard_max_size_warning": "Hohe Limits verlangsamen jeden Kopiervorgang und belegen Speicher auf dem sendenden Gerät. Für große Dateien eignet sich das Teilen besser."
+	"clipboard_max_size_warning": "Hohe Limits verlangsamen jeden Kopiervorgang und belegen Speicher auf dem sendenden Gerät. Für große Dateien eignet sich das Teilen besser.",
+	"startup_section": "Start",
+	"launch_at_login": "Bei Anmeldung öffnen",
+	"launch_at_login_description": "Startet Zephyr bei der Anmeldung im Hintergrund, damit deine Geräte und Kontakte dich sofort erreichen."
 }

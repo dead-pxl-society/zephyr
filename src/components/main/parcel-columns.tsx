@@ -100,7 +100,7 @@ export const createColumns = (
 					<motion.div whileHover="hover">
 						<Button
 							variant="ghost"
-							className="h-8 hover:bg-background-popup active:scale-[0.97] rounded-full"
+							className="h-8 rounded-full hover:bg-background-popup active:scale-[0.97]"
 							onClick={handleShare}
 						>
 							<span className="sr-only">

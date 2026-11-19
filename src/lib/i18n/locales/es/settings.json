@@ -15,5 +15,8 @@
 	"clipboard_files_description": "Incluye los archivos que copies. Se descargan en segundo plano para que puedas pegarlos directamente en Finder o el Explorador.",
 	"clipboard_max_size": "Tamaño máximo",
 	"clipboard_max_size_description": "Las copias más grandes que esto no se sincronizan.",
-	"clipboard_max_size_warning": "Los límites grandes ralentizan cada copia y consumen memoria en el dispositivo que envía. Para archivos grandes es mejor usar el envío normal."
+	"clipboard_max_size_warning": "Los límites grandes ralentizan cada copia y consumen memoria en el dispositivo que envía. Para archivos grandes es mejor usar el envío normal.",
+	"startup_section": "Inicio",
+	"launch_at_login": "Abrir al iniciar sesión",
+	"launch_at_login_description": "Abre Zephyr en segundo plano al iniciar sesión, para que tus dispositivos y contactos puedan encontrarte al instante."
 }

@@ -1019,6 +1019,9 @@ impl FamilyRuntime {
                     }
                 }
             }
+            // `Event` is non-exhaustive; variants added upstream are ignored
+            // until there is a reason to act on them.
+            _ => {}
         }
     }
 

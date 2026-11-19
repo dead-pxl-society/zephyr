@@ -11,6 +11,7 @@ import {
 } from "@/components/settings/section";
 import {
 	Setting,
+	SettingDescription,
 	SettingsAction,
 	SettingTitle,
 } from "@/components/settings/setting";
@@ -19,8 +20,10 @@ import {
 	NativeSelect,
 	NativeSelectOption,
 } from "@/components/ui/native-select";
+import { Switch } from "@/components/ui/switch";
 import { SUPPORTED_LANGUAGES } from "@/lib/i18n";
 import { useUser } from "@/lib/store/user";
+import type { User } from "@/type";
 
 export const GeneralPage = () => {
 	const user = useUser();
@@ -58,6 +61,15 @@ export const GeneralPage = () => {
 			emit("ui:change_language", lang);
 		} catch (_e) {
 			toast.error(t("errors:error_changing_language"));
+		}
+	};
+
+	const handleAutostartChange = async (enabled: boolean) => {
+		try {
+			const updated = await invoke<User>("set_autostart_cmd", { enabled });
+			emit("ui:update_user", { autostart: updated.autostart });
+		} catch (_e) {
+			toast.error(t("errors:error_updating_preferences"));
 		}
 	};
 
@@ -103,6 +115,20 @@ export const GeneralPage = () => {
 								</NativeSelectOption>
 							))}
 						</NativeSelect>
+					</SettingsAction>
+				</Setting>
+				<SectionDivider />
+				<SectionTitle>{t("settings:startup_section")}</SectionTitle>
+				<Setting>
+					<SettingTitle>{t("settings:launch_at_login")}</SettingTitle>
+					<SettingDescription>
+						{t("settings:launch_at_login_description")}
+					</SettingDescription>
+					<SettingsAction>
+						<Switch
+							checked={user?.autostart ?? true}
+							onCheckedChange={handleAutostartChange}
+						/>
 					</SettingsAction>
 				</Setting>
 			</Section>

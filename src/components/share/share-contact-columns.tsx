@@ -7,10 +7,10 @@ import {
 	useTransferProgress,
 } from "@/lib/store/transfers";
 import { cn } from "@/lib/utils";
-import type { Peer, Platform } from "@/type";
+import type { Peer } from "@/type";
 import { DicebearAvatar } from "../dicebear-avatar";
 import { HeroIcon } from "../hero-icon";
-import { platformMap } from "../main/contact-columns";
+import { getPlatformMeta } from "../main/contact-columns";
 import { PlatformIcon } from "../platform-icon";
 
 const ContactSendStatus = ({
@@ -110,8 +110,7 @@ export const createShareContactColumns = (
 	{
 		accessorKey: "name",
 		cell: ({ row }) => {
-			const platform: Platform = row.original.platform ?? "other";
-			const meta = platformMap[platform];
+			const meta = getPlatformMeta(row.original.platform);
 			return (
 				<div className="flex flex-row items-center gap-x-2">
 					<div className="relative flex h-6 w-6 shrink-0 items-center justify-center">

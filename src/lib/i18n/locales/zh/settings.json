@@ -15,5 +15,8 @@
 	"clipboard_files_description": "把复制的文件也包含进来。它们会在后台下载，你可以直接粘贴到访达或资源管理器里。",
 	"clipboard_max_size": "大小上限",
 	"clipboard_max_size_description": "超过此大小的内容不会同步。",
-	"clipboard_max_size_warning": "上限设得太大，会拖慢每一次复制，也会占用发送设备的内存。大文件更适合用分享功能。"
+	"clipboard_max_size_warning": "上限设得太大，会拖慢每一次复制，也会占用发送设备的内存。大文件更适合用分享功能。",
+	"startup_section": "启动",
+	"launch_at_login": "登录时打开",
+	"launch_at_login_description": "登录时在后台启动 Zephyr，让你的设备和联系人可以立即找到你。"
 }

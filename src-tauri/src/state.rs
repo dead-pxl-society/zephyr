@@ -37,6 +37,8 @@ pub struct AppState {
     pub clipboard_files: AtomicBool,
     pub clipboard_max_bytes: AtomicU64,
     pub clipboard_writer: OnceLock<mpsc::UnboundedSender<ClipboardWrite>>,
+    /// Set during setup when the main window should stay hidden on launch.
+    pub start_hidden: AtomicBool,
 }
 
 impl AppState {
@@ -55,7 +57,16 @@ impl AppState {
             clipboard_files: AtomicBool::new(false),
             clipboard_max_bytes: AtomicU64::new(DEFAULT_CLIPBOARD_MAX_BYTES),
             clipboard_writer: OnceLock::new(),
+            start_hidden: AtomicBool::new(false),
         }
+    }
+
+    pub fn set_start_hidden(&self, hidden: bool) {
+        self.start_hidden.store(hidden, Ordering::Relaxed);
+    }
+
+    pub fn start_hidden(&self) -> bool {
+        self.start_hidden.load(Ordering::Relaxed)
     }
 
     pub fn set_node(&self, node: Arc<Node>) {

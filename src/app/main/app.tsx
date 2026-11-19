@@ -13,7 +13,7 @@ import {
 	useLocation,
 	useNavigate,
 } from "react-router-dom";
-import { Drop } from "@/components/drop";
+import { DropOverlay } from "@/components/drop";
 import { AddContactDrawer } from "@/components/main/add-contact-drawer";
 import type { DynamicDrawerHandles } from "@/components/main/dynamic-drawer";
 import { MainNav } from "@/components/main/main-navbar";
@@ -29,8 +29,10 @@ import {
 } from "@/components/main/share-dialog";
 import { Sidebar, SidebarItem, SidebarTitle } from "@/components/main/sidebar";
 import { CrtSplash } from "@/components/onboarding/crt-splash";
+import { DeviceRequestDrawer } from "@/components/onboarding/device-request-drawer";
 import { TesterSwitch } from "@/components/tester-switch";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { WarpContent } from "@/components/warp-overlay";
 import { toastError } from "@/lib/errors";
 import { useExitSettings } from "@/lib/hooks/use-exit-settings";
 import { useUpdater } from "@/lib/hooks/use-updater";
@@ -273,7 +275,7 @@ export const Layout = ({ dragging }: { dragging: boolean }) => {
 				initial="initial"
 				animate="animate"
 				exit="exit"
-				className={cn("h-full", dragging && "opacity-20!")}
+				className={cn("h-full transition-opacity", dragging && "opacity-20!")}
 			>
 				<TesterSwitch>
 					<Sidebar user={user}>
@@ -330,16 +332,11 @@ export const Layout = ({ dragging }: { dragging: boolean }) => {
 			</motion.div>
 			<motion.div
 				layoutId="main-app-content"
-				className={cn(
-					"h-full self-end rounded-lg bg-background-surface/95 backdrop-blur-lg",
-					dragging && "border-2 border-blue-500/60",
-				)}
+				className="relative h-full self-end rounded-lg bg-background-surface/95 backdrop-blur-lg"
 				style={{ width: "calc(100% - 224px)" }}
 				transition={{ duration: 0.24, ease: [0.455, 0.03, 0.515, 0.955] }}
 			>
-				{dragging ? (
-					<Drop />
-				) : (
+				<WarpContent active={dragging} className="h-full w-full">
 					<ScrollArea className="h-full w-full self-end rounded-lg">
 						<motion.div
 							variants={contentVariants}
@@ -350,12 +347,14 @@ export const Layout = ({ dragging }: { dragging: boolean }) => {
 							<Outlet />
 						</motion.div>
 					</ScrollArea>
-				)}
+				</WarpContent>
+				<DropOverlay visible={dragging} className="rounded-lg" />
 			</motion.div>
 			<ReceiveDialog
 				ref={receiveDialogRef}
 				{...(receiveDialogData.data ?? {})}
 			/>
+			<DeviceRequestDrawer onlyAcceptedFromNotification />
 			<AddContactDrawer ref={addContactDrawerRef} />
 		</main>
 	);

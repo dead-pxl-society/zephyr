@@ -15,5 +15,8 @@
 	"clipboard_files_description": "복사한 파일도 포함합니다. 백그라운드에서 내려받으므로 Finder나 탐색기에 바로 붙여넣을 수 있습니다.",
 	"clipboard_max_size": "최대 크기",
 	"clipboard_max_size_description": "이보다 큰 복사본은 동기화되지 않습니다.",
-	"clipboard_max_size_warning": "한도를 크게 잡으면 복사할 때마다 느려지고 보내는 기기의 메모리도 많이 씁니다. 큰 파일에는 공유 기능이 더 알맞습니다."
+	"clipboard_max_size_warning": "한도를 크게 잡으면 복사할 때마다 느려지고 보내는 기기의 메모리도 많이 씁니다. 큰 파일에는 공유 기능이 더 알맞습니다.",
+	"startup_section": "시작",
+	"launch_at_login": "로그인 시 열기",
+	"launch_at_login_description": "로그인할 때 Zephyr를 백그라운드에서 실행해 기기와 연락처가 바로 연결될 수 있게 합니다."
 }

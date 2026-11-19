@@ -15,5 +15,8 @@
 	"clipboard_files_description": "Inclure les fichiers copiés. Ils se téléchargent en arrière-plan pour que vous puissiez les coller directement dans le Finder ou l'Explorateur.",
 	"clipboard_max_size": "Taille maximale",
 	"clipboard_max_size_description": "Les copies plus volumineuses ne sont pas synchronisées.",
-	"clipboard_max_size_warning": "Une limite élevée ralentit chaque copie et consomme de la mémoire sur l'appareil émetteur. Le partage convient mieux aux gros fichiers."
+	"clipboard_max_size_warning": "Une limite élevée ralentit chaque copie et consomme de la mémoire sur l'appareil émetteur. Le partage convient mieux aux gros fichiers.",
+	"startup_section": "Démarrage",
+	"launch_at_login": "Ouvrir à la connexion",
+	"launch_at_login_description": "Lance Zephyr en arrière-plan à l’ouverture de session, pour que vos appareils et contacts puissent vous joindre tout de suite."
 }

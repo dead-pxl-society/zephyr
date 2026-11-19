@@ -1,0 +1,4 @@
+# Link the MSVC C/C++ runtime statically so the app runs on machines without
+# the Visual C++ Redistributable (MSVCP140.dll etc.), e.g. a fresh Windows install.
+[target.'cfg(all(target_os = "windows", target_env = "msvc"))']
+rustflags = ["-C", "target-feature=+crt-static"]

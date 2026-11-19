@@ -1,6 +1,5 @@
 use iroh::PublicKey;
 use serde::{Deserialize, Serialize};
-use serde_json::Value;
 
 use crate::{
     net::proto::{
@@ -150,16 +149,4 @@ pub struct DevicePresenceEvent {
     #[serde(rename = "type")]
     pub(crate) event_type: DevicePresenceType,
     pub(crate) endpoint_id: PublicKey,
-}
-
-#[derive(Clone, Serialize)]
-#[serde(rename_all(serialize = "camelCase"))]
-pub struct NotificationEvent {
-    pub(crate) title: String,
-    pub(crate) body: Option<String>,
-    pub(crate) sound: Option<String>,
-    /// Interpolation values for the i18n keys in `title`/`body`. Must be a JSON
-    /// object, e.g. `json!({ "peer": name })` for `"{{peer}} sent you some files"`.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub(crate) args: Option<Value>,
 }

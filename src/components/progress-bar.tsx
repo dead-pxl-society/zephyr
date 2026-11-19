@@ -7,6 +7,13 @@ import {
 import type { HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
+/**
+ * Backend progress events arrive roughly every 100ms. A physics spring keeps
+ * its velocity when retargeted, so the bar glides between updates instead of
+ * restarting a short tween on each one. Critically damped to avoid overshoot.
+ */
+export const PROGRESS_SPRING = { stiffness: 100, damping: 20, mass: 1 };
+
 export type ProgressBarProps = {
 	progress: MotionValue<number>;
 	innerClassName?: string;
