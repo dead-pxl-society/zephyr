@@ -41,7 +41,20 @@ jobs:
     name: Rust
     runs-on: ubuntu-22.04
     timeout-minutes: 90
+    env:
+      # Debug info is most of target/ for this dependency tree (RocksDB,
+      # SurrealDB, Tauri), and CI never attaches a debugger. With it, a cold
+      # clippy + test build can exceed the runner's free disk.
+      CARGO_PROFILE_DEV_DEBUG: 0
+      CARGO_PROFILE_TEST_DEBUG: 0
     steps:
+      # The hosted image ships ~20 GB of SDKs this job never uses.
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc \
+            /opt/hostedtoolcache/CodeQL /usr/local/share/boost
+          df -h /
+
       - uses: actions/checkout@v7
 
       - name: Install system dependencies
